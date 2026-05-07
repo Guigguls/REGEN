@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals - REGEN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-900">
+
+    <div class="mobile-container goals-bg">
+        <div class="goals-content">
+            <header class="mb-8">
+                <h1 class="goals-title">Which of these goal would you like to achieve?</h1>
+                <p class="goals-subtitle">Pick as many you'd like</p>
+            </header>
+
+            <!-- Goals Bubble Grid -->
+            <div class="goals-grid">
+                <div class="goal-item" onclick="toggleGoal(this)">
+                    <div class="goal-circle dark-green">
+                        <span class="emoji">🗑️</span>
+                        <p>Segregate Waste</p>
+                    </div>
+                </div>
+
+                <div class="goal-item" onclick="toggleGoal(this)">
+                    <div class="goal-circle light-green">
+                        <span class="emoji">📢</span>
+                        <p>Increase Awareness</p>
+                    </div>
+                </div>
+
+                <div class="goal-item" onclick="toggleGoal(this)">
+                    <div class="goal-circle light-green">
+                        <span class="emoji">👣</span>
+                        <p>Track your Impact</p>
+                    </div>
+                </div>
+
+                <div class="goal-item" onclick="toggleGoal(this)">
+                    <div class="goal-circle dark-green">
+                        <span class="emoji">♻️</span>
+                        <p>Support Recycling</p>
+                    </div>
+                </div>
+
+                <div class="goal-item" onclick="toggleGoal(this)">
+                    <div class="goal-circle dark-green">
+                        <span class="emoji">🧹</span>
+                        <p>Keep Spaces Clean</p>
+                    </div>
+                </div>
+
+                <div class="goal-item" onclick="toggleGoal(this)">
+                    <div class="goal-circle light-green">
+                        <span class="emoji">♻️</span>
+                        <p>Reduce Improper Disposal</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="login-btn mt-auto" onclick="window.location.href='dashboard.html'">Continue</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleGoal(element) {
+            element.classList.toggle('selected');
+        }
+    </script>
+</body>
+</html>

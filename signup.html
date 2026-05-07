@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - REGEN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-900">
+
+    <div class="mobile-container">
+        <div class="hero-image-section"></div>
+
+        <div class="content-section">
+            <h1 class="form-title">Create Account</h1>
+            
+            <form id="signupForm" class="space-y-4">
+                <!-- Name -->
+                <div class="input-group">
+                    <label>Name</label>
+                    <div class="input-wrapper">
+                        <span class="icon">👤</span>
+                        <input type="text" placeholder="First name" required>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="input-group">
+                    <label>Email</label>
+                    <div class="input-wrapper">
+                        <span class="icon">✉</span>
+                        <input type="email" placeholder="example@email.com" required>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <span class="icon">🔒</span>
+                        <input type="password" id="password" placeholder="enter your password" required>
+                        <span class="eye-icon">👁</span>
+                    </div>
+                </div>
+
+                <!-- Password Validation Checklist -->
+                <div class="validation-list">
+                    <p class="valid">✓ 8-20 characters</p>
+                    <p class="valid">✓ At least 1 uppercase letter</p>
+                    <p class="valid">✓ At least 1 number</p>
+                    <p class="invalid">✕ No spaces</p>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <div class="input-wrapper">
+                        <span class="icon">🔒</span>
+                        <input type="password" placeholder="••••••••••••" required>
+                        <span class="eye-icon">👁</span>
+                    </div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="terms-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Agree with <a href="#">Terms & Conditions</a></label>
+                </div>
+
+                <button type="submit" class="login-btn">Sign up</button>
+            </form>
+
+            <p class="signup-footer">
+                Already have an account? <a href="signin.html">Sign in</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="signup.js"></script>
+</body>
+</html>

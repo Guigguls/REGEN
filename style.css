@@ -1,0 +1,336 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.mobile-container {
+    width: 375px;
+    height: 750px;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-image-section {
+    height: 60%;
+    background-color: #b8e4b8; 
+    background-image: url('leaves.png'); 
+    background-size: cover;
+    background-position: center;
+    clip-path: ellipse(120% 100% at 50% 0%);
+}
+
+.content-section {
+    height: 40%;
+    padding: 2rem 2.5rem 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    color: #063b31;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #063b31;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.description {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.continue-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.continue-btn-container:hover .btn-text {
+    margin-right: 1.25rem;
+}
+
+.btn-text {
+    color: #063b31;
+    font-weight: 500;
+    margin-right: 0.75rem;
+    transition: margin 0.3s ease;
+}
+
+.btn-circle {
+    background-color: #52ab78;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-container {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    overflow-y: auto;
+}
+
+@media (min-width: 480px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .mobile-container {
+        width: 375px;
+        height: 750px;
+        border-radius: 40px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.hero-image-section {
+    height: 45%;
+    background-color: #b8e4b8;
+    background-image: url('leaves.png');
+    background-size: cover;
+    background-position: center;
+    clip-path: ellipse(130% 100% at 50% 0%);
+}
+
+.content-section {
+    padding: 2rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-title {
+    color: #063b31;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.form-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #52ab78;
+}
+
+.input-group label {
+    display: block;
+    color: #063b31;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1.5px solid #52ab78;
+    padding-bottom: 5px;
+}
+
+.input-wrapper input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.icon, .eye-icon {
+    font-size: 1rem;
+    color: #52ab78;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #063b31;
+}
+
+.forgot-link {
+    color: #52ab78;
+    text-decoration: none;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: #52ab78;
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.signup-footer {
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: #4b5563;
+    padding-top: 1rem;
+}
+
+.signup-footer a {
+    color: #52ab78;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Specific styles for Signup validation and terms */
+.validation-list {
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+.validation-list .valid {
+    color: #52ab78;
+}
+
+.validation-list .invalid {
+    color: #e11d48; /* Red for the "No spaces" rule */
+}
+
+.terms-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #063b31;
+    margin: 1rem 0;
+}
+
+.terms-group a {
+    color: #52ab78;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Blue underline specific to Create Account title */
+.form-title {
+    border-bottom: 3px solid #3b82f6; /* Blue bar as seen in image */
+    padding-bottom: 5px;
+    margin-bottom: 1.5rem;
+}
+
+/* Reset the underline from the previous page's global style if necessary */
+.form-title::after {
+    display: none; 
+}
+
+/* Goals Page Specifics */
+.goals-bg {
+    background-color: #e8f5e9 !important; /* Light green background */
+}
+
+.goals-content {
+    padding: 3rem 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.goals-title {
+    color: #063b31;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.goals-subtitle {
+    color: #063b31;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Bubble Grid Logic */
+.goals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.goal-item {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.goal-item:active {
+    transform: scale(0.95);
+}
+
+.goal-circle {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #063b31;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.dark-green { background-color: #52ab78; color: white; }
+.light-green { background-color: #c8e6c9; }
+
+/* Visual feedback for clicking a goal */
+.goal-item.selected .goal-circle {
+    outline: 4px solid #063b31;
+    outline-offset: 2px;
+}
+
+.emoji { font-size: 2rem; margin-bottom: 5px; }
+
+/* Offset the grid items slightly to match the "scattered" look of the screenshot */
+.goal-item:nth-child(even) {
+    margin-top: 40px;
+}
