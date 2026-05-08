@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGEN Template</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+  
+  <div class="mobile-container">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="nav-left">
+        <button class="nav-btn menu-btn" onclick="setActive(this, 'menu.html')">
+          <img src="assets/menu.png" alt="Menu" class="menu-icon">
+        </button>
+      </div>
+      <div class="nav-center">
+        
+        <img src="assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
+      </div>
+      <div class="nav-right">
+         <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
+          <img src="assets/profile.png" alt="Profile" class="profile-icon">
+        </button>
+      </div>
+    </header>
+
+    <!-- Body blank -->
+
+    <!-- Footer Nav -->
+    <footer class="footer">
+      <nav class="bottom-nav">
+        <button class="nav-btn" onclick="setActive(this, 'home.html')">
+          <img src="assets/home.png" alt="Home">
+        </button>
+
+        <button class="nav-btn" onclick="setActive(this, 'grid.html')">
+          <img src="assets/grid.png" alt="Grid">
+        </button>
+
+        <div class="scan-wrapper">
+          <button class="scan-btn" onclick="setActive(this, 'scan.html')">
+            <img src="assets/scan.png" alt="Scan">
+          </button>
+          <span class="scan-label">SCAN</span>
+        </div>
+
+        <button class="nav-btn" onclick="setActive(this, 'target.html')">
+          <img src="assets/target.png" alt="Target">
+        </button>
+
+        <button class="nav-btn" onclick="setActive(this, 'location.html')">
+          <img src="assets/location.png" alt="Location">
+        </button>
+      </nav>
+    </footer>
+  </div>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>
