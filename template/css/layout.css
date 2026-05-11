@@ -172,3 +172,11 @@ body {
 .topbar .nav-btn.profile-btn.active {
   transform: translateY(-4px); 
 }
+
+.bottom-nav .nav-btn:first-child {
+  margin-left: 12px; 
+}
+
+.bottom-nav .nav-btn:last-child {
+  margin-right: 12px; 
+}
