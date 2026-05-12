@@ -221,37 +221,31 @@ body {
 }
 
 .goals-content {
-    height: 100%;
-    padding: 3rem 2rem;
+    min-height: 100vh;           /* take full viewport height */
+    padding: 3rem 1.5rem;        /* slightly reduce horizontal padding */
     display: flex;
     flex-direction: column;
 }
 
 .goals-title {
     color: #063b31;
-    font-size: 1.5rem;
+    font-size: 1.75rem;          /* slightly bigger title */
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.3;
 }
 
 .goals-subtitle {
     color: #063b31;
-    font-size: 0.9rem;
+    font-size: 1rem;             /* slightly bigger subtitle */
     margin-top: 0.5rem;
 }
 
 .goals-grid {
-    flex: 1;
     display: grid;
-    grid-template-columns: 2fr 2fr;
-    gap: 20px;
-    overflow-y: auto;
-}
-
-.login-btn {
-    width: 100%;
-    display: block;
-    margin-top: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* responsive grid */
+    gap: 25px;                    /* more space between circles */
+    overflow-y: visible;
+    justify-items: center;         /* center circles in their grid cell */
 }
 
 .goal-item {
@@ -263,12 +257,10 @@ body {
     transform: scale(0.95);
 }
 
-.goal-item:nth-child(even) {
-    margin-top: 40px;
-}
-
 .goal-circle {
-    aspect-ratio: 1 / 1;
+    width: 120px;
+    height: 120px;
+    aspect-ratio: auto; /* remove the flexible square behavior */
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -276,11 +268,14 @@ body {
     align-items: center;
     text-align: center;
     padding: 15px;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    font-weight: 800;
     color: #063b31;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
 }
+
 
 .dark-green {
     background-color: #52ab78;
@@ -292,11 +287,28 @@ body {
 }
 
 .goal-item.selected .goal-circle {
-    outline: 4px solid #063b31;
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: 0 0 0 4px #063b31, 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .emoji {
-    font-size: 2rem;
-    margin-bottom: 5px;
+    font-size: 1rem;
+    margin-bottom: auto;
+    width:60px;
+    height: auto;
+}
+
+.login-btn {
+    width: 100%;
+    display: block;
+    margin-top: 2rem;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.goal-item:active,
+.goal-item.selected {
+    z-index: 2;
+    position: relative;
 }
