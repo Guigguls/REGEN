@@ -1,0 +1,120 @@
+
+
+.contact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  background-color: #EAF9E7;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  color: white;
+}
+
+.contact-left {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #063b31;
+}
+
+.contact-title {
+  font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #063b31;
+    margin: 0;
+}
+
+.contact-logo {
+  height: 50px;
+}
+
+.contact-body {
+  padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Section Titles */
+.section-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #063b31;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  color: #063b31;
+}
+
+.contact-intro {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Contact Boxes */
+.contact-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.contact-box i {
+  font-size: 1.2rem;
+  color: #063b31;
+}
+
+.contact-box a {
+  color: #063b31;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-box a:hover {
+  text-decoration: underline;
+}
+
+/* Social Media Items */
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.social-item i {
+  font-size: 2rem; /* bigger logo */
+  color: #063b31;
+}
+
+.social-item span {
+  font-size: 1rem;
+  color: #333;
+}

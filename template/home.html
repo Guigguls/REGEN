@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REGEN Template</title>
-  <link rel="stylesheet" href="css/base.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Your CSS -->
   <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
@@ -15,29 +17,137 @@
       <div class="nav-left">
         <button class="nav-btn menu-btn">
           <img src="assets/menu.png" alt="Menu" class="menu-icon">
-      </button>
-    </div>
+        </button>
+      </div>
       <div class="nav-center">
-        
         <img src="assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
       </div>
       <div class="nav-right">
-         <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
+        <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
           <img src="assets/profile.png" alt="Profile" class="profile-icon">
         </button>
       </div>
     </header>
 
-    <!-- Sidebar (blank for now, just close button) -->
+    <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
-      <button id="closeSidebar" class="close-btn">&times;</button>
+      <div class="sidebar-header">
+        <img src="assets/regen-logo.png" alt="REGEN Logo" class="sidebar-logo">
+        <button id="closeSidebar" class="close-btn">&times;</button>
+      </div>
+
+      <nav class="sidebar-menu">
+        <h3 class="menu-category">Help Center</h3>
+        <ul class="menu-section">
+          <li><a href="settings.html  "><i class="fa-solid fa-gear"></i> Settings</a></li>
+          <li><a href="../faqs/faqs.html"><i class="fa-solid fa-circle-question"></i> FAQs</a></li>
+          <li><a href="../contact/contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li> 
+        </ul>
+
+        <h3 class="menu-category">Community</h3>
+        <ul class="menu-section">
+          <li><a href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-leaf"></i> About REGEN</a></li>
+        </ul>
+
+        <h3 class="menu-category">Legal</h3>
+        <ul class="menu-section">
+          <li><a href="terms.html"><i class="fa-solid fa-file-contract"></i> Terms & Conditions</a></li>
+        </ul>
+
+      </nav>
     </div>
 
-    <!-- Overlay -->
+    <!-- Overlay (outside sidebar) -->
     <div id="overlay" class="overlay"></div>
 
+     <main class="home-body">
+      <!-- Greeting -->
+     <section class="greeting">
+      <h1 class="greeting-title">Hello, Eka</h1>
+         <p class="greeting-subtitle">You’re Making a Real Difference.</p>
+      </section>
 
-    <!-- Body blank -->
+      <section class="progress-section">
+  <div class="progress-box">
+    <div class="progress-item">
+      <i class="fa-solid fa-fire"></i>
+      <div class="progress-number">5</div>
+      <div class="progress-label">Day Streak</div>
+    </div>
+
+    <div class="v-divider"></div>
+
+    <div class="progress-item">
+      <i class="fa-solid fa-leaf"></i>
+      <div class="progress-number">64%</div>
+      <div class="progress-label">Carbon Budget</div>
+    </div>
+
+    <div class="v-divider"></div>
+
+    <div class="progress-item">
+      <i class="fa-solid fa-star"></i>
+      <div class="progress-number">100</div>
+      <div class="progress-label">Points</div>
+    </div>
+
+    <a href="../dashboard.html" class="learn-more">Learn more ></a>
+  </div>
+</section>
+
+
+
+     <section class="reuse-section">
+  <h3 class="reuse-title">Reuse Ideas For You</h3>
+
+  <div class="reuse-box">
+    <div class="reuse-header">
+      <img src="assets/reuse-bottle.png" alt="Plastic Bottle Planet" class="reuse-image">
+      <div class="reuse-info">
+        <div class="reuse-top">
+          <i class="fa-solid fa-lightbulb"></i>
+          <span class="reuse-name">Plastic Bottle Planet</span>
+        </div>
+        <div class="reuse-badge">Easy</div>
+      </div>
+    </div>
+
+   <div class="reuse-materials">
+      <span class="materials-label">Materials:</span>
+      <div class="materials-list">
+        <span class="material-bubble">Soil</span>
+        <span class="material-bubble">Seed</span>
+        <span class="material-bubble">2L Plastic Bottle</span>
+      </div>
+    </div>
+
+    <div class="reuse-description">
+      Transform empty bottles into cute hanging planters for your herbs or flowers.
+    </div>
+
+    <a href="#" class="learn-more">Learn more ></a>
+  </div>
+</section>
+
+
+
+  <section class="find-centers">
+  <div class="find-box">
+    <div class="find-left">
+      <i class="fa-solid fa-location-dot"></i>
+      <div class="find-text">
+        <h3 class="find-title">Find Centers</h3>
+        <p class="find-subtitle">Nearby Locations</p>
+        <p class="find-description">
+          Locate the nearest recycling center for proper disposal.
+        </p>
+      </div>
+    </div>
+    <a href="#" class="learn-more">Learn more ></a>
+  </div>
+</section>
+    </main>
 
     <!-- Footer Nav -->
     <footer class="footer">
@@ -46,22 +156,22 @@
           <img src="assets/home.png" alt="Home">
         </button>
 
-        <button class="nav-btn" onclick="setActive(this, 'dashboard.html')">
+        <button class="nav-btn" onclick="setActive(this, '../dashboard.html')">
           <img src="assets/grid.png" alt="Grid">
         </button>
 
         <div class="scan-wrapper">
-          <button class="scan-btn" onclick="setActive(this, 'scan.html')">
+          <button class="scan-btn" onclick="setActive(this, '../scanning.html')">
             <img src="assets/scan.png" alt="Scan">
           </button>
           <span class="scan-label">SCAN</span>
         </div>
 
-        <button class="nav-btn" onclick="setActive(this, 'challenges.html')">
+        <button class="nav-btn" onclick="setActive(this, '../challenges.html')">
           <img src="assets/target.png" alt="Target">
         </button>
 
-        <button class="nav-btn" onclick="setActive(this, 'locator.html')">
+        <button class="nav-btn" onclick="setActive(this, '../locator.html')">
           <img src="assets/location.png" alt="Location">
         </button>
       </nav>

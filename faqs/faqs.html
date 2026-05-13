@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGEN Help Center</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../template/css/layout.css">
+  <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+  <div class="mobile-container">
+  <!-- Header -->
+  <header class="faq-header">
+  <div class="faq-left">
+    <button class="back-btn" onclick="window.location.href='../template/home.html'">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <h2 class="faq-title">FAQs</h2>
+  </div>
+  <img src="../template/assets/regen-logo.png" alt="REGEN Logo" class="faq-logo">
+</header>
+
+
+  <!-- Search -->
+    <div class="faq-search">
+        <input type="text" placeholder="Search FAQs..." class="faq-input">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+
+
+  <!-- FAQ Items -->
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">
+        How does REGEN identify waste?
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="faq-answer">
+        <p>REGEN uses AI image recognition. You take or upload a photo of your trash, and the app classifies it as recyclable, biodegradable, or non-biodegradable, then gives clear disposal instructions.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What if the AI gets it wrong?
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Sometimes photos may be unclear. If the app misclassifies, you can retake the photo or check the tips provided. The system improves over time as more images are used.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can i use REGEN outside APC?
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, but some features like the recycling map are limited to partner schools and nearby communities. The classification and carbon tracking work anywhere.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do points and challenges work?
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Every time you dispose correctly, you earn points. Points unlock achievements and let you join community challenges. This gamification helps build long-term habits while making waste disposal more engaging.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blank Footer -->
+  <footer class="footer"></footer>
+</div>
+
+  <script src="faq.js"></script>
+</body>
+</html>
