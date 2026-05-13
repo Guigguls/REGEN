@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scanning</title>
+  <link href="" rel="stylesheet">
+  <link rel="stylesheet" href="template/css/layout.css">
+  <link rel="stylesheet" href="scanning.css">
+  </head>
+<body>
+  <div class="mobile-container">
+    <header class="topbar">
+      <div class="nav-left">
+        <button class="nav-btn"><img src="template/assets/menu.png" alt="Menu"></button>
+      </div>
+      <div class="nav-center">
+        <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
+      </div>
+      <div class="nav-right">
+         <button class="nav-btn"><img src="template/assets/profile.png" alt="Profile"></button>
+      </div>
+    </header>
+
+      <div class="scan-content">
+        <div class="scan-preview-section">
+          <div class="scan-preview-frame">
+            <div class="scan-corner scan-corner-tl"></div>
+            <div class="scan-corner scan-corner-tr"></div>
+            <div class="scan-corner scan-corner-bl"></div>
+            <div class="scan-corner scan-corner-br"></div>
+            <div class="scan-preview-inner">
+              <video id="cameraVideo" autoplay playsinline muted class="scan-camera-window"></video>
+              <div id="cameraError" class="camera-error hidden">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#52ab78" stroke-width="2">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <p class="camera-error-title" id="errorMessage">Camera access denied</p>
+                <p class="camera-error-subtitle">Please allow camera permissions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="tabs-wrapper">
+            <div class="scan-tabs-section">
+            <button class="scan-tab scan-tab-active" onclick="setActiveTab(event)">Scan</button>
+            <button class="scan-tab" onclick="setActiveTab(event)">Label</button>
+            <button class="scan-tab" onclick="setActiveTab(event)">Barcode</button>
+          </div>
+        </div>
+
+      <div class="scan-actions-section">
+
+        <!-- SCAN BUTTON -->
+        <button class="scan-action scan-action-shutter" onclick="captureImage()">
+          <span></span>
+        </button>
+
+        <!-- HISTORY IMAGE -->
+        <div class="history-stack">
+          <img src="https://images.unsplash.com/photo-1523365280197-f1783db9c6c3?q=80&w=400&auto=format&fit=crop" alt="history">
+          <img src="https://images.unsplash.com/photo-1523365280197-f1783db9c6c3?q=80&w=400&auto=format&fit=crop" alt="history">
+          <img src="https://images.unsplash.com/photo-1523365280197-f1783db9c6c3?q=80&w=400&auto=format&fit=crop" alt="history">
+        </div>
+      </div>
+        
+  <script>
+    let stream = null;
+
+    async function initCamera() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ 
+          video: { facingMode: 'environment' },
+          audio: false 
+        });
+        document.getElementById('cameraVideo').srcObject = stream;
+        document.getElementById('cameraVideo').classList.remove('hidden');
+        document.getElementById('cameraError').classList.add('hidden');
+      } catch (err) {
+        document.getElementById('cameraVideo').classList.add('hidden');
+        document.getElementById('cameraError').classList.remove('hidden');
+        const errorMsg = document.getElementById('errorMessage');
+        if (err.name === 'NotAllowedError') {
+          errorMsg.textContent = 'Camera access denied';
+        } else if (err.name === 'NotFoundError') {
+          errorMsg.textContent = 'No camera found';
+        } else {
+          errorMsg.textContent = 'Unable to access camera';
+        }
+      }
+    }
+    window.addEventListener('load', initCamera);
+  </script>
+</body>
+</html>
