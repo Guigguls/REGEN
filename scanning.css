@@ -1,4 +1,4 @@
-    body {
+  body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
@@ -8,7 +8,7 @@
       align-items: center;
       min-height: 100vh;
     }
-
+ 
     .mobile-container {
       position: relative;
       width: 100%;
@@ -19,7 +19,7 @@
       margin: 0 auto;
       overflow: hidden;
     }
-
+ 
     @media (min-width: 480px) {
       .mobile-container {
         width: 375px;
@@ -28,7 +28,7 @@
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       }
     }
-
+ 
     .topbar {
       background-color: #EAF9E7;
       padding: 0.75rem 1rem;
@@ -38,7 +38,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       z-index: 100;
     }
-
+ 
     .nav-btn {
       background: none;
       border: none;
@@ -46,21 +46,21 @@
       padding: 6px;
       font-size: 1.5rem;
     }
-
+ 
     .logo-text {
       font-size: 1.5rem;
       font-weight: 900;
       letter-spacing: 0.1em;
       color: #0c2d16;
     }
-
+ 
     .scan-page {
       background-color: #dfe8dd;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-
+ 
     .scan-content {
       display: flex;
       flex-direction: column;
@@ -69,14 +69,14 @@
       flex: 1;
       min-height: 0;
     }
-
+ 
     .scan-preview-section {
       display: flex;
       justify-content: center;
       flex: 1;
       min-height: 0;
     }
-
+ 
     .scan-preview-frame {
       width: 100%;
       height: 100%;
@@ -87,7 +87,7 @@
       position: relative;
       overflow: hidden;
     }
-
+ 
     .scan-corner {
       position: absolute;
       width: 24px;
@@ -95,12 +95,12 @@
       border: 2px solid rgba(255,255,255,0.95);
       border-radius: 999px;
     }
-
+ 
     .scan-corner-tl { top: 16px; left: 16px; border-right: none; border-bottom: none; }
     .scan-corner-tr { top: 16px; right: 16px; border-left: none; border-bottom: none; }
     .scan-corner-bl { bottom: 16px; left: 16px; border-right: none; border-top: none; }
     .scan-corner-br { bottom: 16px; right: 16px; border-left: none; border-top: none; }
-
+ 
     .scan-preview-inner {
       position: absolute;
       inset: 0;
@@ -111,13 +111,13 @@
       align-items: center;
       justify-content: center;
     }
-
+ 
     .scan-camera-window {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
+ 
     .camera-error {
       display: flex;
       flex-direction: column;
@@ -129,18 +129,18 @@
       width: 100%;
       height: 100%;
     }
-
+ 
     .camera-error svg { margin-bottom: 1rem; }
     .camera-error-title { color: #063b31; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
     .camera-error-subtitle { color: #6b7280; font-size: 0.8rem; }
-
+ 
     .scan-tabs-section {
       display: flex;
       justify-content: space-between;
       padding: 0.5rem 0.9rem;
       gap: 0.4rem;
     }
-
+ 
     .scan-tab {
       flex: 1;
       border: none;
@@ -153,9 +153,9 @@
       position: relative;
       transition: color 0.2s;
     }
-
+ 
     .scan-tab-active { color: #1a1a1a; }
-
+ 
     .scan-tab-active::after {
       content: "";
       position: absolute;
@@ -167,7 +167,7 @@
       border-radius: 999px;
       background: #1a1a1a;
     }
-
+ 
     .scan-actions-section {
       display: flex;
       justify-content: center;   /* centers everything */
@@ -175,7 +175,7 @@
       padding: 1.2rem 1.5rem 1.8rem;
       position: relative;
     }
-
+ 
     .scan-action {
       width: 3.15rem;
       height: 3.15rem;
@@ -189,9 +189,9 @@
       cursor: pointer;
       transition: transform 0.2s;
     }
-
+ 
     .scan-action:active { transform: scale(0.95); }
-
+ 
     /* BIG CENTER SCAN BUTTON */
     .scan-action-shutter {
       width: 110px;
@@ -204,16 +204,33 @@
       align-items: center;
       box-shadow: inset 0 0 0 8px #cfe7c9;
       cursor: pointer;
-      margin: 0 auto;
+      margin: 0 95px 0 50px;
     }
-
+ 
     .scan-action-shutter span {
       width: 70px;
       height: 70px;
       border-radius: 50%;
       background: #a4c39d;
     }
-
+ 
+    .scan-action-gallery {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: 2px solid #52ab78;
+      background: transparent;
+      color: #52ab78;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+ 
+    .scan-action-gallery:hover {
+      background: rgba(82, 171, 120, 0.1);
+    }
+ 
     /* HISTORY STACK */
     .history-stack {
       position: absolute;
@@ -221,7 +238,7 @@
       width: 48px;
       height: 48px;
     }
-
+ 
     .history-stack img {
       position: absolute;
       width: 48px;
@@ -230,34 +247,34 @@
       border-radius: 6px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.12);
     }
-
+ 
     .history-stack img:nth-child(1) {
       transform: rotate(-10deg);
       left: 0;
       top: 4px;
       opacity: 0.7;
     }
-
+ 
     .history-stack img:nth-child(2) {
       transform: rotate(8deg);
       left: 4px;
       top: 0;
       opacity: 0.85;
     }
-
+ 
     .history-stack img:nth-child(3) {
       transform: rotate(-18deg);
       left: 8px;
       top: 2px;
     }
-
+ 
     .scan-action-thumb {
       width: 3.15rem;
       height: 3.15rem;
       padding: 0.4rem;
       overflow: hidden;
     }
-
+ 
     .scan-thumb-image {
       width: 100%;
       height: 100%;
@@ -265,7 +282,7 @@
       background: linear-gradient(135deg, #e6f1de 0%, #d8e7d5 50%, #f8faf6 100%);
       border: 1px solid rgba(6,59,49,0.14);
     }
-
+ 
     .scan-wrapper {
       display: flex;
       flex-direction: column;
@@ -273,7 +290,7 @@
       position: relative;
       top: -40px;
     }
-
+ 
     .scan-btn {
       background-color: #C0E6BA;
       border: none;
@@ -288,23 +305,22 @@
       transition: transform 0.2s;
       font-size: 2rem;
     }
-
+ 
     .scan-btn.active { transform: translateY(-6px); }
-
+ 
     .scan-label {
       font-size: 1rem;
       font-weight: 800;
       color: #063b31;
       margin-top: 4px;
       position: absolute;
-      bottom: -25px; 
+      bottom: -25px;
     }  
-
+ 
     .tabs-wrapper {
     width: 100%;
     border-top: 1px solid rgba(6,59,49,0.15);
     border-bottom: 1px solid rgba(6,59,49,0.15);
     }
-
+ 
     .hidden { display: none; }
-

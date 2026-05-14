@@ -1,7 +1,7 @@
 *::-webkit-scrollbar {
     display: none;
 }
-
+ 
 /* Ensure buttons don't show focus rings */
 button:focus, button:active {
     outline: none;
@@ -362,6 +362,7 @@ body {
  
 .dashboard-inner-container {
     position: relative;
+    height: 750px;
     z-index: 1;
     padding: 20px;
     padding-bottom: 20px;
@@ -377,7 +378,7 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     margin: 10px 0 20px 0;
 }
-
+ 
 .dash-title-header {
     margin: 0 auto;
 }
@@ -422,12 +423,12 @@ body {
     border-radius: 30px;
     padding: 4px;
     margin-bottom: 30px;
-    position: relative; 
+    position: relative;
     cursor: pointer;
     user-select: none;
     touch-action: pan-y; /* Important for mobile dragging */
 }
-
+ 
 .range-slider-bg {
     position: absolute;
     top: 4px;
@@ -439,25 +440,25 @@ body {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
 }
-
+ 
 .range-btn-opt {
     flex: 1;
     border: none;
     padding: 8px;
     z-index: 2; /* Sits above the sliding pill */
-    background: transparent !important; 
+    background: transparent !important;
     font-weight: 700;
     font-size: 0.85rem;
     color: #063b31;
     cursor: pointer;
     transition: color 0.3s;
 }
-
+ 
 /* Logic for the slide animation */
 .range-toggle-pill.is-weekly .range-slider-bg {
     transform: translateX(0);
 }
-
+ 
 .range-toggle-pill.is-monthly .range-slider-bg {
     transform: translateX(100%);
 }
@@ -493,7 +494,7 @@ body {
     width: 100%;
     height: 100%;
 }
-
+ 
 /* Reset the list and stack items vertically */
 .budget-ring-text-block ul {
     list-style: none;      /* Removes bullet points */
@@ -505,12 +506,12 @@ body {
     justify-content: center; /* Centers text vertically */
     text-align: center;
 }
-
+ 
 /* Optional: Add spacing between the lines of text */
 .budget-ring-text-block li {
     margin-bottom: 2px;
 }
-
+ 
 /* Ensure the label is small and centered */
 .budget-txt-label {
     display: block;
@@ -519,7 +520,7 @@ body {
     font-weight: 700;
     color: #6b7280;
 }
-
+ 
 .budget-txt-main-pct {
     font-size: 3.8rem;
     font-weight: 900;
@@ -562,7 +563,7 @@ body {
     background: #52ab78;
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+ 
 /* Container for the % and kg text */
 .card-data-summary {
     display: flex;
@@ -571,33 +572,33 @@ body {
     gap: 8px; /* Adds a small space between the % and the kg */
     margin-top: 5px;
 }
-
+ 
 /* Ensure these spans don't try to take up full width */
-.summary-pct-large, 
+.summary-pct-large,
 .summary-kg-small {
     display: inline-block;
     white-space: nowrap; /* Prevents text from wrapping to a new line */
 }
-
+ 
 /* Optional: Adjust font sizes to look balanced on one line */
 .summary-pct-large {
     font-size: 1.5rem;
     font-weight: 900;
     color: #063b31;
 }
-
+ 
 .summary-kg-small {
     font-size: 0.85rem;
     font-weight: 600;
     color: #52ab78;
 }
-
+ 
 /* Container Spacing */
 .achievements-container {
     padding: 15px;
     background: #fdfdfd;
 }
-
+ 
 /* Streak Card */
 .streak-card {
     background: linear-gradient(135deg, #f3a691, #f9c7b6);
@@ -607,39 +608,39 @@ body {
     margin-bottom: 20px;
     color: #4a2c24;
 }
-
+ 
 .streak-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
-
+ 
 .streak-text h3 { margin: 0; font-size: 1.1rem; font-weight: 800; }
 .streak-text p { margin: 0; font-size: 0.8rem; opacity: 0.8; }
-
+ 
 .streak-badge { text-align: center; line-height: 1; }
 .fire-icon { font-size: 1.5rem; display: block; }
 .streak-count { font-size: 1.2rem; font-weight: 900; }
 .streak-label { font-size: 0.7rem; display: block; }
-
+ 
 .streak-dots {
     display: flex;
     justify-content: space-between;
     gap: 5px;
 }
-
+ 
 .dot {
     flex: 1;
     height: 8px;
     background: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
 }
-
+ 
 .dot.active {
     background: #e65100;
 }
-
+ 
 /* Task Cards */
 .task-card {
     background: white;
@@ -649,14 +650,14 @@ body {
     margin-bottom: 15px;
     border: 1px solid #f0f0f0;
 }
-
+ 
 .task-top {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 12px;
 }
-
+ 
 .task-icon-box {
     width: 45px;
     height: 45px;
@@ -667,23 +668,23 @@ body {
     font-size: 1.2rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-
+ 
 .recycle-bg { background: #4caf50; color: white; }
 .transit-bg { background: #2196f3; color: white; }
-
+ 
 .task-info { flex: 1; }
 .task-info h4 { margin: 0; font-size: 0.95rem; font-weight: 800; color: #063b31; }
 .task-info p { margin: 0; font-size: 0.75rem; color: #666; }
-
+ 
 .task-points {
     text-align: right;
     color: #4caf50;
     font-weight: 800;
     font-size: 0.9rem;
 }
-
+ 
 .task-points span { display: block; font-size: 0.6rem; color: #999; margin-top: -2px; }
-
+ 
 /* Progress Bars */
 .progress-container {
     height: 10px;
@@ -691,14 +692,14 @@ body {
     border-radius: 10px;
     overflow: hidden;
 }
-
+ 
 .progress-container.white-bg { background: rgba(255, 255, 255, 0.5); }
-
+ 
 .progress-bar { height: 100%; border-radius: 10px; transition: width 0.8s ease; }
 .progress-bar.green { background: #4caf50; }
 .progress-bar.blue { background: #2196f3; }
 .progress-bar.dark-green { background: #063b31; }
-
+ 
 .progress-stats {
     display: flex;
     justify-content: space-between;
@@ -707,7 +708,7 @@ body {
     margin-top: 6px;
     font-weight: 600;
 }
-
+ 
 /* Challenges Section */
 .section-title {
     font-size: 1.1rem;
@@ -718,31 +719,31 @@ body {
     align-items: center;
     gap: 8px;
 }
-
+ 
 .challenge-card {
     border-radius: 20px;
     padding: 15px;
     position: relative;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
-
+ 
 .easy-bg { background: #c8e6c9; }
-
+ 
 .challenge-content {
     display: flex;
     justify-content: space-between;
     margin-bottom: 12px;
 }
-
+ 
 .title-row {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 4px;
 }
-
+ 
 .title-row h4 { margin: 0; font-size: 1rem; font-weight: 800; color: #063b31; }
-
+ 
 .badge {
     font-size: 0.6rem;
     padding: 2px 8px;
@@ -750,11 +751,11 @@ body {
     font-weight: 800;
     text-transform: uppercase;
 }
-
+ 
 .badge.easy { background: #4caf50; color: white; }
-
+ 
 .time-left { font-size: 0.75rem; font-weight: 600; margin-top: 8px; color: #063b31; opacity: 0.7; }
-
+ 
 .challenge-reward {
     background: #fbc02d;
     border-radius: 12px;
@@ -762,22 +763,22 @@ body {
     text-align: center;
     box-shadow: 0 4px 10px rgba(251, 192, 45, 0.4);
 }
-
+ 
 .reward-icon { font-size: 1.2rem; }
 .challenge-reward span { display: block; font-size: 0.8rem; font-weight: 900; color: #7f6000; }
-
+ 
 /* ============================================================
    BLOCK 3: MAP & DRAGGABLE BOTTOM SHEET (SCROLLABLE LIST)
    ============================================================ */
-
+ 
 .map-page-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    touch-action: none; 
+    touch-action: none;
 }
-
+ 
 #map-display {
     position: absolute;
     top: 0;
@@ -786,29 +787,29 @@ body {
     height: 100%;
     z-index: 1;
 }
-
+ 
 .bottom-sheet {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 92%; 
+    height: 92%;
     background: white;
     z-index: 10;
     border-radius: 30px 30px 0 0;
     box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
-    transform: translateY(50%); 
+    transform: translateY(50%);
     transition: transform 0.3s ease-out;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     /* This prevents the sheet from moving if the list is scrolling */
-    touch-action: none; 
+    touch-action: none;
 }
-
+ 
 .no-transition {
     transition: none !important;
 }
-
+ 
 .drag-handle-container {
     width: 100%;
     padding: 15px 0;
@@ -817,14 +818,14 @@ body {
     cursor: grab;
     flex-shrink: 0; /* Prevents handle from squishing */
 }
-
+ 
 .drag-handle {
     width: 45px;
     height: 5px;
     background: #e0e0e0;
     border-radius: 10px;
 }
-
+ 
 /* The scrollable list section */
 .nearby-centers {
     padding: 0 20px 40px 20px;
@@ -832,39 +833,39 @@ body {
     overflow-y: scroll !important; /* Force scrollbar capability */
     -webkit-overflow-scrolling: touch;
     /* This allows the list to scroll normally */
-    touch-action: pan-y !important; 
+    touch-action: pan-y !important;
 }
-
+ 
 /* Ensure the list is long enough to scroll for testing */
 .center-list {
     display: block;
     min-height: 110%;
 }
-
+ 
 .nearby-title {
     color: #063b31;
     font-size: 1.6rem;
     font-weight: 800;
     margin: 5px 0;
 }
-
+ 
 .nearby-subtitle {
     color: #063b31;
     font-size: 0.9rem;
     margin-bottom: 20px;
     opacity: 0.7;
 }
-
+ 
 .center-item-card {
     display: flex;
     align-items: center;
-    background-color: #f0fff4; 
+    background-color: #f0fff4;
     border-radius: 20px;
     padding: 16px;
     margin-bottom: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
-
+ 
 .center-icon-circle {
     width: 48px;
     height: 48px;
@@ -876,28 +877,28 @@ body {
     margin-right: 15px;
     flex-shrink: 0;
 }
-
+ 
 .inner-dot {
     width: 18px;
     height: 18px;
     background-color: #f0fff4;
     border-radius: 50%;
 }
-
+ 
 .center-details h3 {
     margin: 0;
     font-size: 1rem;
     font-weight: 800;
     color: #063b31;
 }
-
+ 
 .center-details p {
     margin: 2px 0 0 0;
     font-size: 0.8rem;
     color: #52ab78;
     font-weight: 600;
 }
-
+ 
 .center-distance {
     margin-left: auto;
     font-weight: 800;

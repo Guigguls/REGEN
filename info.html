@@ -10,154 +10,98 @@
 </head>
 
 <body>
-
 <div class="mobile-container">
 
   <header class="topbar">
-
     <div class="nav-left">
       <button class="nav-btn">
         <img src="template/assets/menu.png" alt="Menu">
       </button>
     </div>
-
     <div class="nav-center">
       <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
     </div>
-
     <div class="nav-right">
       <button class="nav-btn">
         <img src="template/assets/profile.png" alt="Profile">
       </button>
     </div>
   </header>
+
   <div class="results-page">
 
     <!-- MAIN RESULT CARD -->
-
     <div class="result-card">
       <div class="result-image">
-        <img src="sample.jpg">
-        <div class="confidence-badge">✓ 95%</div>
+        <img id="result-img" src="sample.jpg" alt="Scanned item">
+        <div class="confidence-badge" id="confidence-badge">✓ 95%</div>
         <div class="status-badges">
-          <div class="badge badge-recyclable">
-            RECYCLABLE
-          </div>
-          <div class="badge badge-non-bio">
-            NON-BIODEGRADABLE
-          </div>
+          <div class="badge badge-recyclable" id="badge-recyclable">RECYCLABLE</div>
+          <div class="badge badge-non-bio" id="badge-bio">NON-BIODEGRADABLE</div>
         </div>
       </div>
       <div class="result-info">
-        <p class="result-small">
-          Aluminum
-        </p>
-        <h1 class="result-title">
-          Beverage Can
-        </h1>
+        <p class="result-small" id="result-material">Aluminum</p>
+        <h1 class="result-title" id="result-title">Beverage Can</h1>
         <div class="result-title-underline"></div>
         <div class="result-category-row">
-          <div class="result-category">
-            Metal
-          </div>
-          <a href="#" class="learn-more">
-            Learn more →
-          </a>
+          <div class="result-category" id="result-category">Metal</div>
         </div>
       </div>
     </div>
 
     <!-- INFO CARD -->
-
     <div class="info-card">
       <div class="info-grid">
+
+        <!-- IMPACT + CARBON FOOTPRINT -->
         <div class="info-box">
           <h3>IMPACT</h3>
-          <p>Saves 95% energy vs mining</p>
+          <p id="info-impact">Saves 95% energy vs mining</p>
+          <p class="carbon-footprint-value" id="carbon-footprint">9.5 kg CO2</p>
         </div>
+
+        <!-- DID YOU KNOW + EXPANDABLE FUN FACTS -->
         <div class="info-box">
           <h3>DID YOU KNOW</h3>
-          <p>
-            Recycling one aluminum can powers a TV for up to
-            <strong>3 hours!</strong>
-          </p>
-        </div>
-      </div>
-    </div>
 
-    <!-- RECYCLE CARD -->
-    <div class="result-card card-padding">
-      <h2 class="section-title">
-        How to Recycle
-      </h2>
-      <div class="steps-grid">
-        <div class="step-item">
-          <div class="step-number">1</div>
-          <span>Empty the Can</span>
-        </div>
-        <div class="step-item">
-          <div class="step-number">4</div>
-          <span>Seperate properly</span>
-        </div>
-        <div class="step-item">
-          <div class="step-number">2</div>
-          <span>Rinse the can</span>
-        </div>
-        <div class="step-item">
-          <div class="step-number">5</div>
-          <span>Bring to a recycling center</span>
-        </div>
-        <div class="step-item">
-          <div class="step-number">3</div>
-          <span>Crush the can</span>
-        </div>
-        <div class="step-item">
-          <div class="step-number">6</div>
-          <span>Support Recycling Habits</span>    
-        </div>
-      </div>
-    <a href="#" class="learn-more">Learn more →</a>
-    </div>
+          <!-- Only first fun fact shown by default -->
+          <p id="info-did-you-know">Recycling one aluminum can powers a TV for up to <strong>3 hours!</strong></p>
 
-    <!-- DISPOSE CARD -->
+          <!-- Hidden extra facts, shown when Learn More is clicked -->
+          <ul class="fun-facts-list hidden" id="fun-facts-list">
+            <!-- Extra facts filled by info.js -->
+          </ul>
 
-    <div class="result-card card-padding">
-      <h2 class="section-title">
-        How to Dispose
-      </h2>
-      <div class="steps-grid">
-        <div class="step-item">
-          <div class="step-number">1</div>
-          <span>Empty the Can</span>
+          <!-- Learn More toggle button, inside the card -->
+          <button class="learn-more-toggle" id="learn-more-btn" onclick="toggleFacts()">
+            Learn more ↓
+          </button>
         </div>
-        <div class="step-item">
-          <div class="step-number">4</div>
-          <span>Throw it in the proper trash bin</span>
+
+        <!-- HOW TO RECYCLE -->
+        <div class="info-box info-box-full">
+          <h3>HOW TO RECYCLE</h3>
+          <div class="steps-grid" id="recycle-steps"></div>
         </div>
-        <div class="step-item">
-          <div class="step-number">2</div>
-          <span>Rinse the can</span>
+
+        <!-- HOW TO DISPOSE -->
+        <div class="info-box info-box-full">
+          <h3>HOW TO DISPOSE</h3>
+          <div class="steps-grid" id="dispose-steps"></div>
         </div>
-        <div class="step-item">
-          <div class="step-number">5</div>
-          <span>Seal your trash properly</span>
-        </div>
-        <div class="step-item">
-          <div class="step-number">3</div>
-          <span>Let it dry</span>
-        </div>
+
       </div>
-        <a href="#" class="learn-more"> Learn more →</a>
     </div>
 
     <!-- BUTTON -->
-
-    <button
-      class="scan-another-btn"
-      onclick="window.location.href='scanning.html'">
-      <i class="fa-regular fa-camera"></i> Scan Another Item
+    <button class="scan-another-btn" onclick="window.location.href='scanning.html'">
+      <i class="fa-solid fa-camera"></i> Scan Another Item
     </button>
+
   </div>
 </div>
+
+<script src="info.js"></script>
 </body>
 </html>
