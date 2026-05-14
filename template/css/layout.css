@@ -456,15 +456,23 @@ body {
   align-self: flex-start;
 }
 
+.reuse-description {
+  font-size: 0.85rem;
+  color: #013237;
+  margin: 0;
+  text-align: left;
+}
+
 .reuse-materials {
   margin-left: 0; 
   margin-bottom: 0.5rem;
+  color: #013237;
 }
 
 .materials-label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #063b31;
+  color: #013237;
   display: block;
   margin-bottom: 0.25rem;
 }
@@ -533,7 +541,7 @@ body {
 .find-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #4CA771;
+  color: #013237;
   margin: 0;
 }
 
@@ -546,7 +554,7 @@ body {
 
 .find-description {
   font-size: 0.85rem;
-  color: #333;
+  color: #013237;
   margin: 0;
   text-align: left;
 }
