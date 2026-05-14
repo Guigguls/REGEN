@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="template/css/layout.css">
+    <link rel="stylesheet" href="leaderStyle.css"></head>
+<body>
+
+<div class="mobile-container">
+  <header class="topbar">
+    <div class="nav-left">
+      <button class="nav-btn">
+        <img src="template/assets/menu.png" alt="Menu">
+      </button>
+    </div>
+    <div class="nav-center">
+      <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn">
+        <img src="template/assets/profile.png" alt="Profile">
+      </button>
+    </div>
+  </header>
+  
+  <div class="results-page">
+
+        <div class="content">
+
+            <!-- Rank Card -->
+            <div class="rank-card">
+                <div class="rank-card-content">
+                    <div>
+                        <div class="rank-label">Your Rank</div>
+                        <div class="rank-value">#1</div>
+                    </div>
+
+                    <div style="text-align:right;">
+                        <div class="rank-label">Your Points</div>
+                        <div class="rank-value">2,450</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard -->
+            <div class="leaderboard-item">
+                <div class="leaderboard-left">
+                <div class="rank-badge gold-icon"><i class="fa-solid fa-trophy"></i></div>                    
+                <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                    <div class="user-name">Eka Gamay</div>
+                </div>
+                <div class="points">
+                    <div class="points-value">2,450</div>
+                    <div class="points-label">points</div>
+                </div>
+            </div>
+            <div class="leaderboard-item">
+                <div class="leaderboard-left">
+                    <div class="rank-badge silver-icon"><i class="fa-solid fa-medal"></i></div>
+                    <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                    <div class="user-name">Jorge Rivera-Herrans</div>
+                </div>
+                <div class="points">
+                    <div class="points-value">2,280</div>
+                    <div class="points-label">points</div>
+                </div>
+            </div>
+
+            <div class="leaderboard-item">
+                <div class="leaderboard-left">
+                    <div class="rank-badge bronze-icon"><i class="fa-solid fa-award"></i></div>
+                    <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                    <div class="user-name">Seto Jiu</div>
+                </div>
+                <div class="points">
+                    <div class="points-value">2,150</div>
+                    <div class="points-label">points</div>
+                </div>
+            </div>
+
+            <div class="leaderboard-item">
+                <div class="leaderboard-left">
+                    <div class="rank-number">#4</div>
+                    <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                    <div class="user-name">Boki Solana</div>
+                </div>
+                <div class="points">
+                    <div class="points-value">1,980</div>
+                    <div class="points-label">points</div>
+                </div>
+            </div>
+
+            <div class="leaderboard-item">
+                <div class="leaderboard-left">
+                    <div class="rank-number">#5</div>
+                    <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                    <div class="user-name">Taylor Swift</div>
+                </div>
+                <div class="points">
+                    <div class="points-value">1,875</div>
+                    <div class="points-label">points</div>
+                </div>
+            </div>
+
+            <div class="leaderboard-item">
+                <div class="leaderboard-left">
+                    <div class="rank-number">#6</div>
+                    <div class="avatar"><i class="fa-regular fa-user"></i></div>
+                    <div class="user-name">Ray Carlo Batumbakal</div>
+                </div>
+                <div class="points">
+                    <div class="points-value">1,540</div>
+                    <div class="points-label">points</div>
+                </div>
+            </div>
+
+            <button class="see-more">See More →</button>
+
+            <!-- Weekly Challenge -->
+            <div class="weekly-challenge">
+                <div class="challenge-title">Weekly Challenge</div>
+
+                <div class="challenge-desc">
+                    Complete 10 recycling tasks to earn 500 bonus points!
+                </div>
+
+                <div class="progress-info">
+                    <span class="progress-text">6 / 10 completed</span>
+                    <span class="progress-percent">60%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width:60%;"></div>
+                </div>
+            </div>
+        </div>
+
+ 
+    <footer class="footer">
+      <nav class="bottom-nav">
+        <button class="nav-btn" onclick="setActive(this, 'template/home.html')">
+          <img src="template/assets/home.png" alt="Home">
+        </button>
+ 
+        <button class="nav-btn" onclick="setActive(this, 'dashboard.html')">
+          <img src="template/assets/grid.png" alt="Grid">
+        </button>
+ 
+        <div class="scan-wrapper">
+          <button class="scan-btn" onclick="setActive(this, 'scan.html')">
+            <img src="template/assets/scan.png" alt="Scan">
+          </button>
+          <span class="scan-label">SCAN</span>
+        </div>
+ 
+        <button class="nav-btn" onclick="setActive(this, 'challenges.html')">
+          <img src="template/assets/target.png" alt="Target">
+        </button>
+ 
+        <button class="nav-btn" onclick="setActive(this, 'locator.html')">
+          <img src="template/assets/location.png" alt="Location">
+        </button>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
