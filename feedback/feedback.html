@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback</title>
+  <link rel="stylesheet" href="feedback.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../template/css/layout.css">
+</head>
+<body>
+  <div class="mobile-container">
+    
+    <!-- Header -->
+    <header class="feedback-header">
+      <div class="header-left">
+        <button class="back-btn" onclick="window.location.href='../template/home.html'">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h2 class="header-title">Feedback</h2>
+      </div>
+      <img src="../template/assets/regen-logo.png" alt="REGEN Logo" class="feedback-logo">
+    </header>
+
+    <!-- Body -->
+   <main class="feedback-container">
+  <form class="feedback-form">
+    <!-- Rating Section -->
+    <div class="rating-section">
+      <h3>Rating</h3>
+      <p>How would you rate your experience?</p>
+      <div class="stars">
+        <i class="fa-regular fa-star" data-value="1"></i>
+        <i class="fa-regular fa-star" data-value="2"></i>
+        <i class="fa-regular fa-star" data-value="3"></i>
+        <i class="fa-regular fa-star" data-value="4"></i>
+        <i class="fa-regular fa-star" data-value="5"></i>
+      </div>
+      <small>Please click on stars to select your desired rating.</small>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="comment-section">
+      <label for="feedbackComment">Comment</label>
+      <textarea id="feedbackComment" placeholder="Enter your feedback here"></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Submit Feedback</button>
+  </form>
+</main>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2026 REGEN</p>
+    </footer>
+
+  </div>
+  <script src="feedback.js"></script>
+</body>
+</html>

@@ -4,22 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scanning</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="template/css/layout.css">
   <link rel="stylesheet" href="scanning.css">
+  
 </head>
-<body>
-  <div class="mobile-container">
+
+
+    <div class="mobile-container">
     <header class="topbar">
       <div class="nav-left">
-        <button class="nav-btn"><img src="template/assets/menu.png" alt="Menu"></button>
+        <button class="nav-btn menu-btn">
+          <img src="template/assets/menu.png" alt="Menu" class="menu-icon">
+        </button>
       </div>
       <div class="nav-center">
         <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
       </div>
       <div class="nav-right">
-        <button class="nav-btn"><img src="template/assets/profile.png" alt="Profile"></button>
+        <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
+          <img src="template/assets/profile.png" alt="Profile" class="profile-icon">
+        </button>
       </div>
     </header>
+
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="sidebar-logo">
+        <button id="closeSidebar" class="close-btn">&times;</button>
+      </div>
+
+      <nav class="sidebar-menu">
+        <h3 class="menu-category">Help Center</h3>
+        <ul class="menu-section">
+          <li><a href="settings/settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+          <li><a href="faqs/faqs.html"><i class="fa-solid fa-circle-question"></i> FAQs</a></li>
+          <li><a href="contact/contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li> 
+        </ul>
+
+        <h3 class="menu-category">Community</h3>
+        <ul class="menu-section">
+          <li><a href="feedback/feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+          <li><a href="about.html"><i class="fa-solid fa-leaf"></i> About REGEN</a></li>
+        </ul>
+
+        <h3 class="menu-category">Legal</h3>
+        <ul class="menu-section">
+          <li><a href="terms.html"><i class="fa-solid fa-file-contract"></i> Terms & Conditions</a></li>
+        </ul>
+
+      </nav>
+    </div>
  
     <div class="scan-content">
       <div class="scan-preview-section">
@@ -79,5 +114,6 @@
  
   <canvas id="canvas" style="display:none;"></canvas>
   <script src="scanning.js"></script>
+  <script src="template/js/nav.js"></script>
 </body>
 </html>

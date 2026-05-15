@@ -581,3 +581,12 @@ body {
 .home-body::-webkit-scrollbar {
   display: none;         
 }
+
+.footer {
+  flex-shrink: 0;
+  height: 60px;
+  background-color: #EAF9E7;
+  text-align: center;
+  padding-top: 1rem;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+}

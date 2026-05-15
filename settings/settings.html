@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+  <link rel="stylesheet" href="settings.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../template/css/layout.css">
+</head>
+<body>
+  <div class="mobile-container">
+    
+   <header class="settings-header">
+  <div class="header-left">
+    <button class="back-btn" onclick="window.location.href='../template/home.html'">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <h2 class="header-title">Settings</h2>
+  </div>
+  <img src="../template/assets/regen-logo.png" alt="REGEN Logo" class="settings-logo">
+</header>
+
+<main class="settings-body">
+  <ul class="settings-list">
+    <li>
+      <div class="item-left">
+        <i class="fa-solid fa-bell"></i>
+        <span>Notifications</span>
+      </div>
+      <span class="arrow">&rsaquo;</span>
+    </li>
+    <li>
+      <div class="item-left">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Privacy Data</span>
+      </div>
+      <span class="arrow">&rsaquo;</span>
+    </li>
+    <li>
+      <div class="item-left">
+        <i class="fa-solid fa-universal-access"></i>
+        <span>Accessibility</span>
+      </div>
+      <span class="arrow">&rsaquo;</span>
+    </li>
+    <li class="location-item">
+  <div class="item-left">
+    <i class="fa-solid fa-location-dot"></i>
+    <span>Location</span>
+  </div>
+  <label class="switch">
+    <input type="checkbox" id="locationToggle">
+    <span class="slider"></span>
+  </label>
+</li>
+
+    <li>
+      <div class="item-left">
+        <i class="fa-solid fa-globe"></i>
+        <span>Languages</span>
+      </div>
+      <span class="arrow">&rsaquo;</span>
+    </li>
+  </ul>
+</main>
+
+<footer class="footer">
+      <p>© 2026 REGEN</p>
+    </footer>
+    
+  </div>
+</body>
+</html>
