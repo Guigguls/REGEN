@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="overallProfile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <button class="back-btn" onclick="window.history.back()">‹</button>
+            <h1 class="header-title">My Profile</h1>
+        </div>
+
+        <div class="profile-info-section">
+            <!-- Avatar centered at top -->
+            <div class="profile-avatar">
+                <input type="file" id="profileUpload" accept="image/*" hidden>
+                <div class="avatar-circle" onclick="document.getElementById('profileUpload').click()">
+                    <img id="profileImage" src="" alt="" style="display:none;">
+                    <div class="avatar-placeholder" id="avatarPlaceholder"></div>    
+                </div>
+                <div class="edit-avatar-icon">✎</div>
+            </div>
+
+            <!-- Profile Details centered -->
+            <div class="profile-details">
+                <h2 class="profile-name">Eka Gamay</h2>
+                <p class="profile-email">erikasmol@gmail.com</p>
+            </div>
+
+            <!-- Rank and Points Section -->
+            <div class="rank-points-section">
+                <div class="rank-item">
+                    <span class="rank-label">Your Rank</span>
+                    <span class="rank-value">#1</span>
+                </div>
+                <div class="points-item">
+                    <span class="points-label">Your Points</span>
+                    <span class="points-value">2,450</span>
+                </div>
+            </div>
+
+            <!-- Info Stats Section -->
+            <div class="info-stats-section">
+                <div class="info-stat-card">
+                    <div class="info-stat-icon">🔥</div>
+                    <div class="info-stat-value">5</div>
+                    <div class="info-stat-label">Day Streak</div>
+                </div>
+                <div class="info-stat-card">
+                    <div class="info-stat-icon">🌱</div>
+                    <div class="info-stat-value">64%</div>
+                    <div class="info-stat-label">Carbon Budget</div>
+                </div>
+                <div class="info-stat-card">
+                    <div class="info-stat-icon">⭐</div>
+                    <div class="info-stat-value">100</div>
+                    <div class="info-stat-label">Points</div>
+                </div>
+            </div>
+
+            <button class="edit-profile-btn"
+                onclick="window.location.href='editProfile.html'">
+                Edit profile
+            </button>
+        </div>
+
+        <div class="profile-menu-section">
+            
+            <!-- About Me Section -->
+            <div class="about-section">
+                <h3 class="section-title">About Me</h3>
+                <p class="about-text">
+                    Passionate about sustainable living and reducing my environmental impact. I believe small actions can make a big difference in creating a greener future for everyone. Join me on this eco-friendly journey! 🌍
+                    <span class="read-more">Read More</span>
+                </p>
+            </div>
+
+            <!-- Goals Section -->
+            <div class="goals-section">
+                <h3 class="section-title">My Goals</h3>
+                <div class="goals-grid">
+                    <div class="goal-card">
+                        <div class="goal-icon">♻️</div>
+                        <div class="goal-label">Segregate Waste</div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">📢</div>
+                        <div class="goal-label">Increase Awareness</div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">📊</div>
+                        <div class="goal-label">Track Impact</div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">🌿</div>
+                        <div class="goal-label">Support Recycling</div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">🧹</div>
+                        <div class="goal-label">Keep Clean</div>
+                    </div>
+                    <div class="goal-card">
+                        <div class="goal-icon">🚮</div>
+                        <div class="goal-label">Proper Disposal</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interests Section -->
+            <div class="interests-section">
+                <h3 class="section-title">Interests</h3>
+                <div class="interests-tags">
+                    <div class="interest-tag">🌱 Sustainability</div>
+                    <div class="interest-tag">♻️ Recycling</div>
+                    <div class="interest-tag">🚴 Eco Transport</div>
+                    <div class="interest-tag">🌳 Climate Action</div>
+                    <div class="interest-tag">💚 Green Living</div>
+                    <div class="interest-tag">🔋 Energy Saving</div>
+                </div>
+            </div>
+
+            <a href="#" class="menu-item logout-item">
+                <div class="menu-item-left">
+                    <span class="menu-icon">↪</span>
+                    <span class="menu-label">Log Out</span>
+                </div>
+                <span class="menu-arrow">›</span>
+            </a>
+        </div>
+        <script  src="changeProfile.js"></script>
+    </body>
+    </html>
