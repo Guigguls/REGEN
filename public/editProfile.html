@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="editStyle.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <button class="back-btn" onclick="window.location.href='overallProfile.html'">‹</button>            
+            <h1 class="header-title">Edit Profile</h1>
+            <button class="save-btn" onclick="alert('Profile saved!')">Save</button>
+        </div>
+        <div class="profile-avatar-section">
+            <div class="profile-avatar">
+               <input type="file" id="profileUpload" accept="image/*" hidden>
+                <div class="avatar-circle" onclick="document.getElementById('profileUpload').click()">
+                    <img id="profileImage" style="display: none;">
+                    <div id="avatarPlaceholder" class="avatar-placeholder"></div>
+                </div>
+                <div class="edit-avatar-icon">✎</div>
+            </div>
+        </div>
+
+        <div class="profile-form-section">
+            <h2 class="profile-form-title">Personal Information</h2>
+
+            <form>
+                <div class="profile-input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="profile-input" value="Eka Gamay" placeholder="Enter your name">
+                </div>
+
+                <div class="profile-input-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" class="profile-input" value="" placeholder="Enter your age">
+                </div>
+
+                <div class="profile-input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="profile-input" value="erikasmol@gmail.com" placeholder="Enter your email">
+                </div>
+
+                <div class="profile-input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="profile-input" value="0947 324 7232" placeholder="Enter your phone number">
+                </div>
+
+                <div class="profile-input-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="text" id="dob" class="profile-input" value="12/16/2007" placeholder="MM/DD/YYYY">
+                </div>
+
+                <div class="profile-input-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" class="profile-select">
+                        <option value="female" selected>Female</option>
+                        <option value="male">Male</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h2 class="profile-form-title">About Me</h2>
+
+                <div class="profile-input-group">
+                    <label for="about">Bio</label>
+                    <textarea id="about" class="profile-textarea" placeholder="Tell us about yourself and your sustainability journey...">Passionate about sustainable living and reducing my environmental impact. I believe small actions can make a big difference in creating a greener future for everyone. Join me on this eco-friendly journey! 🌍</textarea>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h2 class="profile-form-title">My Goals</h2>
+
+                <div class="profile-input-group">
+                    <label>Select your goals (choose multiple)</label>
+                    <div class="goals-selection">
+                        <div class="goal-option selected" onclick="this.classList.toggle('selected')">
+                            <div class="goal-option-icon">♻️</div>
+                            <div class="goal-option-label">Segregate Waste</div>
+                        </div>
+                        <div class="goal-option selected" onclick="this.classList.toggle('selected')">
+                            <div class="goal-option-icon">📢</div>
+                            <div class="goal-option-label">Increase Awareness</div>
+                        </div>
+                        <div class="goal-option" onclick="this.classList.toggle('selected')">
+                            <div class="goal-option-icon">📊</div>
+                            <div class="goal-option-label">Track Impact</div>
+                        </div>
+                        <div class="goal-option selected" onclick="this.classList.toggle('selected')">
+                            <div class="goal-option-icon">🌿</div>
+                            <div class="goal-option-label">Support Recycling</div>
+                        </div>
+                        <div class="goal-option" onclick="this.classList.toggle('selected')">
+                            <div class="goal-option-icon">🧹</div>
+                            <div class="goal-option-label">Keep Clean</div>
+                        </div>
+                        <div class="goal-option selected" onclick="this.classList.toggle('selected')">
+                            <div class="goal-option-icon">🚮</div>
+                            <div class="goal-option-label">Proper Disposal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <h2 class="profile-form-title">Interests</h2>
+
+                <div class="profile-input-group">
+                    <label>Select your interests</label>
+                    <div class="interests-input-section">
+                        <div class="interest-input-tag selected" onclick="this.classList.toggle('selected')">🌱 Sustainability</div>
+                        <div class="interest-input-tag selected" onclick="this.classList.toggle('selected')">♻️ Recycling</div>
+                        <div class="interest-input-tag" onclick="this.classList.toggle('selected')">🚴 Eco Transport</div>
+                        <div class="interest-input-tag selected" onclick="this.classList.toggle('selected')">🌳 Climate Action</div>
+                        <div class="interest-input-tag" onclick="this.classList.toggle('selected')">💚 Green Living</div>
+                        <div class="interest-input-tag selected" onclick="this.classList.toggle('selected')">🔋 Energy Saving</div>
+                        <div class="interest-input-tag" onclick="this.classList.toggle('selected')">🌊 Ocean Conservation</div>
+                        <div class="interest-input-tag" onclick="this.classList.toggle('selected')">🌻 Gardening</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script  src="changeProfile.js"></script>
+</body>
+</html>
