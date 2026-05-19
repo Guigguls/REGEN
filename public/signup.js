@@ -5,13 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const togglePassword = document.getElementById('togglePassword');
     const toggleConfirm = document.getElementById('toggleConfirmPassword');
     const termsCheckbox = document.getElementById('terms');
+
     const checks = Array.from(document.querySelectorAll('.validation-list p'));
     const [lenCheck, upperCheck, numCheck, spaceCheck] = checks;
 
     if (!signupForm) return;
-
-    // Utility to safely add event listeners
-    const safeAddListener = (el, evt, fn) => el?.addEventListener(evt, fn);
 
     // Toggle password visibility
     const toggleVisibility = (input, toggle) => {
@@ -22,36 +20,46 @@ document.addEventListener('DOMContentLoaded', () => {
             : '<i class="fas fa-eye-slash"></i>';
     };
 
-    safeAddListener(togglePassword, 'click', () => toggleVisibility(passwordInput, togglePassword));
-    safeAddListener(toggleConfirm, 'click', () => toggleVisibility(confirmInput, toggleConfirm));
+    togglePassword?.addEventListener('click', () =>
+        toggleVisibility(passwordInput, togglePassword)
+    );
 
-    // Update password validation checklist
+    toggleConfirm?.addEventListener('click', () =>
+        toggleVisibility(confirmInput, toggleConfirm)
+    );
+
+    // Password validation
     const validatePassword = () => {
         const v = passwordInput.value;
-        lenCheck.classList.toggle('valid', v.length >= 8 && v.length <= 20);
-        lenCheck.classList.toggle('invalid', !(v.length >= 8 && v.length <= 20));
 
-        upperCheck.classList.toggle('valid', /[A-Z]/.test(v));
-        upperCheck.classList.toggle('invalid', !/[A-Z]/.test(v));
+        const lenOk = v.length >= 8 && v.length <= 20;
+        const upperOk = /[A-Z]/.test(v);
+        const numOk = /[0-9]/.test(v);
+        const spaceOk = !/\s/.test(v);
 
-        numCheck.classList.toggle('valid', /[0-9]/.test(v));
-        numCheck.classList.toggle('invalid', !/[0-9]/.test(v));
+        lenCheck.classList.toggle('valid', lenOk);
+        lenCheck.classList.toggle('invalid', !lenOk);
+        lenCheck.textContent = (lenOk ? '✓ ' : '✕ ') + '8-20 characters';
 
-        spaceCheck.classList.toggle('valid', !/\s/.test(v));
-        spaceCheck.classList.toggle('invalid', /\s/.test(v));
+        upperCheck.classList.toggle('valid', upperOk);
+        upperCheck.classList.toggle('invalid', !upperOk);
+        upperCheck.textContent = (upperOk ? '✓ ' : '✕ ') + 'At least 1 uppercase letter';
 
-        // Update text markers
-        lenCheck.textContent = (v.length >= 8 && v.length <= 20 ? '✓ ' : '✕ ') + '8-20 characters';
-        upperCheck.textContent = (/[A-Z]/.test(v) ? '✓ ' : '✕ ') + 'At least 1 uppercase letter';
-        numCheck.textContent = (/[0-9]/.test(v) ? '✓ ' : '✕ ') + 'At least 1 number';
-        spaceCheck.textContent = (!/\s/.test(v) ? '✓ ' : '✕ ') + 'No spaces';
+        numCheck.classList.toggle('valid', numOk);
+        numCheck.classList.toggle('invalid', !numOk);
+        numCheck.textContent = (numOk ? '✓ ' : '✕ ') + 'At least 1 number';
+
+        spaceCheck.classList.toggle('valid', spaceOk);
+        spaceCheck.classList.toggle('invalid', !spaceOk);
+        spaceCheck.textContent = (spaceOk ? '✓ ' : '✕ ') + 'No spaces';
+
+        return lenOk && upperOk && numOk && spaceOk;
     };
 
-    safeAddListener(passwordInput, 'input', validatePassword);
-    validatePassword(); // initialize checklist
+    passwordInput?.addEventListener('input', validatePassword);
 
-    // Form submission
-    safeAddListener(signupForm, 'submit', (e) => {
+    // Submit form
+    signupForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         if (!termsCheckbox.checked) {
@@ -59,23 +67,48 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        validatePassword();
+        const passwordValid = validatePassword();
 
-        const v = passwordInput.value;
-        const checksOk = v.length >= 8 && v.length <= 20 && /[A-Z]/.test(v) && /[0-9]/.test(v) && !/\s/.test(v);
-        if (!checksOk) {
-            alert('Password does not meet the requirements.');
+        if (!passwordValid) {
+            alert('Password does not meet requirements');
             return;
         }
 
         if (passwordInput.value !== confirmInput.value) {
-            alert('Passwords do not match.');
+            alert('Passwords do not match');
             return;
         }
 
-        const name = signupForm.querySelector('input[type="text"]')?.value || '';
-        console.log('Account created for:', name);
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = passwordInput.value;
 
-        window.location.href = 'goals.html';
+        try {
+            const res = await fetch('http://localhost:5001/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    password,
+                    termsAccepted: termsCheckbox.checked
+                })
+            });
+
+            const data = await res.json();
+            console.log('Server response:', data);
+
+            if (data.success) {
+                window.location.href = 'goals.html';
+            } else {
+                alert('Signup failed');
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert('Server error. Please try again.');
+        }
     });
 });
