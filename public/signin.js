@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
     const togglePassword = document.getElementById('togglePassword');
 
-    // Password toggle (safe)
+    // Password toggle
     if (togglePassword && passwordInput) {
         togglePassword.addEventListener('click', () => {
             const type = passwordInput.type === 'password' ? 'text' : 'password';
@@ -36,8 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Login response:", data);
 
             if (data.success) {
-                // store user (IMPORTANT FOR NEXT STEP)
+                // Keep existing user save
                 localStorage.setItem("user", JSON.stringify(data.user));
+
+                // Save token so Flask API calls work
+                localStorage.setItem("access_token", data.session.access_token);
+                localStorage.setItem("user_id", data.user.id);
 
                 window.location.href = "goals.html";
             } else {

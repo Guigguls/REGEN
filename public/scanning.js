@@ -9,7 +9,6 @@ async function initCamera() {
     const video = document.getElementById('cameraVideo');
     video.srcObject = stream;
 
-    // Wait for video to be fully ready before allowing capture
     video.onloadedmetadata = function () {
       video.play();
     };
@@ -34,7 +33,6 @@ async function captureImage() {
   const video = document.getElementById('cameraVideo');
   const canvas = document.getElementById('canvas');
 
-  // Make sure video is actually playing and has dimensions
   if (!video.srcObject) {
     alert('Camera is not ready. Please wait a moment and try again.');
     return;
@@ -45,15 +43,12 @@ async function captureImage() {
     return;
   }
 
-  // Set canvas to match video dimensions
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
 
-  // Draw current video frame to canvas
   const ctx = canvas.getContext('2d');
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-  // Convert to base64
   const dataURL = canvas.toDataURL('image/jpeg', 0.9);
   const base64Image = dataURL.split(',')[1];
 
@@ -62,10 +57,7 @@ async function captureImage() {
     return;
   }
 
-  // Show a flash effect so user knows photo was taken
   flashEffect();
-
-  // Send to API
   await sendToAPI(base64Image, dataURL, 'image/jpeg');
 }
 
@@ -98,16 +90,26 @@ function uploadFromGallery(event) {
 }
 
 async function sendToAPI(base64Image, dataURL, mimeType) {
-  // Show loading state on shutter button
   const shutterBtn = document.querySelector('.scan-action-shutter');
   const originalContent = shutterBtn.innerHTML;
   shutterBtn.disabled = true;
   shutterBtn.style.opacity = '0.5';
 
+  // Get the logged in user's token
+  const token = localStorage.getItem('access_token');
+  if (!token) {
+    alert('You must be logged in to scan.');
+    window.location.href = 'login.html';
+    return;
+  }
+
   try {
     const response = await fetch('http://127.0.0.1:5000/classify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token   // ← only change from original
+      },
       body: JSON.stringify({ image: base64Image, mime_type: mimeType })
     });
 
@@ -125,7 +127,6 @@ async function sendToAPI(base64Image, dataURL, mimeType) {
   } catch (err) {
     alert('Could not reach the server. Make sure app.py is running.\n\nDetails: ' + err.message);
   } finally {
-    // Restore shutter button
     shutterBtn.disabled = false;
     shutterBtn.style.opacity = '1';
     shutterBtn.innerHTML = originalContent;
