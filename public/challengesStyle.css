@@ -1,35 +1,92 @@
 *::-webkit-scrollbar {
     display: none;
 }
- 
-/* Ensure buttons don't show focus rings */
+
+/* Reset */
+* {
+    box-sizing: border-box;
+}
+
+/* Remove focus outline */
 button:focus, button:active {
     outline: none;
     border: none;
 }
- 
+
+/* Base */
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    overflow:hidden;
+    background: #f3f4f6;
+    overflow-y: auto;
 }
- 
+
+/* Mobile container */
 .mobile-container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: white;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     overflow-y: auto;
 }
- 
-ul {
-  list-style-type: none;
-  padding: 0;
+
+/* Topbar: points badge */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
- 
+
+.points-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 18px;
+    background: #fff8e1;
+    color: #f57c00;
+    font-weight: 800;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    border: 1px solid rgba(245,124,0,0.12);
+    cursor: pointer;
+}
+
+.points-badge i {
+    font-size: 1rem;
+}
+
+#total-points {
+    margin-left: 2px;
+}
+
+/* Variant when placed inside the streak card */
+.points-badge.in-streak {
+    background: rgba(255,255,255,0.9);
+    color: #4dac4f;
+    padding: 6px 8px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.streak-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.streak-badge {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    font-weight: 800;
+}
+
+/* Desktop mode */
 @media (min-width: 480px) {
     body {
         display: flex;
@@ -37,872 +94,240 @@ ul {
         align-items: center;
         min-height: 100vh;
     }
- 
+
     .mobile-container {
         width: 375px;
-        height: 750px;
+        min-height: 750px;
         border-radius: 40px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+        overflow: visible;
     }
 }
- 
-.hero-image-section {
-    height: 45%;
-    background-color: #b8e4b8;
-    background-image: url('leaves.png');
-    background-size: cover;
-    background-position: center;
-    clip-path: ellipse(130% 100% at 50% 0%);
-}
- 
-.content-section {
-    padding: 2rem 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
- 
-.title {
-    color: #063b31;
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
- 
-.subtitle {
-    color: #063b31;
-    font-size: 1.125rem;
-    font-weight: 600;
-    line-height: 1.2;
-}
- 
-.description {
-    color: #6b7280;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
-}
- 
-.continue-btn-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
- 
-.continue-btn-container:hover .btn-text {
-    margin-right: 1.25rem;
-}
- 
-.btn-text {
-    color: #063b31;
-    font-weight: 500;
-    margin-right: 0.75rem;
-    transition: margin 0.3s ease;
-}
- 
-.btn-circle {
-    background-color: #52ab78;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
- 
-.form-title {
-    color: #063b31;
-    font-size: 2rem;
-    font-weight: 700;
-    position: relative;
-    display: inline-block;
-    border-bottom: 3px solid #3b82f6;
-    padding-bottom: 5px;
-    margin-bottom: 1.5rem;
-}
- 
-.form-title::after {
-    display: none;
-}
- 
-.input-group label {
-    display: block;
-    color: #063b31;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
- 
-.input-wrapper {
-    display: flex;
-    align-items: center;
-    border-bottom: 1.5px solid #52ab78;
-    padding-bottom: 5px;
-}
- 
-.input-wrapper input {
-    border: none;
-    outline: none;
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-}
- 
-.icon,
-.eye-icon {
-    font-size: 1rem;
-    color: #52ab78;
-}
- 
-.form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.75rem;
-    margin: 1.5rem 0;
-}
- 
-.remember-me {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: #063b31;
-}
- 
-.forgot-link {
-    color: #52ab78;
-    text-decoration: none;
-}
- 
-.login-btn {
-    width: 100%;
-    background-color: #52ab78;
-    color: white;
-    padding: 1rem;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-}
- 
-.signup-footer {
-    text-align: center;
-    margin-top: auto;
-    font-size: 0.85rem;
-    color: #4b5563;
-    padding-top: 1rem;
-}
- 
-.signup-footer a {
-    color: #52ab78;
-    font-weight: 600;
-    text-decoration: none;
-}
- 
-.validation-list {
-    font-size: 0.7rem;
-    margin-top: 0.5rem;
-    line-height: 1.4;
-}
- 
-.validation-list .valid {
-    color: #52ab78;
-}
- 
-.validation-list .invalid {
-    color: #e11d48;
-}
- 
-.terms-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.8rem;
-    color: #063b31;
-    margin: 1rem 0;
-}
- 
-.terms-group a {
-    color: #52ab78;
-    font-weight: 600;
-    text-decoration: underline;
-}
- 
-.goals-bg {
-    background-color: #e8f5e9;
-}
- 
-.goals-content {
-    height: 100%;
-    padding: 3rem 2rem;
-    display: flex;
-    flex-direction: column;
-}
- 
-.goals-title {
-    color: #063b31;
-    font-size: 1.5rem;
-    font-weight: 800;
-    line-height: 1.2;
-}
- 
-.goals-subtitle {
-    color: #063b31;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-}
- 
-.goals-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    gap: 20px;
-    overflow-y: auto;
-}
- 
-.login-btn {
-    width: 100%;
-    display: block;
-    margin-top: 4rem;
-}
- 
-.goal-item {
-    cursor: pointer;
-    transition: transform 0.2s;
-}
- 
-.goal-item:active {
-    transform: scale(0.95);
-}
- 
-.goal-item:nth-child(even) {
-    margin-top: 40px;
-}
- 
-.goal-circle {
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 15px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #063b31;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
- 
-.dark-green {
-    background-color: #52ab78;
-    color: white;
-}
- 
-.light-green {
-    background-color: #c8e6c9;
-}
- 
-.goal-item.selected .goal-circle {
-    outline: 4px solid #063b31;
-    outline-offset: 2px;
-}
- 
-.emoji {
-    font-size: 2rem;
-    margin-bottom: 5px;
-}
- 
-/* --- BASE & SCROLLBAR --- */
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0; padding: 0;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
- 
-@media (min-width: 480px) {
-    body { display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: #f3f4f6;
-    }
- 
-.mobile-container {
-    width: 375px;
-    height: 750px;
-    border-radius: 40px;
-    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-    position: relative;
-}
-}
- 
-/* --- CONTENT --- */
+
+/* MAIN CONTENT */
 .main-content {
     flex: 1;
-    position: relative;
     background: #fff;
     overflow-y: auto;
-    scroll-behavior: smooth;
 }
- 
-.dashboard-hero-image {
-    width: 100%;
-    height: 180px;
-    background: linear-gradient(to bottom, #dcedc8, #ffffff);
-    position: absolute;
-    top: 0;
-    z-index: 0;
-}
- 
-.dashboard-inner-container {
-    position: relative;
-    height: 750px;
-    z-index: 1;
-    padding: 20px;
-    padding-bottom: 20px;
-}
- 
-/* --- USER CARD (TIGHT) --- */
-.dash-user-floating-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 15px 4px 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    margin: 10px 0 20px 0;
-}
- 
-.dash-title-header {
-    margin: 0 auto;
-}
- 
-.avatar-circle-box {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 10px;
-    border: 1.5px solid white;
-    flex-shrink: 0;
-}
- 
-.avatar-circle-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
- 
-.user-text-details p {
-    margin: 0;
-    line-height: 1.1;
-}
- 
-.user-display-name {
-    font-weight: 700;
-    font-size: 13px;
-    color: #063b31;
-}
- 
-.user-rank-status {
-    font-size: 11px;
-    color: #52ab78;
-    font-weight: 600; }
- 
-/* --- DYNAMIC VISUALS --- */
-/* --- UPDATED SLIDING TOGGLE CSS --- */
-.range-toggle-pill {
-    display: flex;
-    background: #f1f8f1;
-    border-radius: 30px;
-    padding: 4px;
-    margin-bottom: 30px;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    touch-action: pan-y; /* Important for mobile dragging */
-}
- 
-.range-slider-bg {
-    position: absolute;
-    top: 4px;
-    bottom: 4px;
-    width: calc(50% - 4px);
-    background: white;
-    border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
-}
- 
-.range-btn-opt {
-    flex: 1;
-    border: none;
-    padding: 8px;
-    z-index: 2; /* Sits above the sliding pill */
-    background: transparent !important;
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: #063b31;
-    cursor: pointer;
-    transition: color 0.3s;
-}
- 
-/* Logic for the slide animation */
-.range-toggle-pill.is-weekly .range-slider-bg {
-    transform: translateX(0);
-}
- 
-.range-toggle-pill.is-monthly .range-slider-bg {
-    transform: translateX(100%);
-}
- 
-.range-btn-opt.active {
-    background: white;
-}
- 
-/* Donut Ring */
-.budget-ring-visualization {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    background: radial-gradient(closest-side, white 79%, transparent 80% 100%),
-                conic-gradient(#52ab78 0% var(--percentage, 0%), #e8f5e9 0% 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    transition: background 0.4s ease-in-out;
-}
- 
-.budget-ring-text-block {
-    width:150px;
-    margin: 0 auto;
-}
- 
-/* Container for the text inside the ring */
-.budget-ring-text-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
- 
-/* Reset the list and stack items vertically */
-.budget-ring-text-block ul {
-    list-style: none;      /* Removes bullet points */
-    padding: 0;           /* Removes default left padding */
-    margin: 0;            /* Removes default margins */
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* Centers text horizontally */
-    justify-content: center; /* Centers text vertically */
-    text-align: center;
-}
- 
-/* Optional: Add spacing between the lines of text */
-.budget-ring-text-block li {
-    margin-bottom: 2px;
-}
- 
-/* Ensure the label is small and centered */
-.budget-txt-label {
-    display: block;
-    font-size: 0.7rem;
-    letter-spacing: 1px;
-    font-weight: 700;
-    color: #6b7280;
-}
- 
-.budget-txt-main-pct {
-    font-size: 3.8rem;
-    font-weight: 900;
-    color: #000;
-    line-height: 1;
-}
- 
-.budget-txt-kg-data {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #52ab78;
-}
- 
-/* Horizontal Bars */
-.footprint-grid-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 15px;
-}
- 
-.footprint-stat-card {
-    background: #f1f8f1;
-    border-radius: 20px;
-    padding: 15px;
-}
- 
-.bar-background-track {
-    height: 8px;
-    background: #fff;
-    border-radius: 10px;
-    margin: 10px 0;
-    overflow: hidden;
-    width: 100%;
-}
- 
-.bar-foreground-fill {
-    width: var(--progress, 0%);
-    height: 100%;
-    background: #52ab78;
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
- 
-/* Container for the % and kg text */
-.card-data-summary {
-    display: flex;
-    flex-direction: row; /* Forces horizontal alignment */
-    align-items: baseline; /* Aligns the bottom of the different sized fonts */
-    gap: 8px; /* Adds a small space between the % and the kg */
-    margin-top: 5px;
-}
- 
-/* Ensure these spans don't try to take up full width */
-.summary-pct-large,
-.summary-kg-small {
-    display: inline-block;
-    white-space: nowrap; /* Prevents text from wrapping to a new line */
-}
- 
-/* Optional: Adjust font sizes to look balanced on one line */
-.summary-pct-large {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: #063b31;
-}
- 
-.summary-kg-small {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #52ab78;
-}
- 
-/* Container Spacing */
+
+/* CONTAINER */
 .achievements-container {
-    padding: 15px;
-    height: 750px;
+    padding: 16px;
     background: #fdfdfd;
 }
- 
-/* Streak Card */
+
+/* ================= STREAK ================= */
 .streak-card {
     background: linear-gradient(135deg, #f3a691, #f9c7b6);
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 8px 20px rgba(243, 166, 145, 0.3);
-    margin-bottom: 20px;
+    border-radius: 18px;
+    padding: 2px 10px 12px;
+    margin-bottom: 10px;
     color: #4a2c24;
+    box-shadow: 0 6px 16px rgba(243, 166, 145, 0.22);
 }
- 
-.streak-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
- 
-.streak-text h3 { margin: 0; font-size: 1.1rem; font-weight: 800; }
-.streak-text p { margin: 0; font-size: 0.8rem; opacity: 0.8; }
- 
-.streak-badge { text-align: center; line-height: 1; }
-.fire-icon { font-size: 1.5rem; display: block; }
-.streak-count { font-size: 1.2rem; font-weight: 900; }
-.streak-label { font-size: 0.7rem; display: block; }
- 
-.streak-dots {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-}
- 
-.dot {
-    flex: 1;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
-}
- 
-.dot.active {
-    background: #e65100;
-}
- 
-/* Task Cards */
+
+/* ================= TASK CARDS ================= */
 .task-card {
     background: white;
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-bottom: 15px;
-    border: 1px solid #f0f0f0;
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 10px;
+    border: 1.5px solid rgba(127, 181, 114, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
- 
+
+.task-card:nth-child(3n+1) {
+    background: #e8f5e9;
+    border-color: rgba(76, 175, 80, 0.35);
+}
+
+.task-card:nth-child(3n+2) {
+    background: #e3f2fd;
+    border-color: rgba(33, 150, 243, 0.35);
+}
+
+.task-card:nth-child(3n) {
+    background: #fff8e1;
+    border-color: rgba(251, 192, 45, 0.35);
+}
+
 .task-top {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
- 
+
 .task-icon-box {
-    width: 45px;
-    height: 45px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
 }
- 
-.recycle-bg { background: #4caf50; color: white; }
-.transit-bg { background: #2196f3; color: white; }
- 
-.task-info { flex: 1; }
-.task-info h4 { margin: 0; font-size: 0.95rem; font-weight: 800; color: #063b31; }
-.task-info p { margin: 0; font-size: 0.75rem; color: #666; }
- 
+
+.recycle-bg {
+    background: #4caf50;
+    color: white;
+}
+
+.transit-bg {
+    background: #2196f3;
+    color: white;
+}
+
+.task-info {
+    flex: 1;
+}
+
+.task-info h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #063b31;
+}
+
+.task-info p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #666;
+}
+
 .task-points {
     text-align: right;
     color: #4caf50;
     font-weight: 800;
     font-size: 0.9rem;
 }
- 
-.task-points span { display: block; font-size: 0.6rem; color: #999; margin-top: -2px; }
- 
-/* Progress Bars */
+
+.task-points span {
+    display: block;
+    font-size: 0.65rem;
+    color: #999;
+}
+
+/* ================= PROGRESS ================= */
 .progress-container {
-    height: 10px;
+    height: 9px;
     background: #eee;
     border-radius: 10px;
     overflow: hidden;
 }
- 
-.progress-container.white-bg { background: rgba(255, 255, 255, 0.5); }
- 
-.progress-bar { height: 100%; border-radius: 10px; transition: width 0.8s ease; }
-.progress-bar.green { background: #4caf50; }
-.progress-bar.blue { background: #2196f3; }
-.progress-bar.dark-green { background: #063b31; }
- 
+
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+.progress-bar.green {
+    background: #4caf50;
+}
+
+.progress-bar.blue {
+    background: #2196f3;
+}
+
+.progress-bar.dark-green {
+    background: #063b31;
+}
+
 .progress-stats {
     display: flex;
     justify-content: space-between;
     font-size: 0.7rem;
-    color: #999;
+    color: #888;
     margin-top: 6px;
-    font-weight: 600;
 }
- 
-/* Challenges Section */
+
+/* ================= SECTION TITLE ================= */
 .section-title {
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: 1.05rem;
+    font-weight: 900;
     color: #063b31;
-    margin: 25px 0 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    margin: 22px 0 12px;
 }
- 
+
+/* ================= CHALLENGES ================= */
 .challenge-card {
-    border-radius: 20px;
-    padding: 15px;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 18px;
+    padding: 14px;
+    margin-bottom: 14px;
+    border: 1.5px solid rgba(127, 181, 114, 0.3);
 }
- 
-.easy-bg { background: #c8e6c9; }
- 
+
+.easy-bg {
+    background: #c8e6c9;
+}
+
 .challenge-content {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 10px;
 }
- 
+
 .title-row {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 4px;
 }
- 
-.title-row h4 { margin: 0; font-size: 1rem; font-weight: 800; color: #063b31; }
- 
+
+.title-row h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: #063b31;
+}
+
 .badge {
     font-size: 0.6rem;
-    padding: 2px 8px;
+    padding: 2px 7px;
     border-radius: 10px;
     font-weight: 800;
-    text-transform: uppercase;
 }
- 
-.badge.easy { background: #4caf50; color: white; }
- 
-.time-left { font-size: 0.75rem; font-weight: 600; margin-top: 8px; color: #063b31; opacity: 0.7; }
- 
+
+.badge.easy {
+    background: #4caf50;
+    color: white;
+}
+
+.time-left {
+    font-size: 0.75rem;
+    margin-top: 6px;
+    opacity: 0.7;
+}
+
+/* reward */
 .challenge-reward {
     background: #fbc02d;
     border-radius: 12px;
     padding: 8px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(251, 192, 45, 0.4);
 }
- 
-.reward-icon { font-size: 1.2rem; }
-.challenge-reward span { display: block; font-size: 0.8rem; font-weight: 900; color: #7f6000; }
- 
-/* ============================================================
-   BLOCK 3: MAP & DRAGGABLE BOTTOM SHEET (SCROLLABLE LIST)
-   ============================================================ */
- 
-.map-page-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    touch-action: none;
+
+.challenge-reward span {
+    font-size: 0.75rem;
+    font-weight: 900;
 }
- 
-#map-display {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
- 
-.bottom-sheet {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 92%;
-    background: white;
-    z-index: 10;
-    border-radius: 30px 30px 0 0;
-    box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
-    transform: translateY(50%);
-    transition: transform 0.3s ease-out;
+
+/* ================= STREAK DOTS ================= */
+.streak-dots {
     display: flex;
-    flex-direction: column;
-    /* This prevents the sheet from moving if the list is scrolling */
-    touch-action: none;
+    gap: 4px;
+    margin-top: 10px;
 }
- 
-.no-transition {
-    transition: none !important;
-}
- 
-.drag-handle-container {
-    width: 100%;
-    padding: 15px 0;
-    display: flex;
-    justify-content: center;
-    cursor: grab;
-    flex-shrink: 0; /* Prevents handle from squishing */
-}
- 
-.drag-handle {
-    width: 45px;
-    height: 5px;
-    background: #e0e0e0;
+
+.dot {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.4);
     border-radius: 10px;
 }
- 
-/* The scrollable list section */
-.nearby-centers {
-    padding: 0 20px 40px 20px;
-    flex: 1;
-    overflow-y: scroll !important; /* Force scrollbar capability */
-    -webkit-overflow-scrolling: touch;
-    /* This allows the list to scroll normally */
-    touch-action: pan-y !important;
-}
- 
-/* Ensure the list is long enough to scroll for testing */
-.center-list {
-    display: block;
-    min-height: 110%;
-}
- 
-.nearby-title {
-    color: #063b31;
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin: 5px 0;
-}
- 
-.nearby-subtitle {
-    color: #063b31;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    opacity: 0.7;
-}
- 
-.center-item-card {
-    display: flex;
-    align-items: center;
-    background-color: #f0fff4;
-    border-radius: 20px;
-    padding: 16px;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-}
- 
-.center-icon-circle {
-    width: 48px;
-    height: 48px;
-    background-color: #52ab78;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    flex-shrink: 0;
-}
- 
-.inner-dot {
-    width: 18px;
-    height: 18px;
-    background-color: #f0fff4;
-    border-radius: 50%;
-}
- 
-.center-details h3 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 800;
-    color: #063b31;
-}
- 
-.center-details p {
-    margin: 2px 0 0 0;
-    font-size: 0.8rem;
-    color: #52ab78;
-    font-weight: 600;
-}
- 
-.center-distance {
-    margin-left: auto;
-    font-weight: 800;
-    color: #52ab78;
-    font-size: 1.1rem;
+
+.dot.active {
+    background: #e65100;
 }
