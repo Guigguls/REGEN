@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Gemini client
-client = genai.Client(api_key="AIzaSyDYTzylNGK1FJHawTqa7cokN56q52jq9C4")
+client = genai.Client(api_key="INSERT_GEMINI_KEY")
 
 # Supabase config — REST API approach (no supabase package needed)
 SUPABASE_URL = "INSERT_SUPABASE_URL_HERE"
