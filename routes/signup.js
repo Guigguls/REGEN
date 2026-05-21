@@ -23,6 +23,8 @@ router.post("/", async (req, res) => {
     }
   });
 
+  console.log("Supabase Auth Data:", data);
+
   if (error || !data.user) {
     return res.json({
       success: false,
@@ -45,9 +47,15 @@ router.post("/", async (req, res) => {
     // Don't block signup if table insert fails
   }
 
+  // 🚀 THE FIX: Extract the access and refresh tokens from the registration response
+  const accessToken = data.session?.access_token || null;
+  const refreshToken = data.session?.refresh_token || null;
+
   res.json({
     success: true,
     message: "Account created successfully",
+    access_token: accessToken,   // ⚡ Sent down to frontend local storage!
+    refresh_token: refreshToken, // ⚡ Sent down to frontend local storage!
     user: {
       id: data.user.id,
       email: data.user.email,

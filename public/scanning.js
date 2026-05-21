@@ -1,12 +1,35 @@
 let stream = null;
 
 async function initCamera() {
+  const video = document.getElementById('cameraVideo');
+  const errorOverlay = document.getElementById('cameraError');
+  const errorMsg = document.getElementById('errorMessage');
+
+  // 🌟 FIX 1: Check for unencrypted HTTP network blocks instantly
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    video.classList.add('hidden');
+    errorOverlay.classList.remove('hidden');
+    errorMsg.textContent = 'Insecure Network Connection (HTTP Block)';
+    
+    alert(
+      "🔒 Browser Security Block:\n\n" +
+      "Mobile browsers block hardware cameras over standard http:// local network links.\n\n" +
+      "To test your camera on a phone, you must use an HTTPS tunnel (like Ngrok) or use your computer's local browser via 'localhost'."
+    );
+    return;
+  }
+
   try {
+    // 🌟 FIX 2: Optimized parameters using 'ideal' configurations for mobile stability
     stream = await navigator.mediaDevices.getUserMedia({ 
-      video: { facingMode: 'environment' },
+      video: { 
+        facingMode: { ideal: 'environment' }, // Points to rear-facing camera
+        width: { ideal: 1280 },
+        height: { ideal: 720 }
+      },
       audio: false 
     });
-    const video = document.getElementById('cameraVideo');
+    
     video.srcObject = stream;
 
     video.onloadedmetadata = function () {
@@ -14,17 +37,18 @@ async function initCamera() {
     };
 
     video.classList.remove('hidden');
-    document.getElementById('cameraError').classList.add('hidden');
+    errorOverlay.classList.add('hidden');
   } catch (err) {
-    document.getElementById('cameraVideo').classList.add('hidden');
-    document.getElementById('cameraError').classList.remove('hidden');
-    const errorMsg = document.getElementById('errorMessage');
-    if (err.name === 'NotAllowedError') {
+    video.classList.add('hidden');
+    errorOverlay.classList.remove('hidden');
+    console.error("Camera access error details:", err);
+
+    if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
       errorMsg.textContent = 'Camera access denied';
-    } else if (err.name === 'NotFoundError') {
-      errorMsg.textContent = 'No camera found';
+    } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+      errorMsg.textContent = 'No camera hardware found';
     } else {
-      errorMsg.textContent = 'Unable to access camera';
+      errorMsg.textContent = 'Unable to access camera: ' + err.message;
     }
   }
 }
@@ -95,16 +119,16 @@ async function sendToAPI(base64Image, dataURL, mimeType) {
   shutterBtn.disabled = true;
   shutterBtn.style.opacity = '0.5';
 
-  // Get the logged in user's token
   const token = localStorage.getItem('access_token');
   if (!token) {
     alert('You must be logged in to scan.');
-    window.location.href = 'login.html';
+    window.location.replace('signin.html');
     return;
   }
 
+  let success = false; 
+
   try {
-    // Change 'localhost:5000' to use the dynamic hostname
     const response = await fetch(`http://${window.location.hostname}:5000/classify`, {
         method: 'POST',
         headers: {
@@ -115,22 +139,32 @@ async function sendToAPI(base64Image, dataURL, mimeType) {
     });
 
     if (!response.ok) {
-      throw new Error('Server returned error: ' + response.status);
+        throw new Error('Server returned error: ' + response.status);
     }
 
     const result = await response.json();
 
     sessionStorage.setItem('scanResult', JSON.stringify(result));
     sessionStorage.setItem('capturedImage', dataURL);
+    
+    success = true; 
 
-    window.location.href = 'info.html';
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
+
+    setTimeout(() => {
+      window.location.replace('info.html');
+    }, 50);
 
   } catch (err) {
     alert('Could not reach the server. Make sure app.py is running.\n\nDetails: ' + err.message);
   } finally {
-    shutterBtn.disabled = false;
-    shutterBtn.style.opacity = '1';
-    shutterBtn.innerHTML = originalContent;
+    if (!success) {
+      shutterBtn.disabled = false;
+      shutterBtn.style.opacity = '1';
+      shutterBtn.innerHTML = originalContent;
+    }
   }
 }
 

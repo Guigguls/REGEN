@@ -102,9 +102,20 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Server response:', data);
 
             if (data.success) {
-                window.location.href = 'goals.html';
+                // 🛠️ FIX: Save the session credentials right here!
+                // (Matches your backend token property names, e.g., data.access_token or data.token)
+                if (data.access_token) {
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('refresh_token', data.refresh_token);
+                } else if (data.token) {
+                    // Just in case your backend payload sets it to 'token' instead of 'access_token'
+                    localStorage.setItem('access_token', data.token);
+                }
+
+                // Clean mobile redirect
+                window.location.replace('goals.html');
             } else {
-                alert('Signup failed');
+                alert(data.error || 'Signup failed');
             }
 
         } catch (err) {
