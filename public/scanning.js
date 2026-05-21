@@ -104,13 +104,14 @@ async function sendToAPI(base64Image, dataURL, mimeType) {
   }
 
   try {
-    const response = await fetch('http://127.0.0.1:5000/classify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token   // ← only change from original
-      },
-      body: JSON.stringify({ image: base64Image, mime_type: mimeType })
+    // Change 'localhost:5000' to use the dynamic hostname
+    const response = await fetch(`http://${window.location.hostname}:5000/classify`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ image: base64Image, mime_type: "image/jpeg" })
     });
 
     if (!response.ok) {

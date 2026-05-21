@@ -596,6 +596,7 @@ body {
 /* Container Spacing */
 .achievements-container {
     padding: 15px;
+    height: 750px;
     background: #fdfdfd;
 }
  

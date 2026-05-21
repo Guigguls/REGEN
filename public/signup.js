@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
 
         try {
-            const res = await fetch('http://localhost:5001/api/signup', {
+            // Dynamic fix so signup works on your phone and other devices
+            const res = await fetch(`http://${window.location.hostname}:5001/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -30,13 +30,13 @@ async function fetchStats(range = 'weekly') {
         }
 
         // Make the request to your Flask API, attaching your real access token cleanly
-        const response = await fetch(`http://localhost:5000/stats?range=${range}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`, // ← Beautiful, matches Flask expectations
-                'Content-Type': 'application/json'
-            }
-        });
+        const response = await fetch(`http://${window.location.hostname}:5000/stats?range=${range}`, {
+          method: 'GET',
+          headers: {
+              'Authorization': `Bearer ${token}`, 
+              'Content-Type': 'application/json'
+          }
+      });
 
         if (response.status === 401) {
             console.error("❌ Flask server rejected token with 401: Unauthorized");

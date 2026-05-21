@@ -12,14 +12,14 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Gemini client
-client = genai.Client(api_key="AIzaSyDYTzylNGK1FJHawTqa7cokN56q52jq9C4")
+client = genai.Client(api_key="INSERT_GEMINI_API_KEY")
 
 # Supabase config — REST API approach (no supabase package needed)
-SUPABASE_URL = "INSERT_SUPABASE_URL_HERE"
+SUPABASE_URL = "INSERT_YOUR_SUPABASE_URL"  # e.g. https://xyzcompany.supabase.co
 
 # 🔑 Credentials split setup to bypass Row-Level Security blocks
-SUPABASE_PUBLIC_ANON_KEY = "INSERT_PUBLIC_ANON_KEY_HERE"
-SUPABASE_SERVICE_KEY = "INSERT_SERVICE_KEY_HERE"
+SUPABASE_PUBLIC_ANON_KEY = "INSERT_YOUR_PUBLIC_ANON_KEY"  # e.g. ey
+SUPABASE_SERVICE_KEY = "INSERT_YOUR_SERVICE_ROLE_KEY"  # e.g. eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 # 🛡️ Database communication headers use the Service Role key to bypass RLS locks natively
 SUPABASE_HEADERS = {

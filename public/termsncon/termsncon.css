@@ -1,3 +1,4 @@
+
 .termsncon-container {
   padding: 1rem;
   flex: 1;
@@ -88,7 +89,7 @@
 }
 
 .tab.active {
-  color: #4CA771; /* blue active text */
+  color: #4CA771;
 }
 
 .tab.active::after {
@@ -100,7 +101,7 @@
   height: 3px;
   background-color: #4CA771; 
 }
-/* Content */
+
 .tab-content {
   display: none;
 }

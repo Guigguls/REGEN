@@ -27,6 +27,7 @@ app.get("/", (req, res) => {
   res.send("REGEN backend running 🚀");
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 REGEN running on http://localhost:${PORT}`);
+// CHANGE THIS: Pass '0.0.0.0' right after the PORT variable
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 REGEN running on all interfaces at port: ${PORT}`);
 });
