@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Plastic Bottle Planet",
+    "difficulty": "Easy",
+    "materials": ["Soil", "Seed", "2L Plastic Bottle"],
+    "description": "Transform empty bottles into cute hanging planters.",
+    "image": "assets/reuse-bottle.png"
+  },
+  {
+    "name": "Tin Can Lantern",
+    "difficulty": "Medium",
+    "materials": ["Tin Can", "Candle", "Hammer/Nail"],
+    "description": "Punch holes in tin cans to create decorative lanterns.",
+    "image": "assets/reuse-can.png"
+  },
+  {
+    "name": "Jar Herb Garden",
+    "difficulty": "Easy",
+    "materials": ["Glass Jar", "Soil", "Herb Seeds"],
+    "description": "Reuse jars to grow herbs on your windowsill.",
+    "image": "assets/reuse-jar.png"
+  }
+]

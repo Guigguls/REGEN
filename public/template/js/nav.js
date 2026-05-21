@@ -47,3 +47,27 @@ overlay.addEventListener('click', () => {
   sidebar.classList.remove('active');
   overlay.classList.remove('active');
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("assets/data/reuseIdeas.json")
+    .then(res => res.json())
+    .then(data => {
+      function showRandomIdea() {
+        const randomIndex = Math.floor(Math.random() * data.length);
+        const idea = data[randomIndex];
+
+        document.querySelector(".reuse-name").textContent = idea.name;
+        document.querySelector(".reuse-badge").textContent = idea.difficulty;
+        document.querySelector(".materials-list").innerHTML =
+          idea.materials.map(m => `<span class="material-bubble">${m}</span>`).join("");
+        document.querySelector(".reuse-description").textContent = idea.description;
+        document.querySelector(".reuse-image").src = idea.image;
+      }
+
+      // show one on load
+      showRandomIdea();
+
+      // auto shuffle every 10s
+      setInterval(showRandomIdea, 10000);
+    });
+});
