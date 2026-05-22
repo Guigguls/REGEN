@@ -70,4 +70,39 @@ document.addEventListener("DOMContentLoaded", () => {
       // auto shuffle every 10s
       setInterval(showRandomIdea, 10000);
     });
+
 });
+
+const HOME_BUDGETS = { weekly: 10.0 };
+const homeToken = localStorage.getItem('access_token');
+
+async function fetchHomeStats() {
+  try {
+    if (!homeToken) return null;
+    const response = await fetch(`http://${window.location.hostname}:5000/stats?range=weekly`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${homeToken}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (err) {
+    console.error("Homepage stats fetch failed:", err);
+    return null;
+  }
+}
+
+async function updateHomepage() {
+  const stats = await fetchHomeStats();
+  const budget = HOME_BUDGETS.weekly;
+  const generated = (stats && typeof stats.total_carbon_generated === 'number') ? stats.total_carbon_generated : 0;
+  const budgetUsedPct = budget > 0 ? Math.min(Math.round((generated / budget) * 100), 100) : 0;
+  const budgetLeftPct = Math.max(100 - budgetUsedPct, 0);
+
+  document.getElementById('home-display-pct').innerText = budgetLeftPct + '%';
+}
+
+document.addEventListener("DOMContentLoaded", updateHomepage);
+
