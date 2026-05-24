@@ -27,7 +27,47 @@ app.get("/", (req, res) => {
   res.send("REGEN backend running 🚀");
 });
 
-// CHANGE THIS: Pass '0.0.0.0' right after the PORT variable
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 REGEN running on all interfaces at port: ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`🚀 REGEN running on http://localhost:${PORT}`);
+});
+
+const supabase = require("./supabase");
+
+app.get("/api/profile", async (req, res) => {
+
+  const email = req.query.email;
+
+  if (!email) {
+    return res.status(400).json({
+      error: "Email is required"
+    });
+  }
+
+  const { data, error } = await supabase
+    .from("users")
+    .select("username, email")
+    .eq("email", email)
+    .single();
+
+  if (error) {
+    console.log("SUPABASE ERROR:", error);
+
+    return res.status(500).json({
+      error: error.message
+    });
+  }
+
+  res.json({
+    success: true,
+    user: data
+  });
+});
+
+
+app.get("/", (req, res) => {
+  res.send("REGEN backend running 🚀");
+});
+
+app.listen(PORT, () => {
+  console.log(`🚀 REGEN running on http://localhost:${PORT}`);
 });
