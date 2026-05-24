@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="overallProfile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,25 +14,32 @@
 <body>
     <div class="profile-container">
         <div class="profile-header">
-            <button class="back-btn" onclick="window.history.back()">‹</button>
+            <button class="back-btn" onclick="window.location.href='template/home.html'">
+            <i class="fa-solid fa-arrow-left"></i>
+            </button>
             <h1 class="header-title">My Profile</h1>
+        </div>
+
+        <!-- Image Preview Modal -->
+        <div class="image-modal" id="imageModal">
+            <span class="close-modal">&times;</span>
+            <img class="modal-content" id="modalImage">
         </div>
 
         <div class="profile-info-section">
             <!-- Avatar centered at top -->
             <div class="profile-avatar">
                 <input type="file" id="profileUpload" accept="image/*" hidden>
-                <div class="avatar-circle" onclick="document.getElementById('profileUpload').click()">
+                <div class="avatar-circle">
                     <img id="profileImage" src="" alt="" style="display:none;">
                     <div class="avatar-placeholder" id="avatarPlaceholder"></div>    
                 </div>
-                <div class="edit-avatar-icon">✎</div>
             </div>
 
             <!-- Profile Details centered -->
             <div class="profile-details">
-                <h2 class="profile-name">Eka Gamay</h2>
-                <p class="profile-email">erikasmol@gmail.com</p>
+                <h2 class="profile-name" id="profileName"></h2>
+                <p class="profile-email" id="profileEmail"></p>
             </div>
 
             <!-- Rank and Points Section -->
@@ -49,17 +57,17 @@
             <!-- Info Stats Section -->
             <div class="info-stats-section">
                 <div class="info-stat-card">
-                    <div class="info-stat-icon">🔥</div>
+                    <i class="fa-solid fa-fire"></i>
                     <div class="info-stat-value">5</div>
                     <div class="info-stat-label">Day Streak</div>
                 </div>
                 <div class="info-stat-card">
-                    <div class="info-stat-icon">🌱</div>
+                    <i class="fa-solid fa-leaf"></i>
                     <div class="info-stat-value">64%</div>
                     <div class="info-stat-label">Carbon Budget</div>
                 </div>
                 <div class="info-stat-card">
-                    <div class="info-stat-icon">⭐</div>
+                    <i class="fa-solid fa-star"></i>
                     <div class="info-stat-value">100</div>
                     <div class="info-stat-label">Points</div>
                 </div>
@@ -87,28 +95,28 @@
                 <h3 class="section-title">My Goals</h3>
                 <div class="goals-grid">
                     <div class="goal-card">
-                        <div class="goal-icon">♻️</div>
+                        <span class="emoji"> <img src="segregatewaste.png" alt="Segregate Waste" /></span>
                         <div class="goal-label">Segregate Waste</div>
                     </div>
                     <div class="goal-card">
-                        <div class="goal-icon">📢</div>
+                        <span class="emoji"> <img src="increaseawareness.png" alt="Increase Awareness" /></span>
                         <div class="goal-label">Increase Awareness</div>
                     </div>
                     <div class="goal-card">
-                        <div class="goal-icon">📊</div>
+                        <span class="emoji"> <img src="trackimpact.png" alt="Track Impact" /></span>
                         <div class="goal-label">Track Impact</div>
                     </div>
                     <div class="goal-card">
-                        <div class="goal-icon">🌿</div>
+                        <span class="emoji"> <img src="supportrecycling.png" alt="Support Recycling" /></span>
                         <div class="goal-label">Support Recycling</div>
                     </div>
                     <div class="goal-card">
-                        <div class="goal-icon">🧹</div>
+                        <span class="emoji"> <img src="spacesclean.png" alt="Keep Clean" /></span>
                         <div class="goal-label">Keep Clean</div>
                     </div>
                     <div class="goal-card">
-                        <div class="goal-icon">🚮</div>
-                        <div class="goal-label">Proper Disposal</div>
+                        <span class="emoji"> <img src="improperdisposal.png" alt="Proper Disposal" /></span>
+                        <div class="goal-label">Reduce Improper Disposal</div>
                     </div>
                 </div>
             </div>
@@ -134,6 +142,6 @@
                 <span class="menu-arrow">›</span>
             </a>
         </div>
-        <script  src="changeProfile.js"></script>
+        <script type="module" src="changeProfile.js"></script>
     </body>
     </html>
