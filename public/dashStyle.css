@@ -362,7 +362,7 @@ body {
  
 .dashboard-inner-container {
     position: relative;
-    height: 750px;
+    height: 690px;
     z-index: 1;
     padding: 20px;
     padding-bottom: 20px;
@@ -535,17 +535,25 @@ body {
 }
  
 /* Horizontal Bars */
+/* --- UPDATED FOOTPRINT GRID & CARDS --- */
 .footprint-grid-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
     margin-top: 15px;
+    width: 100%;             /* Ensures container takes up the full width available */
+    box-sizing: border-box;
 }
- 
+
 .footprint-stat-card {
     background: #f1f8f1;
     border-radius: 20px;
-    padding: 15px;
+    padding: 12px;                  /* Marginally decreased padding from 15px to give content more room */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    min-width: 0;                   /* Crucial: lets grid items scale down smoothly */
 }
  
 .bar-background-track {
@@ -567,10 +575,12 @@ body {
 /* Container for the % and kg text */
 .card-data-summary {
     display: flex;
-    flex-direction: row; /* Forces horizontal alignment */
-    align-items: baseline; /* Aligns the bottom of the different sized fonts */
-    gap: 8px; /* Adds a small space between the % and the kg */
+    flex-direction: row; 
+    align-items: baseline; 
+    gap: 4px;                       /* Reduced from 8px to save precious horizontal space */
     margin-top: 5px;
+    flex-wrap: wrap;                /* Enables numbers to split lines safely instead of bleeding out */
+    overflow: hidden;
 }
  
 /* Ensure these spans don't try to take up full width */
@@ -582,15 +592,17 @@ body {
  
 /* Optional: Adjust font sizes to look balanced on one line */
 .summary-pct-large {
-    font-size: 1.5rem;
+    font-size: 1.3rem;              /* Balanced down slightly from 1.5rem so labels fit effortlessly */
     font-weight: 900;
     color: #063b31;
+    display: inline-block;
 }
  
 .summary-kg-small {
-    font-size: 0.85rem;
+    font-size: 0.8rem;              /* Balanced down slightly from 0.85rem */
     font-weight: 600;
     color: #52ab78;
+    display: inline-block;
 }
  
 /* Container Spacing */
