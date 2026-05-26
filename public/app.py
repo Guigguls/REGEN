@@ -12,14 +12,14 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Gemini client
-client = genai.Client(api_key="AIzaSyCeZvM-2dU6N5U0YRWfd8tEtODHVSsGTRs")  # e.g. "AIzaSyDYTzylNGK1FJHawTqa7cokN56q52jq9C4"
+client = genai.Client(api_key="REPLACE_WITH_GEMINI_API_KEY")  # e.g. "AIzaSyDYTzylNGK1FJHawTqa7cokN56q52jq9C4"
 
 # Supabase config — REST API approach (no supabase package needed)
-SUPABASE_URL = "https://zgbqvtfoaoeejlhktfuj.supabase.co"  # e.g. https://xyzcompany.supabase.co
+SUPABASE_URL = "REPLACE_WITH_SUPABASE_URL"  # e.g. https://xyzcompany.supabase.co
 
 # 🔑 Credentials split setup to bypass Row-Level Security blocks
-SUPABASE_PUBLIC_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYnF2dGZvYW9lZWpsaGt0ZnVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxODYxMzcsImV4cCI6MjA5NDc2MjEzN30.SalxBq3JVQPTAcu0FeOgjXoAjE5X1H_jXpcCx6NAtWc"  # e.g. ey
-SUPABASE_SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpnYnF2dGZvYW9lZWpsaGt0ZnVqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTE4NjEzNywiZXhwIjoyMDk0NzYyMTM3fQ.txY4hblKCoVqlBMyhJWTYKyu6pEhMQYip70Irt6Jz1A"  # e.g. eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+SUPABASE_PUBLIC_ANON_KEY = "REPLACE_WITH_SUPABASE_PUBLIC_ANON_KEY"  # e.g. ey
+SUPABASE_SERVICE_KEY = "REPLACE_WITH_SUPABASE_SERVICE_KEY"  # e.g. eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 # 🛡️ Database communication headers use the Service Role key to bypass RLS locks natively
 SUPABASE_HEADERS = {
