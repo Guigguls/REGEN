@@ -1,67 +1,279 @@
 const express = require("express");
 const router = express.Router();
+
 const supabase = require("../supabase");
 
 router.post("/", async (req, res) => {
+
   console.log("🔥 SIGNUP HIT");
 
-  const { username, email, password, termsAccepted } = req.body;
 
-  if (!termsAccepted) {
-    return res.json({
-      success: false,
-      error: "You must accept Terms & Conditions"
-    });
-  }
-
-  // Create user in Supabase Auth
-  const { data, error } = await supabase.auth.signUp({
+  let {
+    username,
     email,
     password,
-    options: {
-      data: { username } // saves username in auth metadata
-    }
-  });
+    termsAccepted
+  } = req.body;
 
-  console.log("Supabase Auth Data:", data);
 
-  if (error || !data.user) {
+  /* =========================================================
+     INPUT CLEANING
+  ========================================================= */
+
+  if (username) {
+    username = username.trim();
+  }
+
+  if (email) {
+    email = email.trim().toLowerCase();
+  }
+
+
+  /* =========================================================
+     TERMS VALIDATION
+  ========================================================= */
+
+  if (!termsAccepted) {
+
     return res.json({
       success: false,
-      error: error?.message || "Signup failed"
+      error: "You must accept the Terms & Conditions."
     });
   }
 
-  // Also insert into your users table to keep it in sync
-  const { error: tableError } = await supabase
-    .from("users")
-    .insert([{
-      id: data.user.id,  // use same ID as auth so they stay linked
-      username,
-      email
-      // do NOT store password here
-    }]);
 
-  if (tableError) {
-    console.error("Users table insert error:", tableError.message);
-    // Don't block signup if table insert fails
+  /* =========================================================
+     NAME VALIDATION
+  ========================================================= */
+
+  // Letters and spaces only
+  const nameRegex = /^[A-Za-z\s]+$/;
+
+  if (!username) {
+
+    return res.json({
+      success: false,
+      error: "Please enter your name."
+    });
   }
 
-  // 🚀 THE FIX: Extract the access and refresh tokens from the registration response
-  const accessToken = data.session?.access_token || null;
-  const refreshToken = data.session?.refresh_token || null;
+  if (username.length < 2) {
 
-  res.json({
-    success: true,
-    message: "Account created successfully",
-    access_token: accessToken,   // ⚡ Sent down to frontend local storage!
-    refresh_token: refreshToken, // ⚡ Sent down to frontend local storage!
-    user: {
-      id: data.user.id,
-      email: data.user.email,
-      username
+    return res.json({
+      success: false,
+      error: "Name must be at least 2 letters."
+    });
+  }
+
+  if (username.length > 50) {
+
+    return res.json({
+      success: false,
+      error: "Name is too long."
+    });
+  }
+
+  if (!nameRegex.test(username)) {
+
+    return res.json({
+      success: false,
+      error: "Name must contain letters only."
+    });
+  }
+
+
+  /* =========================================================
+     EMAIL VALIDATION
+  ========================================================= */
+
+  // Accepts:
+  // gmail.com
+  // yahoo.net
+  // school.edu
+  // etc.
+
+  const emailRegex =
+    /^[^\s@]+@[^\s@]+\.(com|net|org|edu|gov|ph|co|io)$/i;
+
+  if (!email || !emailRegex.test(email)) {
+
+    return res.json({
+      success: false,
+      error: "Please enter a valid email address."
+    });
+  }
+
+
+  /* =========================================================
+     PASSWORD VALIDATION
+  ========================================================= */
+
+  // Requirements:
+  // 8-20 chars
+  // uppercase
+  // lowercase
+  // number
+  // no spaces
+
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*\s).{8,20}$/;
+
+  if (!passwordRegex.test(password)) {
+
+    return res.json({
+      success: false,
+      error:
+        "Password must be 8-20 characters and include uppercase, lowercase, and a number."
+    });
+  }
+
+
+  /* =========================================================
+     CHECK IF EMAIL ALREADY EXISTS
+  ========================================================= */
+
+  try {
+
+    const { data: existingUser } =
+      await supabase
+        .from("users")
+        .select("email")
+        .eq("email", email)
+        .maybeSingle();
+
+    if (existingUser) {
+
+      return res.json({
+        success: false,
+        error: "Email is already registered."
+      });
     }
-  });
+
+
+    /* =========================================================
+       CREATE USER IN SUPABASE AUTH
+    ========================================================= */
+
+    const {
+      data,
+      error
+    } = await supabase.auth.signUp({
+
+      email,
+      password,
+
+      options: {
+        data: {
+          username
+        }
+      }
+    });
+
+
+    if (error || !data.user) {
+
+      console.log(
+        "❌ Supabase signup error:",
+        error?.message
+      );
+
+      return res.json({
+        success: false,
+        error:
+          error?.message ||
+          "Signup failed"
+      });
+    }
+
+
+    /* =========================================================
+       INSERT INTO USERS TABLE
+    ========================================================= */
+
+    const {
+      error: tableError
+    } = await supabase
+      .from("users")
+      .insert([
+        {
+          id: data.user.id,
+          username,
+          email
+        }
+      ]);
+
+
+    if (tableError) {
+
+      console.error(
+        "❌ Users table insert error:",
+        tableError.message
+      );
+    }
+
+
+    /* =========================================================
+       TOKENS
+    ========================================================= */
+
+    const accessToken =
+      data.session?.access_token || null;
+
+    const refreshToken =
+      data.session?.refresh_token || null;
+
+
+    console.log(
+      "✅ Account created:",
+      data.user.email
+    );
+
+
+    /* =========================================================
+       SUCCESS RESPONSE
+    ========================================================= */
+
+    res.json({
+
+      success: true,
+
+      message:
+        "Account created successfully",
+
+      access_token: accessToken,
+
+      refresh_token: refreshToken,
+
+      user: {
+        id: data.user.id,
+        email: data.user.email,
+        username
+      }
+    });
+
+  }
+
+
+  /* =========================================================
+     SERVER ERROR
+  ========================================================= */
+
+  catch (err) {
+
+    console.error(
+      "❌ Signup system error:",
+      err
+    );
+
+    res.json({
+
+      success: false,
+
+      error:
+        "Internal server error during registration."
+    });
+  }
+
 });
 
 module.exports = router;

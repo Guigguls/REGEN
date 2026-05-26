@@ -6,10 +6,41 @@ const supabase = require("../supabase");
 router.post("/", async (req, res) => {
   console.log("🔑 SIGNIN HIT");
 
-  const { email, password } = req.body;
+  let { email, password } = req.body;
+
+  // 1. Clean up the email input (remove accidental spaces at the beginning or end)
+  if (email) {
+    email = email.trim();
+  }
 
   console.log("📧 Attempting login for:", email);
 
+  /* =========================================================
+     📧 STRICT EMAIL VALIDATION CHECK
+     ========================================================= */
+  // Checks if input is empty, has an @, a domain, and a valid extension (.com, .org, etc.)
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!email || !emailRegex.test(email)) {
+    console.log("❌ Validation failed: Invalid email format provided ->", email);
+    return res.json({
+      success: false,
+      error: "Please enter a valid email address (e.g., user@mail.com)."
+    });
+  }
+
+  // Double check that password isn't empty either
+  if (!password || password.trim() === "") {
+    console.log("❌ Validation failed: Missing password field.");
+    return res.json({
+      success: false,
+      error: "Password field cannot be empty."
+    });
+  }
+
+  /* =========================================================
+     PROCEED TO SUPABASE AUTHENTICATION
+     ========================================================= */
   try {
     // Authenticate existing user with Supabase
     const { data, error } = await supabase.auth.signInWithPassword({
