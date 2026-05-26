@@ -16,8 +16,9 @@ const signupRoute = require("./routes/signup");
 app.use("/api/signup", signupRoute);
 const signinRoute = require("./routes/signin");
 app.use("/api/signin", signinRoute);
-const changeprofileRoute = require("./routes/changeProfile");
-app.use("/api/changeprofile", changeprofileRoute);
+const profileRoute = require("./routes/profile");
+app.use("/api/profile", profileRoute);
+
 app.get("/", (req, res) => {
 res.send("REGEN backend running 🚀");
 });
