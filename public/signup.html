@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create Account - REGEN</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 </head>
 
 <body>
@@ -18,73 +27,159 @@
     <div class="hero-image-section"></div>
 
     <div class="content-section">
+
         <h1 class="form-title">Create Account</h1>
 
         <form id="signupForm" class="space-y-4">
 
-            <!-- Name -->
+            <!-- NAME -->
             <div class="input-group">
                 <label>Name</label>
+
                 <div class="input-wrapper">
-                    <span class="icon"><i class="fas fa-user"></i></span>
-                    <input type="text" id="username" placeholder="First name" required>
+                    <span class="icon">
+                        <i class="fas fa-user"></i>
+                    </span>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter your full name"
+                        minlength="2"
+                        maxlength="50"
+                        required
+                    />
                 </div>
             </div>
 
-            <!-- Email -->
+            <!-- EMAIL -->
             <div class="input-group">
                 <label>Email</label>
+
                 <div class="input-wrapper">
-                    <span class="icon"><i class="fas fa-envelope"></i></span>
-                    <input type="email" id="email" placeholder="example@email.com" required>
+                    <span class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@gmail.com"
+                        autocomplete="email"
+                        required
+                    />
                 </div>
             </div>
 
-            <!-- Password -->
+            <!-- PASSWORD -->
             <div class="input-group">
                 <label>Password</label>
+
                 <div class="input-wrapper">
-                    <input type="password" id="password" placeholder="Enter your password" required>
-                    <span class="eye-icon" id="togglePassword" style="cursor:pointer">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        minlength="8"
+                        maxlength="20"
+                        required
+                    />
+
+                    <span
+                        class="eye-icon"
+                        id="togglePassword"
+                        style="cursor:pointer"
+                    >
                         <i class="fas fa-eye"></i>
                     </span>
                 </div>
             </div>
 
-            <!-- Password Checklist -->
+            <!-- PASSWORD CHECKLIST -->
             <div class="validation-list">
-                <p class="invalid">✕ 8-20 characters</p>
-                <p class="invalid">✕ At least 1 uppercase letter</p>
-                <p class="invalid">✕ At least 1 number</p>
-                <p class="valid">✓ No spaces</p>
+
+                <p class="invalid">
+                    ✕ 8-20 characters
+                </p>
+
+                <p class="invalid">
+                    ✕ At least 1 uppercase letter
+                </p>
+
+                <p class="invalid">
+                    ✕ At least 1 lowercase letter
+                </p>
+
+                <p class="invalid">
+                    ✕ At least 1 number
+                </p>
+
+                <p class="valid">
+                    ✓ No spaces
+                </p>
+
             </div>
 
-            <!-- Confirm Password -->
+            <!-- CONFIRM PASSWORD -->
             <div class="input-group">
                 <label>Confirm Password</label>
+
                 <div class="input-wrapper">
-                    <input type="password" id="confirmPassword" placeholder="Confirm password" required>
-                    <span class="eye-icon" id="toggleConfirmPassword" style="cursor:pointer">
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                        required
+                    />
+
+                    <span
+                        class="eye-icon"
+                        id="toggleConfirmPassword"
+                        style="cursor:pointer"
+                    >
                         <i class="fas fa-eye"></i>
                     </span>
+
                 </div>
             </div>
 
-            <!-- Terms -->
+            <!-- TERMS -->
             <div class="terms-group">
-                <input type="checkbox" id="terms" required>
+
+                <input
+                    type="checkbox"
+                    id="terms"
+                    required
+                />
+
                 <label for="terms">
-                    Agree with <a href="termsncon/termsncon.html">Terms & Conditions</a>
+                    Agree with
+                    <a href="termsncon/termsncon.html">
+                        Terms & Conditions
+                    </a>
                 </label>
+
             </div>
 
-            <button type="submit" class="login-btn">Sign up</button>
+            <!-- BUTTON -->
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Sign Up
+            </button>
 
         </form>
 
+        <!-- FOOTER -->
         <p class="signup-footer">
-            Already have an account? <a href="signin.html">Sign in</a>
+            Already have an account?
+            <a href="signin.html">
+                Sign in
+            </a>
         </p>
+
     </div>
 
 </div>

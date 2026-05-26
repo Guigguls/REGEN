@@ -3,7 +3,7 @@ from flask_cors import CORS
 from google import genai
 from google.genai import types
 from supabase import create_client    # ← make sure this line exists
-import requests as req               
+import requests as req                
 import base64
 import json
 import re
@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Gemini client
-client = genai.Client(api_key="AIzaSyDIo2YrqEppJgtnzQr77bQP8AyLR4s4xWk")
+client = genai.Client(api_key="AIzaSyCeZvM-2dU6N5U0YRWfd8tEtODHVSsGTRs")  # e.g. "AIzaSyDYTzylNGK1FJHawTqa7cokN56q52jq9C4"
 
 # Supabase config — REST API approach (no supabase package needed)
 SUPABASE_URL = "https://zgbqvtfoaoeejlhktfuj.supabase.co"  # e.g. https://xyzcompany.supabase.co
