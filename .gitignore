@@ -3,7 +3,6 @@ node_modules/
 .DS_Store
 dist/
 build/
-app.py
 *.pem
 *.crt
 *.key
