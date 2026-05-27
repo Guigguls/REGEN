@@ -4,3 +4,10 @@ node_modules/
 dist/
 build/
 app.py
+*.pem
+*.crt
+*.key
+*.mobileconfig
+
+__pycache__/
+*.pyc
