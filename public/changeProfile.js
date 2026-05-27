@@ -23,8 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (nameEl && emailEl) {
         try {
             // Automatically detects if you're accessing via 'localhost' or a Wi-Fi IP address
-            const currentHostname = window.location.hostname;
-            const backendUrl = `http://${currentHostname}:5001/api/profile?email=${user.email}`;
+            const backendUrl = `/api/profile?email=${user.email}`;
 
             console.log("Fetching profile from:", backendUrl);
 

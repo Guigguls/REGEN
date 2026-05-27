@@ -268,9 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
 
-            const res = await fetch(
-                `http://${window.location.hostname}:5001/api/signup`,
-                {
+            const res = await fetch(`/api/signup`, {
                     method: 'POST',
 
                     headers: {

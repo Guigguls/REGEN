@@ -79,7 +79,7 @@ const homeToken = localStorage.getItem('access_token');
 async function fetchHomeStats() {
   try {
     if (!homeToken) return null;
-    const response = await fetch(`http://${window.location.hostname}:5000/stats?range=weekly`, {
+    const response = await fetch(`/api/stats?range=weekly`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${homeToken}`,

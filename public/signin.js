@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
 
         try {
-            const res = await fetch(`http://${window.location.hostname}:5001/api/signin`, {
+            const res = await fetch(`/api/signin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -30,7 +30,7 @@ async function fetchStats(range = 'weekly') {
         }
 
         // Make the request to your Flask API, attaching your real access token cleanly
-        const response = await fetch(`http://${window.location.hostname}:5000/stats?range=${range}`, {
+        const response = await fetch(`/api/stats?range=${range}`, {
           method: 'GET',
           headers: {
               'Authorization': `Bearer ${token}`, 

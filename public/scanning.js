@@ -129,7 +129,8 @@ async function sendToAPI(base64Image, dataURL, mimeType) {
   let success = false; 
 
   try {
-    const response = await fetch(`http://${window.location.hostname}:5000/classify`, {
+    // This sends the image to your secure Node server
+    const response = await fetch(`/api/classify`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
