@@ -11,6 +11,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
+
+<script>
+    function logout() {
+        localStorage.removeItem("profileImage");
+        localStorage.removeItem("profileImageOwner");
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("refresh_token");
+        localStorage.removeItem("user");
+        window.location.href = "welcome.html";
+    }
+</script>
+
 <body>
     <div class="profile-container">
         <div class="profile-header">
@@ -19,13 +31,13 @@
             </button>
             <h1 class="header-title">My Profile</h1>
         </div>
-
+ 
         <!-- Image Preview Modal -->
         <div class="image-modal" id="imageModal">
             <span class="close-modal">&times;</span>
             <img class="modal-content" id="modalImage">
         </div>
-
+ 
         <div class="profile-info-section">
             <!-- Avatar centered at top -->
             <div class="profile-avatar">
@@ -35,52 +47,47 @@
                     <div class="avatar-placeholder" id="avatarPlaceholder"></div>    
                 </div>
             </div>
-
+ 
             <!-- Profile Details centered -->
             <div class="profile-details">
                 <h2 class="profile-name" id="profileName"></h2>
                 <p class="profile-email" id="profileEmail"></p>
             </div>
-
-            <!-- Rank and Points Section -->
+ 
             <div class="rank-points-section">
-                <div class="rank-item">
+                <div class="rank-item" style="width:100%; text-align:center;">
                     <span class="rank-label">Your Rank</span>
-                    <span class="rank-value">#1</span>
-                </div>
-                <div class="points-item">
-                    <span class="points-label">Your Points</span>
-                    <span class="points-value">2,450</span>
+                    <span class="rank-value" id="rankValue">#—</span>
                 </div>
             </div>
-
+ 
             <!-- Info Stats Section -->
             <div class="info-stats-section">
                 <div class="info-stat-card">
                     <i class="fa-solid fa-fire"></i>
-                    <div class="info-stat-value">5</div>
+                    <div class="info-stat-value" id="streakValue">0</div>
                     <div class="info-stat-label">Day Streak</div>
                 </div>
                 <div class="info-stat-card">
                     <i class="fa-solid fa-leaf"></i>
-                    <div class="info-stat-value">64%</div>
+                    <div class="info-stat-value" id="carbonBudgetValue">0%</div>
                     <div class="info-stat-label">Carbon Budget</div>
                 </div>
                 <div class="info-stat-card">
                     <i class="fa-solid fa-star"></i>
-                    <div class="info-stat-value">100</div>
+                    <div class="info-stat-value" id="profilePoints">0</div>
                     <div class="info-stat-label">Points</div>
                 </div>
             </div>
-
+ 
             <button class="edit-profile-btn"
                 onclick="window.location.href='editProfile.html'">
                 Edit profile
             </button>
         </div>
-
+ 
         <div class="profile-menu-section">
-            
+           
             <!-- About Me Section -->
             <div class="about-section">
                 <h3 class="section-title">About Me</h3>
@@ -89,7 +96,7 @@
                     <span class="read-more">Read More</span>
                 </p>
             </div>
-
+ 
             <!-- Goals Section -->
             <div class="goals-section">
                 <h3 class="section-title">My Goals</h3>
@@ -104,7 +111,7 @@
                     </div>
                     <div class="goal-card">
                         <span class="emoji"> <img src="trackimpact.png" alt="Track Impact" /></span>
-                        <div class="goal-label">Track Impact</div>
+                        <div class="goal-label">Track your Impact</div>
                     </div>
                     <div class="goal-card">
                         <span class="emoji"> <img src="supportrecycling.png" alt="Support Recycling" /></span>
@@ -112,7 +119,7 @@
                     </div>
                     <div class="goal-card">
                         <span class="emoji"> <img src="spacesclean.png" alt="Keep Clean" /></span>
-                        <div class="goal-label">Keep Clean</div>
+                        <div class="goal-label">Keep Spaces Clean</div>
                     </div>
                     <div class="goal-card">
                         <span class="emoji"> <img src="improperdisposal.png" alt="Proper Disposal" /></span>
@@ -120,21 +127,21 @@
                     </div>
                 </div>
             </div>
-
+ 
             <!-- Interests Section -->
             <div class="interests-section">
                 <h3 class="section-title">Interests</h3>
                 <div class="interests-tags">
-                    <div class="interest-tag">🌱 Sustainability</div>
-                    <div class="interest-tag">♻️ Recycling</div>
-                    <div class="interest-tag">🚴 Eco Transport</div>
-                    <div class="interest-tag">🌳 Climate Action</div>
-                    <div class="interest-tag">💚 Green Living</div>
-                    <div class="interest-tag">🔋 Energy Saving</div>
+                    <div class="interest-tag" data-interest="Sustainability"><i class="fa-solid fa-seedling"></i> Sustainability</div>
+                    <div class="interest-tag" data-interest="Recycling"><i class="fa-solid fa-recycle"></i> Recycling</div>
+                    <div class="interest-tag" data-interest="Eco Transport"><i class="fa-solid fa-person-biking"></i> Eco Transport</div>
+                    <div class="interest-tag" data-interest="Climate Action"><i class="fa-solid fa-tree"></i> Climate Action</div>
+                    <div class="interest-tag" data-interest="Green Living"><i class="fa-solid fa-leaf"></i> Green Living</div>
+                    <div class="interest-tag" data-interest="Energy Saving"><i class="fa-solid fa-bolt"></i> Energy Saving</div>
                 </div>
             </div>
-
-            <a href="welcome.html" class="menu-item logout-item">
+ 
+            <a href="#" onclick="logout()" class="menu-item logout-item">
                 <div class="menu-item-left">
                     <span class="menu-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
                     <span class="menu-label">Log Out</span>
@@ -142,6 +149,6 @@
                 <span class="menu-arrow">›</span>
             </a>
         </div>
-        <script type="module" src="changeProfile.js"></script>
+        <script src="changeProfile.js"></script>
     </body>
     </html>

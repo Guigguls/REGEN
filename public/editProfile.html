@@ -6,130 +6,221 @@
     <title>Edit Profile</title>
     <link rel="stylesheet" href="editStyle.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="profile-container">
+        <!-- HEADER -->
         <div class="profile-header">
-            <button class="back-btn" onclick="window.location.href='profile.html'">‹</button>            
+            <button class="back-btn"
+            onclick="window.location.href='profile.html'">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
             <h1 class="header-title">Edit Profile</h1>
-            <button class="save-btn" onclick="alert('Profile saved!')">Save</button>
         </div>
+        <!-- AVATAR -->
         <div class="profile-avatar-section">
             <div class="profile-avatar">
-               <input type="file" id="profileUpload" accept="image/*" hidden>
+                <input type="file"
+                id="profileUpload"
+                accept="image/*"
+                hidden>
                 <div class="avatar-circle" onclick="document.getElementById('profileUpload').click()">
                     <img id="profileImage" style="display: none;">
-                    <div id="avatarPlaceholder" class="avatar-placeholder"></div>
+                    <div id="avatarPlaceholder"
+                    class="avatar-placeholder"></div>
+ 
                 </div>
                 <div class="edit-avatar-icon">✎</div>
             </div>
         </div>
-
+ 
+        <!-- FORM -->
         <div class="profile-form-section">
-            <h2 class="profile-form-title">Personal Information</h2>
-
+ 
+            <h2 class="profile-form-title">
+                Personal Information
+            </h2>
+ 
             <form>
+ 
+                <!-- NAME -->
                 <div class="profile-input-group">
+ 
                     <label for="name">Name</label>
-                    <input type="text" id="name" class="profile-input" value="Eka Gamay" placeholder="Enter your name">
+ 
+                    <input
+                    type="text"
+                    id="name"
+                    class="profile-input"
+                    placeholder="Enter your name">
+ 
                 </div>
-
+ 
+                <!-- DOB -->
+                <div class="profile-input-group">
+ 
+                    <label for="dob">Date of Birth</label>
+ 
+                    <input
+                    type="date"
+                    id="dob"
+                    class="profile-input">
+ 
+                </div>
+ 
+                <!-- AGE -->
                 <div class="profile-input-group">
                     <label for="age">Age</label>
-                    <input type="number" id="age" class="profile-input" value="" placeholder="Enter your age">
-                </div>
-
-                <div class="profile-input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="profile-input" value="erikasmol@gmail.com" placeholder="Enter your email">
-                </div>
-
-                <div class="profile-input-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" class="profile-input" value="0947 324 7232" placeholder="Enter your phone number">
-                </div>
-
-                <div class="profile-input-group">
-                    <label for="dob">Date of Birth</label>
-                    <input type="text" id="dob" class="profile-input" value="12/16/2007" placeholder="MM/DD/YYYY">
-                </div>
-
+                    <input type="number" id="age" class="profile-input" readonly></div>
+ 
+                <!-- GENDER -->
                 <div class="profile-input-group">
                     <label for="gender">Gender</label>
-                    <select id="gender" class="profile-select">
-                        <option value="female" selected>Female</option>
-                        <option value="male">Male</option>
-                        <option value="other">Other</option>
-                        <option value="prefer-not-to-say">Prefer not to say</option>
+                    <select id="gender"
+                    class="profile-select">
+                        <option value="female" selected> Female</option>
+                        <option value="male">
+                            Male
+                        </option>
+ 
+                        <option value="other">
+                            Other
+                        </option>
+ 
+                        <option value="prefer-not-to-say">
+                            Prefer not to say
+                        </option>
+ 
                     </select>
+ 
                 </div>
-
+ 
                 <div class="section-divider"></div>
-
-                <h2 class="profile-form-title">About Me</h2>
-
+ 
+                <!-- ABOUT -->
+                <h2 class="profile-form-title">
+                    About Me
+                </h2>
+ 
                 <div class="profile-input-group">
+ 
                     <label for="about">Bio</label>
-                    <textarea id="about" class="profile-textarea" placeholder="Tell us about yourself and your sustainability journey...">Passionate about sustainable living and reducing my environmental impact. I believe small actions can make a big difference in creating a greener future for everyone. Join me on this eco-friendly journey! 🌍</textarea>
+ 
+                    <textarea
+                    id="about"
+                    class="profile-textarea"
+                    placeholder="Tell us about yourself and your sustainability journey...">Passionate about sustainable living and reducing my environmental impact. I believe small actions can make a big difference in creating a greener future for everyone. Join me on this eco-friendly journey! 🌍</textarea>
+ 
                 </div>
-
+ 
                 <div class="section-divider"></div>
-
-                <h2 class="profile-form-title">My Goals</h2>
-
+ 
+                <!-- GOALS -->
+                <h2 class="profile-form-title">
+                    My Goals
+                </h2>
+ 
                 <div class="profile-input-group">
-                    <label>Select your goals (choose multiple)</label>
-                    <div class="goals-selection">
-                        <div class="goal-option selected" onclick="this.classList.toggle('selected')">
-                            <div class="goal-option-icon">♻️</div>
-                            <div class="goal-option-label">Segregate Waste</div>
-                        </div>
-                        <div class="goal-option selected" onclick="this.classList.toggle('selected')">
-                            <div class="goal-option-icon">📢</div>
-                            <div class="goal-option-label">Increase Awareness</div>
-                        </div>
-                        <div class="goal-option" onclick="this.classList.toggle('selected')">
-                            <div class="goal-option-icon">📊</div>
-                            <div class="goal-option-label">Track Impact</div>
-                        </div>
-                        <div class="goal-option selected" onclick="this.classList.toggle('selected')">
-                            <div class="goal-option-icon">🌿</div>
-                            <div class="goal-option-label">Support Recycling</div>
+ 
+                    <label>
+                        Select your goals
+                        (choose multiple)
+                    </label>
+                    <div class="goals-grid">
+                        <div class="goal-option"
+                        onclick="this.classList.toggle('selected')">
+                        <span class="emoji"> <img src="segregatewaste.png" alt="Segregate Waste" /></span>
+                            <div class="goal-option-label">
+                                Segregate Waste
+                            </div>
+ 
                         </div>
                         <div class="goal-option" onclick="this.classList.toggle('selected')">
-                            <div class="goal-option-icon">🧹</div>
-                            <div class="goal-option-label">Keep Clean</div>
+                            <span class="emoji"> <img src="increaseawareness.png" alt="Increase Awareness" /></span>
+                            <div class="goal-option-label">
+                                Increase Awareness
+                            </div>
                         </div>
-                        <div class="goal-option selected" onclick="this.classList.toggle('selected')">
-                            <div class="goal-option-icon">🚮</div>
-                            <div class="goal-option-label">Proper Disposal</div>
+ 
+                        <div class="goal-option" onclick="this.classList.toggle('selected')">
+                            <span class="emoji"> <img src="trackimpact.png" alt="Track Impact" /></span>
+                            <div class="goal-option-label">
+                                Track your Impact
+                            </div>
+                        </div>
+ 
+                        <div class="goal-option" onclick="this.classList.toggle('selected')">
+                            <span class="emoji"> <img src="supportrecycling.png" alt="Support Recycling" /></span>
+                            <div class="goal-option-label">
+                                Support Recycling
+                            </div>
+                        </div>
+ 
+                        <div class="goal-option" onclick="this.classList.toggle('selected')">
+                            <span class="emoji"> <img src="spacesclean.png" alt="Keep Clean" /></span>
+                            <div class="goal-option-label">
+                                Keep Spaces Clean
+                            </div>
+                        </div>
+                        <div class="goal-option"
+                        onclick="this.classList.toggle('selected')">
+                            <span class="emoji"> <img src="improperdisposal.png" alt="Proper Disposal" /></span>
+                            <div class="goal-option-label">
+                                Reduce Improper Disposal
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="section-divider"></div>
-
-                <h2 class="profile-form-title">Interests</h2>
-
+                <!-- INTERESTS -->
+                <h2 class="profile-form-title">
+                    Interests
+                </h2>
                 <div class="profile-input-group">
-                    <label>Select your interests</label>
+ 
+                    <label>
+                        Select your interests
+                    </label>
                     <div class="interests-input-section">
-                        <div class="interest-input-tag selected" onclick="this.classList.toggle('selected')">🌱 Sustainability</div>
-                        <div class="interest-input-tag selected" onclick="this.classList.toggle('selected')">♻️ Recycling</div>
-                        <div class="interest-input-tag" onclick="this.classList.toggle('selected')">🚴 Eco Transport</div>
-                        <div class="interest-input-tag selected" onclick="this.classList.toggle('selected')">🌳 Climate Action</div>
-                        <div class="interest-input-tag" onclick="this.classList.toggle('selected')">💚 Green Living</div>
-                        <div class="interest-input-tag selected" onclick="this.classList.toggle('selected')">🔋 Energy Saving</div>
-                        <div class="interest-input-tag" onclick="this.classList.toggle('selected')">🌊 Ocean Conservation</div>
-                        <div class="interest-input-tag" onclick="this.classList.toggle('selected')">🌻 Gardening</div>
+                        <div class="interest-input-tag" data-interest="Sustainability" onclick="this.classList.toggle('selected')">
+                            <i class="fa-solid fa-seedling"></i> Sustainability
+                        </div>
+                        <div class="interest-input-tag" data-interest="Recycling" onclick="this.classList.toggle('selected')">
+                            <i class="fa-solid fa-recycle"></i> Recycling
+                        </div>
+                        <div class="interest-input-tag" data-interest="Eco Transport" onclick="this.classList.toggle('selected')">
+                            <i class="fa-solid fa-person-biking"></i> Eco Transport
+                        </div>
+                        <div class="interest-input-tag" data-interest="Climate Action" onclick="this.classList.toggle('selected')">
+                            <i class="fa-solid fa-tree"></i> Climate Action
+                        </div>
+                        <div class="interest-input-tag" data-interest="Green Living" onclick="this.classList.toggle('selected')">
+                            <i class="fa-solid fa-leaf"></i> Green Living
+                        </div>
+                        <div class="interest-input-tag" data-interest="Energy Saving" onclick="this.classList.toggle('selected')">
+                            <i class="fa-solid fa-bolt"></i> Energy Saving
+                        </div>
+                        <div class="interest-input-tag" data-interest="Ocean Conservation" onclick="this.classList.toggle('selected')">
+                            <i class="fa-solid fa-water"></i> Ocean Conservation
+                        </div>
+                        <div class="interest-input-tag" data-interest="Gardening" onclick="this.classList.toggle('selected')">
+                            <i class="fa-solid fa-seedling"></i> Gardening
+                        </div>
                     </div>
+                </div>
+                <!-- SAVE BUTTON -->
+                <div class="save-section">
+                    <button type="button" class="save-btn-bottom" id="saveProfileBtn">
+                        Save Profile
+                    </button>
                 </div>
             </form>
         </div>
     </div>
-    <script  src="changeProfile.js"></script>
+    <script src="changeProfile.js"></script>
 </body>
 </html>

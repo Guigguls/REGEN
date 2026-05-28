@@ -131,8 +131,58 @@ async function updateDashboard(view) {
 /**
  * Initialize event listeners and baseline dashboard load configuration
  */
+async function loadDashboardProfile() {
+    try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user?.email) return;
+
+        const token = localStorage.getItem("access_token");
+        if (!token) return;
+
+        // Set avatar immediately from localStorage while fetch loads
+        const cachedImage = localStorage.getItem("profileImage");
+        const cachedOwner = localStorage.getItem("profileImageOwner");
+        if (cachedImage && cachedOwner === user.id) {
+            const dashAvatar = document.getElementById("dashAvatar");
+            const navAvatar = document.getElementById("navAvatar");
+            if (dashAvatar) dashAvatar.src = cachedImage;
+            if (navAvatar) navAvatar.src = cachedImage;
+        }
+
+        // Fetch full profile from DB
+        const res = await fetch(`/api/profile?email=${encodeURIComponent(user.email)}`);
+        const data = await res.json();
+
+        if (!data.success) return;
+        const profile = data.user;
+
+        // Set username
+        const nameEl = document.getElementById("dashUsername");
+        if (nameEl) nameEl.textContent = profile.username || "No Username";
+
+        // Set avatar from DB
+        if (profile.avatar_url) {
+            const dashAvatar = document.getElementById("dashAvatar");
+            const navAvatar = document.getElementById("navAvatar");
+            if (dashAvatar) dashAvatar.src = profile.avatar_url;
+            if (navAvatar) navAvatar.src = profile.avatar_url;
+        }
+
+        // Fetch rank
+        const rankRes = await fetch(`/api/leaderboard`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const rankData = await rankRes.json();
+        const rankEl = document.getElementById("dashRank");
+        if (rankEl && rankData.rank) rankEl.textContent = "Rank #" + rankData.rank;
+
+    } catch (err) {
+        console.error("❌ Dashboard profile load error:", err);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Execute baseline execution view
+  loadDashboardProfile();
   updateDashboard('weekly');
 
   // Interactive toggle actions

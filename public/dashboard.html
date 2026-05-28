@@ -24,7 +24,7 @@
       </div>
       <div class="nav-right">
         <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
-          <img src="template/assets/profile.png" alt="Profile" class="profile-icon">
+          <img id="navAvatar" src="template/assets/profile.png" alt="Profile" class="profile-icon">
         </button>
       </div>
     </header>
@@ -68,11 +68,11 @@
  
         <div class="dash-user-floating-card">
           <div class="avatar-circle-box">
-            <img src="template/assets/profile.png" alt="User">
+            <img id="dashAvatar" src="template/assets/profile.png" alt="User">
           </div>
           <div class="user-text-details">
-            <p class="user-display-name">Last Name, First Name</p>
-            <p class="user-rank-status">rank#</p>
+            <p class="user-display-name" id="dashUsername">Username</p>
+            <p class="user-rank-status" id="dashRank">rank#</p>
           </div>
         </div>
  

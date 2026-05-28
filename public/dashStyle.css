@@ -914,3 +914,10 @@ body {
     color: #52ab78;
     font-size: 1.1rem;
 }
+
+#navAvatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}

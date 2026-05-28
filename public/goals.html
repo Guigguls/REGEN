@@ -62,13 +62,35 @@
                 </div>
             </div>
 
-            <button class="login-btn" onclick="window.location.replace('template/home.html')">Continue</button>
+            <button class="login-btn" onclick="saveGoals()">Continue</button>
         </div>
     </div>
 
     <script>
         function toggleGoal(element) {
             element.classList.toggle('selected');
+        }
+
+        async function saveGoals() {
+            const selected = [...document.querySelectorAll('.goal-item.selected')]
+                .map(el => el.querySelector('p').textContent.trim());
+
+            const token = localStorage.getItem("access_token");
+            if (!token || selected.length === 0) {
+                window.location.replace('template/home.html');
+                return;
+            }
+
+            await fetch('/api/goals', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ goals: selected })
+            });
+
+            window.location.replace('template/home.html');
         }
     </script>
 </body>
