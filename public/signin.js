@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
 
         try {
-            const res = await fetch(`/api/signin`, {
+            const BASE_URL = window.location.hostname === 'localhost'
+            ? 'https://localhost:5000'
+            : `https://${window.location.hostname}:5000`;
+
+            const res = await fetch(`${BASE_URL}/signin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -41,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Save token so Flask API calls work
                 localStorage.setItem("access_token", data.session.access_token);
+                localStorage.setItem("refresh_token", data.session.refresh_token);  // ← confirm this is there
                 localStorage.setItem("user_id", data.user.id);
 
                 window.location.href = "goals.html";

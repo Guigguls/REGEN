@@ -14,24 +14,21 @@
 
 <div class="mobile-container">
 
-  <!-- TOP BAR -->
   <header class="topbar">
-    <div class="nav-left">
-      <button class="nav-btn menu-btn">
-        <img src="template/assets/menu.png" alt="Menu" class="menu-icon">
-      </button>
-    </div>
-
-    <div class="nav-center">
-      <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
-    </div>
-
-    <div class="nav-right">
-      <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
-        <img src="template/assets/profile.png" alt="Profile" class="profile-icon">
-      </button>
-    </div>
-  </header>
+      <div class="nav-left">
+        <button class="nav-btn menu-btn">
+          <img src="template/assets/menu.png" alt="Menu" class="menu-icon">
+        </button>
+      </div>
+      <div class="nav-center">
+        <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
+      </div>
+      <div class="nav-right">
+        <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
+          <img src="template/assets/profile.png" alt="Profile" class="profile-icon">
+        </button>
+      </div>
+    </header>
 
   <!-- SIDEBAR -->
   <div id="sidebar" class="sidebar">
@@ -78,7 +75,7 @@
           <div style="display:flex;align-items:center;gap:12px;">
             <div class="streak-badge">
               <i class="fa-solid fa-fire"></i>
-              <span class="streak-count">5</span>
+              <span class="streak-count">0</span>
               <small>days</small>
             </div>
 
@@ -91,9 +88,9 @@
         </div>
 
         <div class="streak-dots">
-          <span class="dot active"></span>
-          <span class="dot active"></span>
-          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
           <span class="dot"></span>
           <span class="dot"></span>
           <span class="dot"></span>
@@ -253,6 +250,8 @@
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
 <script src="template/js/nav.js"></script>
 <script src="challenges.js"></script>
 </body>

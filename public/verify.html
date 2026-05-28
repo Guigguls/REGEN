@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identify Waste Type</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="template/css/layout.css">
+  <link rel="stylesheet" href="verify.css">
+</head>
+ 
+<body>
+<div class="mobile-container">
+ 
+  <!-- TOP BAR ACCENT NAVIGATION -->
+  <header class="topbar">
+    <div class="nav-left">
+      <button class="nav-btn" onclick="window.location.href='dashboard.html'">
+        <i class="fa-solid fa-house"></i>
+      </button>
+    </div>
+    <div class="nav-center">
+      <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn">
+        <img src="template/assets/profile.png" alt="Profile">
+      </button>
+    </div>
+  </header>
+ 
+  <!-- MAIN SCROLLABLE WRAPPER CONTENT -->
+  <div class="verify-page">
+ 
+    <!-- IDENTIFICATION GAME CARD -->
+    <div class="result-card">
+      <div class="info-box info-box-full">
+        
+        <div class="trophy-icon-container">
+          <i class="fa-solid fa-brain" style="color: #52ab78; font-size: 3.5rem;"></i>
+        </div>
+        
+        <h2 id="verify-prompt">Pop Quiz!</h2>
+        <p id="verify-subtitle">What type of waste is this item?</p>
+        
+        <!-- Dynamic Option Choices Injected Here -->
+        <div id="verify-options-container"></div>
+ 
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <!-- YOUR AUTHENTIC REGEN APP FOOTER BAR -->
+  <footer class="footer">
+    <nav class="bottom-nav">
+      <button class="nav-btn" onclick="window.location.href='template/home.html'">
+        <img src="template/assets/home.png" alt="Home">
+      </button>
+ 
+      <button class="nav-btn" onclick="window.location.href='dashboard.html'">
+        <img src="template/assets/grid.png" alt="Grid">
+      </button>
+ 
+      <div class="scan-wrapper">
+        <button class="scan-btn" onclick="window.location.href='scanning.html'">
+          <img src="template/assets/scan.png" alt="Scan">
+        </button>
+        <span class="scan-label">SCAN</span>
+      </div>
+ 
+      <button class="nav-btn" onclick="window.location.href='challenges.html'">
+        <img src="template/assets/target.png" alt="Target">
+      </button>
+ 
+      <button class="nav-btn" onclick="window.location.href='locator.html'">
+        <img src="template/assets/location.png" alt="Location">
+      </button>
+    </nav>
+  </footer>
+ 
+</div>
+ 
+<script src="verify.js"></script>
+</body>
+</html>

@@ -3,7 +3,10 @@
 }
 
 /* Reset */
-* {
+.achievements-container *,
+.streak-card *,
+.task-card *,
+.challenge-card * {
     box-sizing: border-box;
 }
 
@@ -25,7 +28,7 @@ body {
 /* Mobile container */
 .mobile-container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -33,12 +36,6 @@ body {
     overflow-y: auto;
 }
 
-/* Topbar: points badge */
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
 
 .points-badge {
     display: inline-flex;
@@ -93,14 +90,16 @@ body {
         justify-content: center;
         align-items: center;
         min-height: 100vh;
+        background: #f3f4f6;
     }
 
     .mobile-container {
         width: 375px;
-        min-height: 750px;
+        height: 750px;
         border-radius: 40px;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
-        overflow: visible;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        position: relative;
     }
 }
 
@@ -109,6 +108,8 @@ body {
     flex: 1;
     background: #fff;
     overflow-y: auto;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* CONTAINER */

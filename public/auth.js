@@ -4,42 +4,109 @@ const SUPABASE_ANON_KEY = 'sb_publishable_nB1AnIKvMyE1wM4JC-0C7w_UlcJSP28';
 const { createClient } = supabase;
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Sign up
 async function signUp(email, password) {
   const { data, error } = await supabaseClient.auth.signUp({ email, password });
   if (error) throw error;
   return data;
 }
 
-// Sign in
 async function signIn(email, password) {
   const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
   if (error) throw error;
-  // Save token for backend calls
-  sessionStorage.setItem('access_token', data.session.access_token);
-  sessionStorage.setItem('user_id', data.user.id);
+  // ✅ FIX: use localStorage and save refresh token too
+  localStorage.setItem('access_token', data.session.access_token);
+  localStorage.setItem('refresh_token', data.session.refresh_token);
+  localStorage.setItem('user_id', data.user.id);
   return data;
 }
 
-// Sign out
-async function signOut() {
-  await supabaseClient.auth.signOut();
-  sessionStorage.removeItem('access_token');
-  sessionStorage.removeItem('user_id');
-  window.location.href = 'login.html';
+async function getValidToken() {
+    const accessToken = localStorage.getItem('access_token');
+    const refreshToken = localStorage.getItem('refresh_token');
+
+    if (!accessToken || !refreshToken) {
+        window.location.replace('signin.html');
+        return null;
+    }
+
+    const payload = JSON.parse(atob(accessToken.split('.')[1]));
+    const isExpired = payload.exp * 1000 < Date.now();
+
+    if (!isExpired) {
+        return accessToken;
+    }
+
+    console.log("🔄 Token expired, refreshing...");
+
+    const BASE_URL = window.location.hostname === 'localhost'
+        ? 'https://localhost:5000'
+        : `https://${window.location.hostname}:5000`;
+
+    const response = await fetch(`${BASE_URL}/refresh`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refresh_token: refreshToken })
+    });
+
+    if (!response.ok) {
+        console.error("❌ Refresh failed, redirecting to login");
+        alert('Your session has expired. Please sign in again.');
+        window.location.replace('signin.html');
+        return null;
+    }
+
+    const data = await response.json();
+    localStorage.setItem('access_token', data.access_token);
+    localStorage.setItem('refresh_token', data.refresh_token);
+    console.log("✅ Token refreshed");
+    return data.access_token;
 }
 
-// Get current session
+async function signOut() {
+  await supabaseClient.auth.signOut();
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('refresh_token');
+  localStorage.removeItem('user_id');
+  window.location.href = 'signin.html';
+}
+
 async function getSession() {
   const { data } = await supabaseClient.auth.getSession();
   return data.session;
 }
 
-// Redirect to login if not logged in
+// ✅ FIX: try to refresh before redirecting, show message if it fails
 async function requireAuth() {
   const session = await getSession();
-  if (!session) {
-    window.location.href = 'login.html';
+  if (session) return session;
+
+  // Session expired — try refreshing via Flask
+  const refreshToken = localStorage.getItem('refresh_token');
+  if (refreshToken) {
+    try {
+      const BASE_URL = window.location.hostname === 'localhost'
+        ? 'https://localhost:5000'
+        : `https://${window.location.hostname}:5000`;
+
+      const response = await fetch(`${BASE_URL}/refresh`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refresh_token: refreshToken })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('refresh_token', data.refresh_token);
+        return data;
+      }
+    } catch (err) {
+      console.error('Auth refresh error:', err);
+    }
   }
-  return session;
+
+  // ✅ Show message before redirecting
+  alert('Your session has expired. Please sign in again.');
+  window.location.href = 'signin.html';
+  return null;
 }

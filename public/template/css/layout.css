@@ -16,9 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    overflow-y: auto;
-    position: relative; /* Anchor for absolute elements like the sidebar */
-    overflow-x: hidden; /* Prevents hidden sidebar from expanding viewport width */
+    overflow: hidden;
 }
 
 @media (min-width: 480px) {
@@ -64,8 +62,8 @@ body {
 }
 
 .profile-icon {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background-color: #FFFFFF; 
   padding: 4px;              
@@ -90,6 +88,7 @@ body {
   transition: transform 0.2s ease;
   padding: 6px;
 }
+
 .nav-btn img {
   width: 36px;   
   height: 36px;  
@@ -272,15 +271,16 @@ body {
 
 
 .footer {
-  
-  height: 80px;
+  flex-shrink: 0;
+  height: 75px;
   bottom: 0;
   left: 0;
   width: 100%;
   background-color: #EAF9E7;
   padding: 0.5rem 0 0.75rem;
+  box-sizing: content-box;
   box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
-  z-index: 50;          
+  z-index: 50;
 }
 
 
@@ -615,11 +615,12 @@ body {
   display: none;         
 }
 
-.footer {
-  flex-shrink: 0;
-  height: 60px;
-  background-color: #EAF9E7;
-  text-align: center;
-  padding-top: 1rem;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+/* Add this to layout.css */
+.profile-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    padding: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }

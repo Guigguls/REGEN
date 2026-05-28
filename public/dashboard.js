@@ -6,37 +6,29 @@ const BUDGETS = {
 
 let currentRange = 'weekly';
 
-// --- 🛡️ FIXED AUTH HANDSHAKE ---
-// Pull your working variables straight out of your browser's local storage storage locker
-const token = localStorage.getItem('access_token');
-const userId = localStorage.getItem('user_id');
-
-// Global validation verification block
-if (!token || !userId) {
-  console.warn("⚠️ No active login session found. Charts will render as 0.");
-  // window.location.href = './signin.html'; // 🛠️ COMMENTED OUT: Stops the aggressive kicking loop entirely!
-}
-
 /**
  * Fetch stats from Python Flask API (Port 5000)
  * Sends the access_token in the Authorization header for validation.
  */
 async function fetchStats(range = 'weekly') {
     try {
-        // Use the token we already verified at the very top of the script
+        const token = await getValidToken();
         if (!token) {
             console.error("❌ Cannot execute backend query: token is empty.");
             return null;
         }
 
-        // Make the request to your Flask API, attaching your real access token cleanly
-        const response = await fetch(`/api/stats?range=${range}`, {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`, 
-              'Content-Type': 'application/json'
-          }
-      });
+        const BASE_URL = window.location.hostname === 'localhost'
+            ? 'https://localhost:5000'
+            : `https://${window.location.hostname}:5000`;
+
+        const response = await fetch(`${BASE_URL}/stats?range=${range}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
 
         if (response.status === 401) {
             console.error("❌ Flask server rejected token with 401: Unauthorized");
@@ -49,7 +41,6 @@ async function fetchStats(range = 'weekly') {
 
         const data = await response.json();
         console.log("📊 Successfully fetched data payload:", data);
-        
         return data;
 
     } catch (error) {
@@ -85,9 +76,10 @@ async function updateDashboard(view) {
     : 0;
 
   // Safe percentage mathematical expressions
-  const budgetUsedPct = budget > 0 ? Math.min(Math.round((generated / budget) * 100), 100) : 0;
+  const netEmissions = Math.max(generated - saved, 0);
+  const budgetUsedPct = budget > 0 ? Math.min(Math.round((netEmissions / budget) * 100), 100) : 0;
   const budgetLeftPct = Math.max(100 - budgetUsedPct, 0);
-  const kgLeft = Math.max(budget - generated, 0).toFixed(2);
+  const kgLeft = Math.max(budget - netEmissions, 0).toFixed(2);
   const trashPct = budgetUsedPct;
   const recyclePct = budget > 0 ? Math.min(Math.round((saved / budget) * 100), 100) : 0;
   
@@ -128,6 +120,12 @@ async function updateDashboard(view) {
   
   const recycleKgEl = document.getElementById('recycle-kg');
   if (recycleKgEl) recycleKgEl.innerText = saved.toFixed(2) + ' kg CO₂';
+
+  // Update username display
+  const nameEl = document.querySelector('.user-display-name');
+  if (nameEl && stats && stats.username) {
+      nameEl.innerText = stats.username;
+  }
 }
 
 /**

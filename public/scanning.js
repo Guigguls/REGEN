@@ -119,18 +119,18 @@ async function sendToAPI(base64Image, dataURL, mimeType) {
   shutterBtn.disabled = true;
   shutterBtn.style.opacity = '0.5';
 
-  const token = localStorage.getItem('access_token');
-  if (!token) {
-    alert('You must be logged in to scan.');
-    window.location.replace('signin.html');
-    return;
-  }
+  const token = await getValidToken();
+  if (!token) return;
 
-  let success = false; 
+  // ✅ Declare BASE_URL once at the top
+  const BASE_URL = window.location.hostname === 'localhost'
+      ? 'https://localhost:5000'
+      : `https://${window.location.hostname}:5000`;
+
+  let success = false;
 
   try {
-    // This sends the image to your secure Node server
-    const response = await fetch(`/api/classify`, {
+    const response = await fetch(`${BASE_URL}/classify`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -147,16 +147,34 @@ async function sendToAPI(base64Image, dataURL, mimeType) {
 
     sessionStorage.setItem('scanResult', JSON.stringify(result));
     sessionStorage.setItem('capturedImage', dataURL);
-    
-    success = true; 
+
+    localStorage.setItem('correctClassification', result.disposal?.toLowerCase() || 'recyclable');
+    localStorage.setItem('scannedItemTitle', result.item_name || 'Scanned Item');
+
+    // ✅ Auto-update challenge progress
+    fetch(`${BASE_URL}/update-challenges`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            category: result.category || '',
+            disposal: result.disposal || ''
+        })
+    }).then(r => r.json())
+      .then(d => console.log(`✅ Challenges updated: ${d.updated} affected`))
+      .catch(e => console.error('Challenge update error:', e));
+
+    success = true;
 
     if (stream) {
       stream.getTracks().forEach(track => track.stop());
     }
 
     setTimeout(() => {
-      window.location.replace('info.html');
-    }, 50);
+    window.location.replace('verify.html');
+}, 50);
 
   } catch (err) {
     alert('Could not reach the server. Make sure app.py is running.\n\nDetails: ' + err.message);
@@ -176,4 +194,11 @@ function setActiveTab(event) {
   event.target.classList.add('scan-tab-active');
 }
 
-window.addEventListener('load', initCamera);
+window.addEventListener('load', async () => {
+    try {
+        await getValidToken();
+    } catch (err) {
+        console.error("Token refresh failed:", err);
+    }
+    initCamera();
+});

@@ -362,7 +362,7 @@ body {
  
 .dashboard-inner-container {
     position: relative;
-    height: 750px;
+    height: 700px;
     z-index: 1;
     padding: 20px;
     padding-bottom: 20px;
@@ -546,6 +546,9 @@ body {
     background: #f1f8f1;
     border-radius: 20px;
     padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-width: 0;
 }
  
 .bar-background-track {
@@ -567,10 +570,12 @@ body {
 /* Container for the % and kg text */
 .card-data-summary {
     display: flex;
-    flex-direction: row; /* Forces horizontal alignment */
-    align-items: baseline; /* Aligns the bottom of the different sized fonts */
-    gap: 8px; /* Adds a small space between the % and the kg */
+    flex-direction: row;
+    align-items: baseline;
+    gap: 4px;
     margin-top: 5px;
+    flex-wrap: wrap;
+    min-width: 0;
 }
  
 /* Ensure these spans don't try to take up full width */
@@ -582,21 +587,24 @@ body {
  
 /* Optional: Adjust font sizes to look balanced on one line */
 .summary-pct-large {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 900;
     color: #063b31;
+    min-width: 0;
 }
- 
+
 .summary-kg-small {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     font-weight: 600;
     color: #52ab78;
+    min-width: 0;
+    word-break: break-word;
 }
  
 /* Container Spacing */
+/* Container Spacing */
 .achievements-container {
     padding: 15px;
-    height: 750px;
     background: #fdfdfd;
 }
  

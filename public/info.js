@@ -15,6 +15,30 @@ window.addEventListener('load', function () {
     const confidenceMap = { high: '95%', medium: '70%', low: '40%' };
     document.getElementById('confidence-badge').textContent = '✓ ' + (confidenceMap[data.confidence] || '—');
 
+    // Disposal badge
+    const recyclableBadge = document.getElementById('badge-recyclable');
+    const bioBadge = document.getElementById('badge-bio');
+    const disposal = data.disposal?.toLowerCase() || '';
+
+    if (disposal.includes('non-recyclable')) {
+        recyclableBadge.textContent = 'NON-RECYCLABLE';
+        recyclableBadge.classList.remove('badge-recyclable');
+        recyclableBadge.classList.add('badge-non-recyclable');
+    } else {
+        recyclableBadge.textContent = 'RECYCLABLE';
+        recyclableBadge.classList.remove('badge-non-recyclable');
+        recyclableBadge.classList.add('badge-recyclable');
+    }
+
+    // Category badge — biodegradable vs non-biodegradable based on category
+    const category = data.category?.toLowerCase() || '';
+    const biodegradableCategories = ['organic', 'food', 'paper', 'biodegradable', 'wood'];
+    const isBio = biodegradableCategories.some(c => category.includes(c));
+
+    bioBadge.textContent = isBio ? 'BIODEGRADABLE' : 'NON-BIODEGRADABLE';
+    bioBadge.classList.toggle('badge-bio', isBio);
+    bioBadge.classList.toggle('badge-non-bio', !isBio);
+
     // Impact & Footprint
     document.getElementById('info-impact').textContent = data.impact || '—';
     document.getElementById('carbon-footprint').textContent = '🌍 ' + (data.carbon_footprint || '—');

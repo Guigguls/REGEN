@@ -268,7 +268,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
 
-            const res = await fetch(`/api/signup`, {
+            const BASE_URL = window.location.hostname === 'localhost'
+                ? 'https://localhost:5000'
+                : `https://${window.location.hostname}:5000`;
+
+            const res = await fetch(`${BASE_URL}/signup`, {
                     method: 'POST',
 
                     headers: {
