@@ -49,7 +49,8 @@ app.post('/api/classify', async (req, res) => {
     const authHeader = req.headers['authorization'];
 
     // 2. Attach that header to the request going to Python
-    const pythonResponse = await axios.post('http://127.0.0.1:5000/classify', req.body, {
+    const pythonResponse = await axios.post('https://127.0.0.1:5000/classify', req.body, {
+      httpsAgent: new require('https').Agent({ rejectUnauthorized: false }),
       headers: { 
         'Authorization': authHeader, // This is the missing link
         'Content-Type': 'application/json' 
@@ -69,12 +70,69 @@ app.post('/api/classify', async (req, res) => {
   }
 });
 
+app.post('/api/goals', async (req, res) => {
+  try {
+    const authHeader = req.headers['authorization'];
+    const pythonResponse = await axios.post(`https://127.0.0.1:5000/api/goals`, req.body, {
+      httpsAgent: new require('https').Agent({ rejectUnauthorized: false }),
+      headers: { 'Authorization': authHeader, 'Content-Type': 'application/json' }
+    });
+    res.json(pythonResponse.data);
+  } catch (error) {
+    console.error("❌ Goals Bridge Error:", error.response?.status || error.message);
+    res.status(error.response?.status || 500).json(error.response?.data || { error: "Goals unreachable" });
+  }
+});
+
+app.post('/api/upload-avatar', async (req, res) => {
+  try {
+    const authHeader = req.headers['authorization'];
+    const pythonResponse = await axios.post(`https://127.0.0.1:5000/api/upload-avatar`, req.body, {
+      httpsAgent: new require('https').Agent({ rejectUnauthorized: false }),
+      headers: { 'Authorization': authHeader, 'Content-Type': 'application/json' }
+    });
+    res.json(pythonResponse.data);
+  } catch (error) {
+    console.error("❌ Avatar Upload Bridge Error:", error.response?.status || error.message);
+    res.status(error.response?.status || 500).json(error.response?.data || { error: "Avatar upload unreachable" });
+  }
+});
+
+app.post('/api/update-profile', async (req, res) => {
+  try {
+    const authHeader = req.headers['authorization'];
+    const pythonResponse = await axios.post(`https://127.0.0.1:5000/api/update-profile`, req.body, {
+      httpsAgent: new require('https').Agent({ rejectUnauthorized: false }),
+      headers: { 'Authorization': authHeader, 'Content-Type': 'application/json' }
+    });
+    res.json(pythonResponse.data);
+  } catch (error) {
+    console.error("❌ Update Profile Bridge Error:", error.response?.status || error.message);
+    res.status(error.response?.status || 500).json(error.response?.data || { error: "Update profile unreachable" });
+  }
+});
+
+app.get('/api/leaderboard', async (req, res) => {
+  try {
+    const authHeader = req.headers['authorization'];
+    const pythonResponse = await axios.get(`https://127.0.0.1:5000/api/leaderboard`, {
+      httpsAgent: new require('https').Agent({ rejectUnauthorized: false }),
+      headers: { 'Authorization': authHeader }
+    });
+    res.json(pythonResponse.data);
+  } catch (error) {
+    console.error("❌ Leaderboard Bridge Error:", error.response?.status || error.message);
+    res.status(error.response?.status || 500).json(error.response?.data || { error: "Leaderboard unreachable" });
+  }
+});
+
 app.get('/api/stats', async (req, res) => {
   try {
     const authHeader = req.headers['authorization'];
     const range = req.query.range || 'weekly';
 
-    const pythonResponse = await axios.get(`http://127.0.0.1:5000/stats?range=${range}`, {
+    const pythonResponse = await axios.get(`https://127.0.0.1:5000/stats?range=${range}`, {
+      httpsAgent: new require('https').Agent({ rejectUnauthorized: false }),
       headers: { 'Authorization': authHeader }
     });
     

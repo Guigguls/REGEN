@@ -251,6 +251,59 @@ def refresh():
 
     return jsonify(response.json())
 
+@app.route("/api/upload-avatar", methods=["POST", "OPTIONS"])
+def upload_avatar():
+    if request.method == "OPTIONS":
+        return "", 200
+
+    auth_header = request.headers.get('Authorization')
+    user = get_user_from_token(auth_header)
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    data = request.get_json()
+    image_data = data.get("image")
+    mime_type = data.get("mime_type", "image/jpeg")
+    user_id = user.get("id")
+
+    if not image_data:
+        return jsonify({"error": "No image provided"}), 400
+
+    # Decode base64
+    image_bytes = base64.b64decode(image_data)
+
+    # Upload to Supabase Storage
+    ext = mime_type.split("/")[-1]
+    file_path = f"{user_id}/avatar.{ext}"
+
+    upload_response = req.post(
+        f"{SUPABASE_URL}/storage/v1/object/avatars/{file_path}",
+        headers={
+            "apikey": SUPABASE_SERVICE_KEY,
+            "Authorization": f"Bearer {SUPABASE_SERVICE_KEY}",
+            "Content-Type": mime_type,
+            "x-upsert": "true"
+        },
+        data=image_bytes
+    )
+
+    if upload_response.status_code not in [200, 201]:
+        print(f"❌ Upload failed: {upload_response.status_code} {upload_response.text}")
+        return jsonify({"error": "Upload failed"}), 500
+
+    # Build public URL
+    avatar_url = f"{SUPABASE_URL}/storage/v1/object/public/avatars/{file_path}"
+
+    # Save URL to users table
+    req.patch(
+        f"{SUPABASE_URL}/rest/v1/users?id=eq.{user_id}",
+        headers=SUPABASE_HEADERS,
+        json={"avatar_url": avatar_url}
+    )
+
+    print(f"✅ Avatar uploaded for user {user_id}: {avatar_url}")
+    return jsonify({"success": True, "avatar_url": avatar_url})
+
 @app.route("/add-points", methods=["POST", "OPTIONS"])
 def add_points():
     if request.method == "OPTIONS":
@@ -480,6 +533,38 @@ def update_challenges():
 
     return jsonify({"updated": updated})
 
+@app.route("/api/profile", methods=["GET"])
+def get_profile():
+    print("✅ /api/profile route hit")
+    email = request.args.get("email")
+    print(f"📧 Email received: {email}")
+
+    if not email:
+        return jsonify({"success": False, "error": "No email provided"}), 400
+
+    response = req.get(
+        f"{SUPABASE_URL}/rest/v1/users?email=eq.{email}&select=username,email&limit=1",
+        headers={
+            "apikey": SUPABASE_SERVICE_KEY,
+            "Authorization": f"Bearer {SUPABASE_SERVICE_KEY}",
+            "Content-Type": "application/json"
+            # ✅ No "Prefer: return=representation" here
+        }
+    )
+
+    rows = response.json()
+
+    if not rows or not isinstance(rows, list):
+        return jsonify({"success": False, "error": "User not found"}), 404
+
+    return jsonify({
+        "success": True,
+        "user": {
+            "username": rows[0].get("username"),
+            "email": rows[0].get("email")
+        }
+    })
+
 @app.route("/classify", methods=["GET", "POST", "OPTIONS"])
 def classify():
     if request.method == "OPTIONS":
@@ -648,6 +733,109 @@ def stats():
         print(f"❌ Stats error: {e}")
         return jsonify({"error": str(e)}), 500
 
+@app.route("/api/leaderboard", methods=["GET"])
+def leaderboard():
+    auth_header = request.headers.get('Authorization')
+    user = get_user_from_token(auth_header)
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user_id = user.get("id")
+
+    response = req.get(
+        f"{SUPABASE_URL}/rest/v1/users?select=id,username,total_points&order=total_points.desc",
+        headers={
+            "apikey": SUPABASE_SERVICE_KEY,
+            "Authorization": f"Bearer {SUPABASE_SERVICE_KEY}",
+            "Content-Type": "application/json"
+        }
+    )
+
+    rows = response.json()
+
+    rank = next((i + 1 for i, u in enumerate(rows) if u.get("id") == user_id), None)
+
+    return jsonify({
+        "success": True,
+        "rank": rank,
+        "total_users": len(rows)
+    })
+
+@app.route("/api/goals", methods=["POST"])
+def save_goals():
+    auth_header = request.headers.get('Authorization')
+    user = get_user_from_token(auth_header)
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    data = request.get_json()
+    goals = data.get("goals", [])
+    user_id = user.get("id")
+
+    response = req.patch(
+        f"{SUPABASE_URL}/rest/v1/users?id=eq.{user_id}",
+        headers={
+            "apikey": SUPABASE_SERVICE_KEY,
+            "Authorization": f"Bearer {SUPABASE_SERVICE_KEY}",
+            "Content-Type": "application/json"
+        },
+        json={"goals": goals}
+    )
+
+    if response.status_code not in [200, 204]:
+        return jsonify({"success": False, "error": response.text}), 500
+
+    return jsonify({"success": True})
+
+@app.route("/api/update-profile", methods=["POST"])
+def update_profile():
+    auth_header = request.headers.get('Authorization')
+    user = get_user_from_token(auth_header)
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    data = request.get_json()
+    user_id = user.get("id")
+
+    # Build update payload — only include fields that were actually sent
+    update_payload = {}
+
+    if data.get("username") is not None:
+        update_payload["username"] = data["username"]
+    if data.get("bio") is not None:
+        update_payload["bio"] = data["bio"]
+    if data.get("goals") is not None:
+        update_payload["goals"] = data["goals"]
+    if data.get("interests") is not None:
+        update_payload["interests"] = data["interests"]
+    if data.get("gender") is not None:
+        update_payload["gender"] = data["gender"]
+    if data.get("dob") is not None:
+        update_payload["date_of_birth"] = data["dob"]
+    if data.get("age") is not None:
+        update_payload["age"] = data["age"]
+    if data.get("phone") is not None:
+        update_payload["phone"] = data["phone"]
+
+    if not update_payload:
+        return jsonify({"success": True, "message": "Nothing to update"})
+
+    response = req.patch(
+        f"{SUPABASE_URL}/rest/v1/users?id=eq.{user_id}",
+        headers={
+            "apikey": SUPABASE_SERVICE_KEY,
+            "Authorization": f"Bearer {SUPABASE_SERVICE_KEY}",
+            "Content-Type": "application/json"
+        },
+        json=update_payload
+    )
+
+    if response.status_code not in [200, 204]:
+        print(f"❌ Update profile failed: {response.status_code} {response.text}")
+        return jsonify({"success": False, "error": response.text}), 500
+
+    print(f"✅ Profile updated for user {user_id}: {list(update_payload.keys())}")
+    return jsonify({"success": True})   
 
 if __name__ == "__main__":
     app.run(
