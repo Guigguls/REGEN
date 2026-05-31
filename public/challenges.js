@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
 
         let completedTasks = 0;
-        const totalTasks = challenges.length;
 
         challenges.forEach(challenge => {
             const type = challenge.challenge_type?.toLowerCase();
@@ -74,19 +73,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         // Update active challenge (Eco Starter) progress
-        // Find eco_starter row specifically
         const ecoChallenge = challenges.find(c => c.challenge_type === 'eco_starter');
-        const ecoProgress = ecoChallenge ? ecoChallenge.progress : 0;
-        const ecoTarget = ecoChallenge ? ecoChallenge.target : 3;
-        const activePct = Math.min(Math.round((ecoProgress / ecoTarget) * 100), 100);
+        const ecoProgress  = ecoChallenge ? ecoChallenge.progress : 0;
+        const ecoTarget    = ecoChallenge ? ecoChallenge.target   : 3;
+        const activePct    = Math.min(Math.round((ecoProgress / ecoTarget) * 100), 100);
 
-        const activeBar = document.getElementById('active-challenge-bar');
-        const activeText = document.getElementById('active-challenge-text');
+        const activeBar   = document.getElementById('active-challenge-bar');
+        const activeText  = document.getElementById('active-challenge-text');
         const activePctEl = document.getElementById('active-challenge-percent');
 
-        if (activeBar) activeBar.style.width = activePct + '%';
-        if (activeText) activeText.innerText = `${ecoProgress} / ${ecoTarget}`;
-        if (activePctEl) activePctEl.innerText = activePct + '%';
+        if (activeBar)   activeBar.style.width  = activePct + '%';
+        if (activeText)  activeText.innerText   = `${ecoProgress} / ${ecoTarget}`;
+        if (activePctEl) activePctEl.innerText  = activePct + '%';
 
     } catch (err) {
         console.error('Challenges fetch error:', err);

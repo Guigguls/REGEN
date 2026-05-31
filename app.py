@@ -533,6 +533,44 @@ def update_challenges():
 
     return jsonify({"updated": updated})
 
+@app.route("/api/streak/check", methods=["GET"])
+def check_streak():
+    auth_header = request.headers.get('Authorization')
+    user = get_user_from_token(auth_header)
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    user_id = user.get("id")
+    from datetime import date, timedelta
+
+    response = req.get(
+        f"{SUPABASE_URL}/rest/v1/users?id=eq.{user_id}&select=streak_count,last_scan_date",
+        headers=SUPABASE_HEADERS
+    )
+    rows = response.json()
+    if not rows:
+        return jsonify({"streak": 0})
+
+    today = date.today()
+    last_scan = rows[0].get("last_scan_date")
+    streak = rows[0].get("streak_count") or 0
+
+    if last_scan:
+        last_scan_date = date.fromisoformat(last_scan)
+        diff = (today - last_scan_date).days
+
+        if diff > 1:
+            # Skipped a day — reset immediately
+            req.patch(
+                f"{SUPABASE_URL}/rest/v1/users?id=eq.{user_id}",
+                headers=SUPABASE_HEADERS,
+                json={"streak_count": 0}
+            )
+            streak = 0
+            print(f"🔄 Streak reset to 0 for user {user_id} (last scan: {last_scan})")
+
+    return jsonify({"streak": streak})
+
 @app.route("/api/profile", methods=["GET"])
 def get_profile():
     print("✅ /api/profile route hit")

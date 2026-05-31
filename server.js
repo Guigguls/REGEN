@@ -6,7 +6,6 @@ const fs = require("fs");
 const path = require('path');
 const axios = require('axios'); 
 const supabase = require("./supabase");
-
 const app = express();
 const PORT = 443;               
 
@@ -23,8 +22,56 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use((req, res, next) => {
+  if (req.path.endsWith('/')) return res.status(403).send('Forbidden');
+  next();
+});
+
+app.use((req, res, next) => {
+    if (req.path.startsWith('/api/')) return next();
+    const blocked = /\.(env|json|log|sh|key|pem|sql|py)$/i;
+    if (blocked.test(req.path)) return res.status(403).send('Forbidden');
+    next();
+});
+
+app.use((req, res, next) => {
   console.log("➡️", req.method, req.url);
   next();
+});
+
+app.get('/api/maps/places', async (req, res) => {
+    const { lat, lon, radius, keyword } = req.query;
+    const key = process.env.GOOGLE_MAPS_KEY;
+
+    try {
+        const url = `https://places.googleapis.com/v1/places:searchText`;
+        
+        const body = {
+            textQuery: keyword,
+            locationBias: {
+                circle: {
+                    center: { latitude: parseFloat(lat), longitude: parseFloat(lon) },
+                    radius: parseFloat(radius)
+                }
+            },
+            maxResultCount: 20
+        };
+
+        console.log('🌍 Searching:', keyword, 'radius:', radius);
+        const response = await axios.post(url, body, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Goog-Api-Key': key,
+                'X-Goog-FieldMask': 'places.displayName,places.location,places.types,places.formattedAddress'
+            }
+        });
+
+        console.log('📍 Results:', response.data.places?.length ?? 0);
+        res.json({ results: response.data.places || [] });
+
+    } catch (err) {
+        console.error('❌ Google Places Bridge Error:', err.response?.data || err.message);
+        res.status(500).json({ error: 'Places search failed' });
+    }
 });
 
 // --- [RE-ADD YOUR ORIGINAL ROUTES HERE] ---
@@ -109,6 +156,24 @@ app.post('/api/update-profile', async (req, res) => {
   } catch (error) {
     console.error("❌ Update Profile Bridge Error:", error.response?.status || error.message);
     res.status(error.response?.status || 500).json(error.response?.data || { error: "Update profile unreachable" });
+  }
+});
+
+app.get('/api/maps/key', (req, res) => {
+    res.json({ key: process.env.GOOGLE_MAPS_KEY });
+});
+
+app.get('/api/streak/check', async (req, res) => {
+  try {
+    const authHeader = req.headers['authorization'];
+    const pythonResponse = await axios.get(`https://127.0.0.1:5000/api/streak/check`, {
+      httpsAgent: new require('https').Agent({ rejectUnauthorized: false }),
+      headers: { 'Authorization': authHeader }
+    });
+    res.json(pythonResponse.data);
+  } catch (error) {
+    console.error("❌ Streak Bridge Error:", error.response?.status || error.message);
+    res.status(error.response?.status || 500).json(error.response?.data || { error: "Streak unreachable" });
   }
 });
 

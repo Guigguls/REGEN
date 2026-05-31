@@ -15,20 +15,20 @@
 <div class="mobile-container">
 
   <header class="topbar">
-      <div class="nav-left">
-        <button class="nav-btn menu-btn">
-          <img src="template/assets/menu.png" alt="Menu" class="menu-icon">
-        </button>
-      </div>
-      <div class="nav-center">
-        <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
-      </div>
-      <div class="nav-right">
-        <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
-          <img src="template/assets/profile.png" alt="Profile" class="profile-icon">
-        </button>
-      </div>
-    </header>
+    <div class="nav-left">
+      <button class="nav-btn menu-btn">
+        <img src="template/assets/menu.png" alt="Menu" class="menu-icon">
+      </button>
+    </div>
+    <div class="nav-center">
+      <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
+        <img src="template/assets/profile.png" alt="Profile" class="profile-icon">
+      </button>
+    </div>
+  </header>
 
   <!-- SIDEBAR -->
   <div id="sidebar" class="sidebar">
@@ -42,7 +42,7 @@
       <ul class="menu-section">
         <li><a href="settings/settings.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
         <li><a href="faqs/faqs.html"><i class="fa-solid fa-circle-question"></i> FAQs</a></li>
-        <li><a href="contact/contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li> 
+        <li><a href="contact/contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
       </ul>
 
       <h3 class="menu-category">Community</h3>
@@ -81,7 +81,6 @@
 
             <div class="points-badge in-streak" title="Total points">
               <i class="fa-solid fa-coins"></i>
-              <!-- Real total score syncs right here -->
               <span id="total-points">0</span>
             </div>
           </div>
@@ -107,19 +106,15 @@
             <div class="task-icon-box recycle-bg">
               <i class="fa-solid fa-recycle"></i>
             </div>
-
             <div class="task-info">
               <h4>Sort Waste Correctly</h4>
               <p>Place items in the correct bin (biodegradable, recyclable, etc.)</p>
             </div>
-
             <div class="task-points">+5<span>points</span></div>
           </div>
-
           <div class="progress-container">
             <div id="sort-bar" class="progress-bar green" style="width: 0%"></div>
           </div>
-
           <div class="progress-stats">
             <span id="sort-text">0 / 10 completed</span>
             <span id="sort-percent">0%</span>
@@ -132,19 +127,15 @@
             <div class="task-icon-box recycle-bg">
               <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-
             <div class="task-info">
               <h4>Identify Waste Item</h4>
               <p>Correctly classify an item after scanning</p>
             </div>
-
             <div class="task-points">+3<span>points</span></div>
           </div>
-
           <div class="progress-container">
             <div id="identify-bar" class="progress-bar blue" style="width: 0%"></div>
           </div>
-
           <div class="progress-stats">
             <span id="identify-text">0 / 5 completed</span>
             <span id="identify-percent">0%</span>
@@ -157,19 +148,15 @@
             <div class="task-icon-box recycle-bg">
               <i class="fa-solid fa-repeat"></i>
             </div>
-
             <div class="task-info">
               <h4>Reuse an Item</h4>
               <p>Find a way to reuse or upcycle a waste item</p>
             </div>
-
             <div class="task-points">+10<span>points</span></div>
           </div>
-
           <div class="progress-container">
             <div id="reuse-bar" class="progress-bar dark-green" style="width: 0%"></div>
           </div>
-
           <div class="progress-stats">
             <span id="reuse-text">0 / 3 completed</span>
             <span id="reuse-percent">0%</span>
@@ -191,14 +178,11 @@
                 <h4>Eco Starter</h4>
                 <span class="badge easy">Easy</span>
               </div>
-
               <p>Complete all 3 beginner eco tasks</p>
-
               <div class="time-left">
                 <i class="fa-regular fa-clock"></i> Ongoing
               </div>
             </div>
-
             <div class="challenge-reward">
               <i class="fa-solid fa-award"></i>
               <span>+500</span>
@@ -208,7 +192,6 @@
           <div class="progress-container white-bg">
             <div id="active-challenge-bar" class="progress-bar dark-green" style="width: 0%"></div>
           </div>
-
           <div class="progress-stats">
             <span id="active-challenge-text">0 / 3</span>
             <span id="active-challenge-percent">0%</span>
@@ -216,6 +199,36 @@
         </div>
 
       </section>
+
+      <!-- ===== LEADERBOARD SECTION ===== -->
+      <section class="leaderboard-section">
+        <h2 class="section-title">
+          <i class="fa-solid fa-ranking-star"></i> Leaderboard
+        </h2>
+
+        <!-- Rank Card -->
+        <div class="lb-rank-card">
+          <div class="lb-rank-card-content">
+            <div>
+              <div class="lb-rank-label">Your Rank</div>
+              <div class="lb-rank-value" id="lb-your-rank">—</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="lb-rank-label">Your Points</div>
+              <div class="lb-rank-value" id="lb-your-points">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leaderboard Items (dynamically rendered, scrollable) -->
+        <div id="lb-scroll">
+          <div id="lb-list">
+            <div class="lb-loading">Loading leaderboard…</div>
+          </div>
+        </div>
+
+      </section>
+      <!-- ===== END LEADERBOARD ===== -->
 
     </div>
   </main>
@@ -253,6 +266,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="auth.js"></script>
 <script src="template/js/nav.js"></script>
+<script src="streak.js"></script>
 <script src="challenges.js"></script>
+<script src="leaderboard.js"></script>
 </body>
 </html>
