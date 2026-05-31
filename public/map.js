@@ -231,6 +231,7 @@ async function searchAtRadius(lat, lon, radius) {
         .map(parseFeature)
         .filter(Boolean)
         .filter((f, i, arr) => arr.findIndex(x => x.placeId === f.placeId) === i)
+        .filter(f => getDistance(lat, lon, f.lat, f.lon) <= radius)
         .sort((a, b) => getDistance(lat, lon, a.lat, a.lon) - getDistance(lat, lon, b.lat, b.lon));
 }
 
@@ -276,22 +277,9 @@ async function fetchFacilities(lat, lon) {
             return;
         }
 
-        // Nothing at 2km — auto-expand silently
-        for (let i = 1; i < increments.length; i++) {
-            const km = (increments[i] / 1000).toFixed(0);
-            centerList.innerHTML = `<p style="color:#888; font-size:0.9rem; text-align:center; margin-top:20px;">Searching within ${km}km...</p>`;
-            const expanded = await searchAtRadius(lat, lon, increments[i]);
-            radiusIndex = i;
-
-            if (expanded.length > 0) {
-                placeMarkers(expanded);
-                renderCenters(expanded, lat, lon);
-                renderMoreButton();
-                return;
-            }
-        }
-
-        centerList.innerHTML = `<p style="color:#888; font-size:0.9rem; text-align:center; margin-top:20px;">No recycling facilities found within 20km of your location.</p>`;
+        const firstKm = (increments[0] / 1000).toFixed(0);
+        centerList.innerHTML = `<p style="color:#888; font-size:0.9rem; text-align:center; margin-top:20px;">No facilities found within ${firstKm}km.</p>`;
+        renderMoreButton();
 
     } catch (err) {
         console.error('fetchFacilities error:', err);
