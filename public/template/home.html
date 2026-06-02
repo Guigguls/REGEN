@@ -3,16 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REGEN Template</title>
-  <!-- Font Awesome -->
+  <title>REGEN</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Your CSS -->
   <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
   
   <div class="mobile-container">
-    <!-- Topbar -->
     <header class="topbar">
       <div class="nav-left">
         <button class="nav-btn menu-btn">
@@ -29,7 +26,6 @@
       </div>
     </header>
 
-    <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
       <div class="sidebar-header">
         <img src="assets/regen-logo.png" alt="REGEN Logo" class="sidebar-logo">
@@ -58,111 +54,91 @@
       </nav>
     </div>
 
-    <!-- Overlay (outside sidebar) -->
     <div id="overlay" class="overlay"></div>
 
-     <main class="home-body">
-      <!-- Greeting -->
-     <section class="greeting">
-      <h1 class="greeting-title">Hello, Eka</h1>
-         <p class="greeting-subtitle">You’re Making a Real Difference.</p>
+    <main class="home-body">
+      
+      <section class="greeting">
+        <h1 class="greeting-title">Hello, <span id="greetingName">Eka</span></h1>
+        <p class="greeting-subtitle">You’re Making a Real Difference.</p>
       </section>
 
       <section class="progress-section">
-  <div class="progress-box">
-    <div class="progress-item">
-      <i class="fa-solid fa-fire"></i>
-      <div class="progress-number">5</div>
-      <div class="progress-label">Day Streak</div>
-    </div>
+        <div class="progress-box">
+          <div class="progress-item">
+            <i class="fa-solid fa-fire"></i>
+            <div class="progress-number">5</div>
+            <div class="progress-label">Day Streak</div>
+          </div>
 
-    <div class="v-divider"></div>
+          <div class="v-divider"></div>
 
-   <section class="progress-item carbon-mini">
-  <i class="fa-solid fa-leaf"></i>
-  <div id="home-display-pct" class="progress-number">--%</div>
-  <div class="progress-label">Carbon Budget</div>
-</section>
+          <div class="progress-item carbon-mini">
+            <i class="fa-solid fa-leaf"></i>
+            <div id="home-display-pct" class="progress-number">--%</div>
+            <div class="progress-label">Carbon Budget</div>
+          </div>
 
+          <div class="v-divider"></div>
 
+          <div class="progress-item">
+            <i class="fa-solid fa-star"></i>
+            <div class="progress-number">100</div>
+            <div class="progress-label">Points</div>
+          </div>
 
-
-    <div class="v-divider"></div>
-
-    <div class="progress-item">
-      <i class="fa-solid fa-star"></i>
-      <div class="progress-number">100</div>
-      <div class="progress-label">Points</div>
-    </div>
-
-    <a href="../dashboard.html" class="learn-more">Learn more ></a>
-  </div>
-</section>
-
-
-
-     <section class="reuse-section">
-  <h3 class="reuse-title">Reuse Ideas For You</h3>
-
-  <div class="reuse-box">
-    <div class="reuse-header">
-      <img src="assets/reuse-bottle.png" alt="Plastic Bottle Planet" class="reuse-image">
-      <div class="reuse-info">
-        <div class="reuse-top">
-          <i class="fa-solid fa-lightbulb"></i>
-          <span class="reuse-name">Plastic Bottle Planet</span>
+          <a href="../dashboard.html" class="learn-more">Learn more ></a>
         </div>
-        <div class="reuse-badge">Easy</div>
-      </div>
-    </div>
+      </section>
 
-   <div class="reuse-box">
-  <div class="reuse-header">
-    <img src="" alt="Reuse Idea" class="reuse-image">
-    <div class="reuse-info">
-      <div class="reuse-top">
-        <i class="fa-solid fa-lightbulb"></i>
-        <span class="reuse-name"></span>
-      </div>
-      <div class="reuse-badge"></div>
-    </div>
-  </div>
+      <section class="reuse-section">
+        <h3 class="reuse-title">Reuse Ideas For You</h3>
 
-  <div class="reuse-materials">
-    <span class="materials-label">Materials:</span>
-    <div class="materials-list"></div>
-  </div>
+        <div class="reuse-card">
+          <div class="reuse-header">
+            <div class="reuse-top">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span class="reuse-name">Plastic Bottle Planet</span>
+            </div>
+            <span class="reuse-badge">Easy</span>
+          </div>
 
-  <div class="reuse-description"></div>
-</div>
+          <div class="reuse-materials">
+            <span class="materials-label">Materials:</span>
+            <div class="materials-list">
+              <span class="material-bubble">Soil</span>
+              <span class="material-bubble">Seed</span>
+              <span class="material-bubble">2L Plastic Bottle</span>
+            </div>
+          </div>
 
-    
-  </div>
-</section>
+          <p class="reuse-description">
+            Transform empty bottles into cute hanging planters for your herbs or flowers.
+          </p>
 
-  <section class="find-centers">
-  <div class="find-box">
-    <div class="find-left">
-      <i class="fa-solid fa-location-dot"></i>
-      <div class="find-text">
-        <h3 class="find-title">Find Centers</h3>
-        <p class="find-subtitle">Nearby Locations</p>
-        <p class="find-description">
-          Locate the nearest recycling center for proper disposal.
-        </p>
-      </div>
-      
-    </div>
-    
-    
-    <a href="#" class="learn-more">Learn more ></a>
-  </div>
-</section>
+          <div class="reuse-footer-link">
+            <a href="#" class="reuse-link">Learn more &gt;</a>
+          </div>
+      </section>
 
-<div style="height:100px;"></div>
+      <section class="find-centers">
+        <div class="find-box">
+          <div class="find-left">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="find-text">
+              <h3 class="find-title">Find Centers</h3>
+              <p class="find-subtitle">Nearby Locations</p>
+              <p class="find-description">
+                Locate the nearest recycling center for proper disposal.
+              </p>
+            </div>
+          </div>
+          <a href="../locator.html" class="learn-more">Learn more ></a>
+        </div>
+      </section>
+
     </main>
 
-    <!-- Footer Nav -->
     <footer class="footer">
       <nav class="bottom-nav">
         <button class="nav-btn" onclick="setActive(this, 'home.html')">

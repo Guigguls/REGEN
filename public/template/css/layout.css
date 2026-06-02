@@ -16,7 +16,9 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    overflow: hidden;
+    overflow-y: auto;
+    position: relative; /* Anchor for absolute elements like the sidebar */
+    overflow-x: hidden; /* Prevents hidden sidebar from expanding viewport width */
 }
 
 @media (min-width: 480px) {
@@ -42,6 +44,7 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+  flex-shrink: 0;
 }
 
 .nav-left {
@@ -49,6 +52,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
 }
+
 .menu-icon {
   width: 28px;
   height: 28px;
@@ -70,11 +74,40 @@ body {
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
+/* --- App Navigation Bottom Panel --- */
+.footer {
+  flex-shrink: 0;
+  height: 80px; 
+  background-color: #EAF9E7;
+  padding: 0; 
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+  z-index: 50;          
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box;
+}
+
+/* --- Plain Site Copyright Footer Rule --- */
+footer, .app-footer, .footer-content {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  padding: 1rem 0;
+  background-color: #EAF9E7;
+  color: #000000;
+}
+
 .bottom-nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .nav-btn {
@@ -103,13 +136,15 @@ body {
   background-color: #063b31;
   border-radius: 50%;
   position: absolute;
-  bottom: -10px;
+  bottom: -4px; 
   opacity: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
+
 .nav-btn.active {
   transform: translateY(-6px);
 }
+
 .nav-btn.active::after {
   opacity: 1;
   transform: translateY(-2px);
@@ -120,8 +155,9 @@ body {
   flex-direction: column;
   align-items: center;
   position: relative;
-  top: -40px; 
+  top: -32px; 
 }
+
 .scan-btn {
   background-color: #C0E6BA;
   border: none;
@@ -135,27 +171,31 @@ body {
   align-items: center;
   transition: transform 0.2s ease;
 }
+
 .scan-btn img {
   width: 40px;   
   height: 40px;  
   object-fit: contain;
   filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35)); 
 }
+
 .scan-btn.active {
   transform: translateY(-6px);
 }
+
 .scan-label {
   font-size: 1rem;
   font-weight: 800;
   color: #063b31;
   margin-top: 4px;
   position: absolute;
-  bottom: -25px; 
+  bottom: -18px; 
 }
 
 .topbar .nav-btn.menu-btn::after {
   display: none; 
 }
+
 .topbar .nav-btn.menu-btn.active {
   transform: none; 
 }
@@ -163,18 +203,10 @@ body {
 .topbar .nav-btn.profile-btn::after {
   display: none; 
 }
+
 .topbar .nav-btn.profile-btn.active {
   transform: translateY(-4px); 
 }
-
-.bottom-nav .nav-btn:first-child {
-  margin-left: 12px; 
-}
-
-.bottom-nav .nav-btn:last-child {
-  margin-right: 12px; 
-}
-
 
 .sidebar {
   position: absolute;   
@@ -189,9 +221,10 @@ body {
   padding: 1rem;
   box-sizing: border-box;
 }
-.sidebar.active { 
-  left: 0; }
 
+.sidebar.active { 
+  left: 0; 
+}
 
 .overlay {
   position: absolute;   
@@ -202,12 +235,12 @@ body {
   transition: opacity 0.3s ease;
   z-index: 75;           
 }
+
 .overlay.active {
   opacity: 1; 
   visibility: visible;
 }
 
-/* Close button */
 .close-btn {
   background: none; border: none;
   font-size: 2rem; cursor: pointer;
@@ -271,16 +304,15 @@ body {
 
 
 .footer {
-  flex-shrink: 0;
-  height: 75px;
+  
+  height: 80px;
   bottom: 0;
   left: 0;
   width: 100%;
   background-color: #EAF9E7;
   padding: 0.5rem 0 0.75rem;
-  box-sizing: content-box;
   box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
-  z-index: 50;
+  z-index: 50;          
 }
 
 
@@ -294,13 +326,6 @@ body {
 .sidebar-logo {
   height: 40px;
   margin-left: 0;        
-}
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #333;
 }
 
 .greeting {
@@ -328,39 +353,6 @@ body {
   margin-bottom: 0.4rem;
 }
 
-
-.carbon-section {
-  margin: 1.5rem 1rem;
-}
-
-.carbon-box {
-  background: #EAF9E7;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.carbon-icon {
-  font-size: 1.8rem;
-  color: #4CA771;
-  margin-bottom: 0.5rem;
-}
-
-.carbon-number {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #4CA771;
-  margin: 0.25rem 0;
-}
-
-.carbon-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #013237;
-  margin: 0;
-}
-
 .progress-section {
   margin: 1.5rem 1rem;
 }
@@ -368,8 +360,8 @@ body {
 .progress-box {
   background: #EAF9E7;
   border-radius: 10px;
-  padding: 1rem 1rem 1rem; 
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 1rem 1rem 1.5rem; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -381,6 +373,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.progress-item.carbon-mini {
+  display: flex !important;
 }
 
 .progress-item i {
@@ -401,7 +397,6 @@ body {
   margin-top: 0.25rem;
 }
 
-
 .v-divider {
   width: 1.5px;
   height: 95px; 
@@ -409,57 +404,46 @@ body {
   margin: 0 0.5rem;
 }
 
-
-
 .learn-more {
   position: absolute;
   bottom: 0.75rem;
   right: 1rem;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   color: #4CA771;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 600;
 } 
+
 .learn-more:hover {
   text-decoration: underline;
 }
-
 
 .reuse-section {
   margin: 1.5rem 1rem;
 }
 
 .reuse-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 0.75rem; 
+  margin-bottom: 1rem;
   color: #063b31;
 }
 
-.reuse-box {
-  background: #EAF9E7;
-  border-radius: 10px;
-  padding: 1rem 1rem 2rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+.reuse-card {
+  background-color: #EAF9E7;      
+  border-radius: 10px;            
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
   position: relative;
+  border: none;                                     
 }
 
 .reuse-header {
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between; 
+  align-items: center;
   margin-bottom: 1rem;
-}
-
-.reuse-image {
-  width: 70px;
-  height: 70px;
-  border-radius: 8px;
-  margin-right: 0.75rem;
-}
-
-.reuse-info {
-  display: flex;
-  flex-direction: column;
 }
 
 .reuse-top {
@@ -474,32 +458,21 @@ body {
 }
 
 .reuse-name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #013237;
+  font-weight: 800;
+  color: #063b31;
 }
 
 .reuse-badge {
-  background: #4CA771;
-  color: #FFFFFF;
-  padding: 0.25rem 0.5rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
-  align-self: flex-start;
-}
-
-.reuse-description {
-  font-size: 0.85rem;
-  color: #013237;
-  margin: 0;
-  text-align: left;
+  background-color: #4CA771;      
+  color: #FFFFFF;                 
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;            
 }
 
 .reuse-materials {
-  margin-left: 0; 
-  margin-bottom: 0.5rem;
-  color: #013237;
+  margin-bottom: 0.75rem;
 }
 
 .materials-label {
@@ -512,34 +485,46 @@ body {
 
 .materials-list {
   display: flex;
-  gap: 0.5rem;
   flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
+/* UNTOUCHED: Kept your custom bubble properties exactly as requested */
 .material-bubble {
-  background: #4CA771;      
-  color: #FFFFFF;           
-  padding: 0.3rem 0.6rem;
-  border-radius: 20px;     
-  font-size: 0.85rem;
+  background-color: #FFFFFF;      
+  color: #063b31;             
+  border: 1.5px solid #4CA771;    
+  padding: 4px 10px;
+  border-radius: 20px;            
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
+.reuse-description {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #063b31;                 
+  margin: 0 0 1rem 0;
+  text-align: left;
+}
 
-.reuse-box .learn-more {
-  position: absolute;
-  bottom: 0.75rem;
-  right: 1rem;
-  font-size: 0.65rem;
+/* Right-align element container isolated from standard footers */
+.reuse-footer-link {
+  display: flex !important;
+  justify-content: flex-end !important;     
+  width: 100% !important;
+}
+
+.reuse-link {
+  font-size: 0.8rem;
+  font-weight: 600;
   color: #4CA771;
   text-decoration: none;
-  font-weight: 400;
 }
-.learn-more:hover {
+
+.reuse-link:hover {
   text-decoration: underline;
 }
-
-
 
 .find-centers {
   margin: 1.5rem 1rem;
@@ -549,9 +534,10 @@ body {
   background: #EAF9E7;
   border-radius: 10px;
   padding: 1rem 1rem 2rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   position: relative;
 }
+
 .find-left {
   display: flex;
   align-items: flex-start;
@@ -592,35 +578,23 @@ body {
   text-align: left;
 }
 
-.learning-more {
-  font-size: 0.85rem;
-  color: #063b31;
-  text-decoration: none;
-  font-weight: 600;
-  align-self: flex-start; 
-}
-
-.learning-more:hover {
-  text-decoration: underline;
-}
-
 .home-body {
   flex: 1;              
   overflow-y: auto;
-  max-height: calc(100% - 80px);      
+  max-height: calc(100% - 65px);      
   -ms-overflow-style: none;  
   scrollbar-width: none; 
 }
+
 .home-body::-webkit-scrollbar {
   display: none;         
 }
 
-/* Add this to layout.css */
-.profile-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: #FFFFFF;
-    padding: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+.footer {
+  flex-shrink: 0;
+  height: 60px;
+  background-color: #EAF9E7;
+  text-align: center;
+  padding-top: 1rem;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
 }

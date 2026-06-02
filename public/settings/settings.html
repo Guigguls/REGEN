@@ -11,64 +11,114 @@
 <body>
   <div class="mobile-container">
     
-   <header class="settings-header">
-  <div class="header-left">
-    <button class="back-btn" onclick="window.location.href='../template/home.html'">
-      <i class="fa-solid fa-arrow-left"></i>
-    </button>
-    <h2 class="header-title">Settings</h2>
-  </div>
-  <img src="../template/assets/regen-logo.png" alt="REGEN Logo" class="settings-logo">
-</header>
+    <header class="settings-header">
+      <div class="header-left">
+        <button class="nav-btn back-btn" onclick="goBack()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h2 class="header-title">Settings</h2>
+      </div>
+      <img src="../template/assets/regen-logo.png" alt="REGEN Logo" class="settings-logo">
+    </header>
 
-<main class="settings-body">
-  <ul class="settings-list">
-    <li>
-      <div class="item-left">
-        <i class="fa-solid fa-bell"></i>
-        <span>Notifications</span>
-      </div>
-      <span class="arrow">&rsaquo;</span>
-    </li>
-    <li>
-      <div class="item-left">
-        <i class="fa-solid fa-shield-halved"></i>
-        <span>Privacy Data</span>
-      </div>
-      <span class="arrow">&rsaquo;</span>
-    </li>
-    <li>
-      <div class="item-left">
-        <i class="fa-solid fa-universal-access"></i>
-        <span>Accessibility</span>
-      </div>
-      <span class="arrow">&rsaquo;</span>
-    </li>
-    <li class="location-item">
-  <div class="item-left">
-    <i class="fa-solid fa-location-dot"></i>
-    <span>Location</span>
-  </div>
-  <label class="switch">
-    <input type="checkbox" id="locationToggle">
-    <span class="slider"></span>
-  </label>
-</li>
+    <main class="settings-body">
+      <ul class="settings-list">
+        
+        <li class="accordion-trigger" data-target="noti-panel">
+          <div class="item-left">
+            <i class="fa-solid fa-bell"></i>
+            <span>Notifications</span>
+          </div>
+          <span class="arrow">&rsaquo;</span>
+        </li>
+        <div id="noti-panel" class="accordion-content">
+          <div class="sub-item">
+            <span class="sub-text">Daily Logging Reminder</span>
+            <label class="switch small-switch">
+              <input type="checkbox" id="dailyReminderToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="sub-item">
+            <span class="sub-text">New Challenge Alerts</span>
+            <label class="switch small-switch">
+              <input type="checkbox" id="challengeAlertsToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="sub-item">
+            <span class="sub-text">Goal Milestone Updates</span>
+            <label class="switch small-switch">
+              <input type="checkbox" id="milestoneToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
 
-    <li>
-      <div class="item-left">
-        <i class="fa-solid fa-globe"></i>
-        <span>Languages</span>
-      </div>
-      <span class="arrow">&rsaquo;</span>
-    </li>
-  </ul>
-</main>
+        <li class="accordion-trigger" data-target="privacy-panel">
+          <div class="item-left">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Privacy Data</span>
+          </div>
+          <span class="arrow">&rsaquo;</span>
+        </li>
+        <div id="privacy-panel" class="accordion-content">
+          <div class="sub-item">
+            <span class="sub-text">Share Anonymous Eco-Stats</span>
+            <label class="switch small-switch">
+              <input type="checkbox" id="ecoStatsToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="sub-item action-sub-item" id="clearCacheBtn">
+            <span class="sub-text delete-text">Clear Local Progress Cache</span>
+            <i class="fa-solid fa-trash-can style-trash"></i>
+          </div>
+        </div>
 
-<footer class="footer">
+        <li class="accordion-trigger" data-target="access-panel">
+          <div class="item-left">
+            <i class="fa-solid fa-universal-access"></i>
+            <span>Accessibility</span>
+          </div>
+          <span class="arrow">&rsaquo;</span>
+        </li>
+        <div id="access-panel" class="accordion-content">
+          <div class="sub-item">
+            <span class="sub-text">High Contrast Colors</span>
+            <label class="switch small-switch">
+              <input type="checkbox" id="contrastToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="sub-item">
+            <span class="sub-text">Optimize Screen Reader</span>
+            <label class="switch small-switch">
+              <input type="checkbox" id="screenReaderToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <li class="location-item-row">
+          <div class="item-left">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Location</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="locationToggle">
+            <span class="slider"></span>
+          </label>
+        </li>
+
+      </ul>
+    </main>
+
+    <footer class="footer">
       <p>© 2026 REGEN</p>
     </footer>
     
   </div>
+  <script src="settings.js"></script>
 </body>
 </html>

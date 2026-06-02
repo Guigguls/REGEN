@@ -24,3 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Later: send rating + comment to backend
   });
 });
+function goBack() {
+  window.history.back();
+}

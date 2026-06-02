@@ -1,23 +1,602 @@
 [
   {
-    "name": "Plastic Bottle Planet",
+    "name": "Plastic Bottle Planter",
     "difficulty": "Easy",
     "materials": ["Soil", "Seed", "2L Plastic Bottle"],
-    "description": "Transform empty bottles into cute hanging planters.",
-    "image": "assets/reuse-bottle.png"
+    "description": "Transform empty bottles into cute hanging planters for your herbs or flowers."
   },
   {
-    "name": "Tin Can Lantern",
+    "name": "Tin Can Lanterns",
     "difficulty": "Medium",
-    "materials": ["Tin Can", "Candle", "Hammer/Nail"],
-    "description": "Punch holes in tin cans to create decorative lanterns.",
-    "image": "assets/reuse-can.png"
+    "materials": ["Tin Can", "Hammer", "Tea Light Candle"],
+    "description": "Punch holes in tin cans to create decorative lanterns that cast beautiful patterns."
   },
   {
-    "name": "Jar Herb Garden",
+    "name": "Cardboard Organizer",
+    "difficulty": "Easy",
+    "materials": ["Cardboard", "Glue", "Scissors"],
+    "description": "Turn old cardboard boxes into desk organizers for pens, notes, and small items."
+  },
+  {
+    "name": "Glass Jar Herb Garden",
     "difficulty": "Easy",
     "materials": ["Glass Jar", "Soil", "Herb Seeds"],
-    "description": "Reuse jars to grow herbs on your windowsill.",
-    "image": "assets/reuse-jar.png"
+    "description": "Reuse glass jars to grow herbs on your windowsill."
+  },
+  {
+    "name": "Self-Watering Seed Starter",
+    "difficulty": "Easy",
+    "materials": ["Plastic Bottle", "Yarn", "Soil", "Seeds"],
+    "description": "Cut a bottle in half and use yarn to pull water up to your seedling roots automatically."
+  },
+  {
+    "name": "Bottle Cap Mosaic Art",
+    "difficulty": "Medium",
+    "materials": ["Plastic Bottle Caps", "Cardboard Base", "Glue"],
+    "description": "Arrange colorful bottle caps into beautiful patterns or landscapes on cardboard."
+  },
+  {
+    "name": "Milk Jug Watering Can",
+    "difficulty": "Easy",
+    "materials": ["Plastic Milk Jug", "Needle", "Lighter"],
+    "description": "Carefully poke heated holes through the cap of a clean gallon jug to create a gentle pourer."
+  },
+  {
+    "name": "Squeeze Bottle Pancake Pen",
+    "difficulty": "Easy",
+    "materials": ["Clean Ketchup Bottle", "Pancake Batter"],
+    "description": "Wash an old condiment squeeze bottle thoroughly and use it to draw precision pancake shapes."
+  },
+  {
+    "name": "Plastic Container Scoop",
+    "difficulty": "Easy",
+    "materials": ["Detergent Jug", "Utility Knife", "Marker"],
+    "description": "Cut down a handled jug diagonally to make a sturdy scoop for pet food or garden soil."
+  },
+  {
+    "name": "Plastic Bag Yarn Bag",
+    "difficulty": "Hard",
+    "materials": ["Plastic Grocery Bags", "Scissors", "Crochet Hook"],
+    "description": "Cut grocery bags into continuous loops to create plarn (plastic yarn) and crochet a reusable tote."
+  },
+  {
+    "name": "Bubble Wrap Window Insulation",
+    "difficulty": "Easy",
+    "materials": ["Bubble Wrap", "Water Spray Bottle", "Scissors"],
+    "description": "Spray a window pane lightly with water and press clean bubble wrap against it for winter heat retention."
+  },
+  {
+    "name": "CD Case Photo Frame",
+    "difficulty": "Easy",
+    "materials": ["Clear CD Case", "Printed Photo", "Tape"],
+    "description": "Slide a portrait into the front cover of an old clear jewel case for an instant standing frame."
+  },
+  {
+    "name": "Plastic Spoon Sunburst Clock",
+    "difficulty": "Medium",
+    "materials": ["Plastic Spoons", "Cardboard Circle", "Hot Glue", "Clock Kit"],
+    "description": "Snip the handles off plastic spoons and layer the heads around a clock kit for a modern look."
+  },
+  {
+    "name": "Shampoo Bottle Phone Holder",
+    "difficulty": "Medium",
+    "materials": ["Empty Shampoo Bottle", "Utility Knife", "Sandpaper"],
+    "description": "Cut a flattened bottle into a pocket shape with a top loop to catch your charger brick on the wall."
+  },
+  {
+    "name": "Egg Carton Seedlings",
+    "difficulty": "Easy",
+    "materials": ["Cardboard Egg Carton", "Potting Soil", "Seeds"],
+    "description": "Fill empty carton cups with soil. When seedlings grow, plant the whole cardboard cup directly into the dirt."
+  },
+  {
+    "name": "Cereal Box Drawer Dividers",
+    "difficulty": "Easy",
+    "materials": ["Cereal Boxes", "Wrapping Paper", "Scissors"],
+    "description": "Cut off the tops of narrow cereal containers and cover them with paper to segment messy drawers."
+  },
+  {
+    "name": "Cardboard Box Cat Castle",
+    "difficulty": "Medium",
+    "materials": ["Large Moving Boxes", "Box Cutter", "Duct Tape"],
+    "description": "Stack, join, and carve doors out of delivery packages to craft an immersive playground for your pet."
+  },
+  {
+    "name": "Shoebox Charging Station",
+    "difficulty": "Medium",
+    "materials": ["Shoebox", "Power Strip", "Utility Knife", "Grommets"],
+    "description": "Punch holes in the front of a shoebox to pass cords out neatly while hiding the power strip inside."
+  },
+  {
+    "name": "Toilet Paper Roll Cord Wraps",
+    "difficulty": "Easy",
+    "materials": ["Cardboard Tubes", "Markers or Washi Tape"],
+    "description": "Decorate empty tubes and slide bundled electronic cables inside to stop them from tangling."
+  },
+  {
+    "name": "Cardboard Coasters",
+    "difficulty": "Easy",
+    "materials": ["Corrugated Cardboard", "Fabric Scraps", "Mod Podge"],
+    "description": "Cut thick cardboard into squares and seal them under pretty fabric remnants to protect tables."
+  },
+  {
+    "name": "Shoebox Ribbon Dispenser",
+    "difficulty": "Easy",
+    "materials": ["Shoebox", "Hole Punch", "Wooden Dowel"],
+    "description": "Line up ribbon spools on a stick inside the box, then punch holes along the side to thread the ends out."
+  },
+  {
+    "name": "Cardboard Guitar Toy",
+    "difficulty": "Medium",
+    "materials": ["Cardboard Box", "Rubber Bands", "Paper Towel Roll"],
+    "description": "Attach a long paper tube to a tissue box and stretch rubber bands over the opening for a fun instrument."
+  },
+  {
+    "name": "Cereal Box Notebooks",
+    "difficulty": "Medium",
+    "materials": ["Cereal Box", "Blank Paper", "Needle and Thread"],
+    "description": "Fold a cereal box piece in half for a colorful cover, insert paper, and sew down the spine."
+  },
+  {
+    "name": "Tissue Box Plastic Bag Holder",
+    "difficulty": "Easy",
+    "materials": ["Empty Rectangular Tissue Box", "Loose Plastic Bags"],
+    "description": "Stuff clean grocery bags inside an empty tissue box so they dispense easily one by one."
+  },
+  {
+    "name": "Cardboard Bird Feeder",
+    "difficulty": "Easy",
+    "materials": ["Toilet Paper Roll", "Peanut Butter", "Birdseed", "String"],
+    "description": "Coat a tube in peanut butter, roll it around in birdseed, loop a string through, and hang outside."
+  },
+  {
+    "name": "Wine Cork Bulletin Board",
+    "difficulty": "Medium",
+    "materials": ["Wine Corks", "Old Picture Frame", "Hot Glue"],
+    "description": "Glue wine corks tightly into a grid pattern inside an old picture frame to pins notes onto."
+  },
+  {
+    "name": "Glass Jar Candle Holder",
+    "difficulty": "Easy",
+    "materials": ["Glass Jar", "Twine", "Epsom Salt", "Tea Light"],
+    "description": "Pour salt in the bottom for a snowy base, wrap twine around the rim, and lower a candle inside."
+  },
+  {
+    "name": "Mason Jar Soap Dispenser",
+    "difficulty": "Medium",
+    "materials": ["Glass Jar", "Old Pump Mechanism", "Drill"],
+    "description": "Carefully punch a hole through a metal jar lid to accommodate a recycled liquid soap pump."
+  },
+  {
+    "name": "Wine Bottle Self-Waterer",
+    "difficulty": "Easy",
+    "materials": ["Glass Wine Bottle", "Water"],
+    "description": "Fill a long-necked bottle with water and flip it quickly into dry garden soil for gradual irrigation."
+  },
+  {
+    "name": "Glass Bottle Wind Chime",
+    "difficulty": "Hard",
+    "materials": ["Glass Bottles", "Glass Cutter", "Wire", "Wood Piece"],
+    "description": "Carefully slice clean glass bottles horizontally and suspend them around a wooden clapper."
+  },
+  {
+    "name": "Baby Food Jar Spice Rack",
+    "difficulty": "Easy",
+    "materials": ["Baby Food Jars", "Magnets", "Glue", "Spices"],
+    "description": "Glue small magnets to the lids of tiny jars to create an organized, magnetic fridge spice layout."
+  },
+  {
+    "name": "Glass Jar Bathroom Organizer",
+    "difficulty": "Medium",
+    "materials": ["Glass Jars", "Wood Board", "Hose Clamps", "Screws"],
+    "description": "Mount glass jars to a stained piece of wood using pipe brackets to hold cotton swabs and brushes."
+  },
+  {
+    "name": "Wine Cork Drawer Pulls",
+    "difficulty": "Easy",
+    "materials": ["Sturdy Wine Corks", "Cabinet Screws", "Screwdriver"],
+    "description": "Swap out boring plastic cabinet pulls for dense wine corks by screwing them in from the inside."
+  },
+  {
+    "name": "Glass Bottle Vase",
+    "difficulty": "Easy",
+    "materials": ["Glass Soda Bottle", "Acrylic Paint", "Paintbrush"],
+    "description": "Swirl bright paint around the *inside* of a clear glass bottle for a glossy, colorful floral vase."
+  },
+  {
+    "name": "Glass Jar Match Striker",
+    "difficulty": "Easy",
+    "materials": ["Small Glass Jar", "Matches", "Sandpaper", "Glue"],
+    "description": "Glue a circular cutout of rough sandpaper to the top of the lid to hold and strike matches."
+  },
+  {
+    "name": "Tin Can Pen Pot",
+    "difficulty": "Easy",
+    "materials": ["Clean Tin Can", "Yarn or Rope", "Glue"],
+    "description": "Wrap textured twine or colorful wool tightly around a tin can to make a chic pencil holder."
+  },
+  {
+    "name": "Soda Can Plant Markers",
+    "difficulty": "Medium",
+    "materials": ["Aluminum Can", "Scissors", "Ballpoint Pen"],
+    "description": "Cut flat strips from an aluminum can, then indent plant names into the metal using an old pen."
+  },
+  {
+    "name": "Tin Can Herb Planter",
+    "difficulty": "Easy",
+    "materials": ["Soup Can", "Hammer", "Nail", "Potting Soil"],
+    "description": "Tap a drainage hole into the base of a clean soup tin, paint the exterior, and plant window herbs."
+  },
+  {
+    "name": "Bottle Tab Clothing Link",
+    "difficulty": "Easy",
+    "materials": ["Aluminum Soda Can Tabs"],
+    "description": "Slip one loop of a can tab over a clothes hanger hook to hang a second hanger directly below it."
+  },
+  {
+    "name": "Tin Can Cookie Cutters",
+    "difficulty": "Hard",
+    "materials": ["Aluminum Soda Can", "Heavy Duty Scissors", "Pliers"],
+    "description": "Cut careful strips of thin metal from a can and use pliers to bend them into custom baking shapes."
+  },
+  {
+    "name": "Tin Can Biscuit Cutter",
+    "difficulty": "Easy",
+    "materials": ["Clean Tuna Can", "Can Opener"],
+    "description": "Remove both lids of a shallow tuna can thoroughly to create a perfect circular pastry or dough press."
+  },
+  {
+    "name": "Altoids Tin First Aid Kit",
+    "difficulty": "Easy",
+    "materials": ["Empty Altoids Mint Tin", "Bandages", "Alcohol Wipes"],
+    "description": "Pack emergency essentials tightly into a pocket-sized tin container to carry on hikes or trips."
+  },
+  {
+    "name": "Tin Can Wind Chime",
+    "difficulty": "Medium",
+    "materials": ["Various Sized Tin Cans", "String", "Hammer", "Nail"],
+    "description": "Punch holes in the bases of three or four nested soup tins and hang them so they strike in the wind."
+  },
+  {
+    "name": "Altoids Tin Travel Watercolor",
+    "difficulty": "Medium",
+    "materials": ["Empty Mint Tin", "Empty Paint Pans", "Hot Glue"],
+    "description": "Secure small plastic wells inside a pocket tin container to construct a portable painting palette."
+  },
+  {
+    "name": "Tin Can Desktop Tier",
+    "difficulty": "Medium",
+    "materials": ["3 Tin Cans", "Old CD", "Hot Glue"],
+    "description": "Glue three upright tins onto an old circular disk to fashion a multi-compartment workspace organizer."
+  },
+  {
+    "name": "T-Shirt Tote Bag",
+    "difficulty": "Easy",
+    "materials": ["Old T-Shirt", "Fabric Scissors"],
+    "description": "Cut off the sleeves and neckline of an old shirt, then tie the bottom hem into knots for a no-sew bag."
+  },
+  {
+    "name": "Denim Pocket Wall Organizer",
+    "difficulty": "Medium",
+    "materials": ["Old Jeans Pockets", "Fabric Glue", "Canvas Backing"],
+    "description": "Cut the back pockets off worn-out jeans and arrange them onto backing fabric for a wall organizer."
+  },
+  {
+    "name": "T-Shirt Cleaning Rags",
+    "difficulty": "Easy",
+    "materials": ["Worn Out Cotton Shirts", "Scissors"],
+    "description": "Cut old graphic tees into square rags to replace single-use paper towels around the kitchen."
+  },
+  {
+    "name": "Sweater Pillow Cover",
+    "difficulty": "Medium",
+    "materials": ["Shrunk Wool Sweater", "Pillow Insert", "Needle and Thread"],
+    "description": "Cut a square from the body of an old knit sweater and sew the edges together over an old cushion."
+  },
+  {
+    "name": "Denim Insulation Strips",
+    "difficulty": "Easy",
+    "materials": ["Old Jeans", "Scissors"],
+    "description": "Cut thick strips of old denim and stuff them into drafts around crawlspaces or floor cracks."
+  },
+  {
+    "name": "Fabric Scrap Quilt Squares",
+    "difficulty": "Hard",
+    "materials": ["Assorted Fabric Scraps", "Sewing Machine"],
+    "description": "Piece together small geometric bits of leftover textiles to make zero-waste blankets."
+  },
+  {
+    "name": "Sock Cleaning Mitt",
+    "difficulty": "Easy",
+    "materials": ["Mismatched Clean Sock", "Cleaning Spray"],
+    "description": "Slip an isolated lone sock directly over your hand to quickly dust blinds and fan blades."
+  },
+  {
+    "name": "Flannel Hand Warmers",
+    "difficulty": "Medium",
+    "materials": ["Old Flannel Shirt", "Dry Uncooked Rice", "Needle"],
+    "description": "Sew small fabric pouches, fill them with raw rice, and microwave for 30 seconds for instant warmth."
+  },
+  {
+    "name": "Jeans Plant Hanger",
+    "difficulty": "Medium",
+    "materials": ["Jeans Seams", "Scissors"],
+    "description": "Cut out the thick braided side seams of old jeans and knot them together into a macrame plant hanger."
+  },
+  {
+    "name": "T-Shirt Dog Tug Toy",
+    "difficulty": "Easy",
+    "materials": ["2 or 3 Old T-Shirts", "Fabric Scissors"],
+    "description": "Cut long strips of jersey fabric and braid them tightly together into a durable rope toy for your dog."
+  },
+  {
+    "name": "Newspaper Seed Pots",
+    "difficulty": "Easy",
+    "materials": ["Old Newspaper", "Small Glass Jar (for molding)"],
+    "description": "Wrap newspaper layers around a jar base, fold the bottom flat, remove the jar, and fill with soil."
+  },
+  {
+    "name": "Magazine Page Gift Bow",
+    "difficulty": "Medium",
+    "materials": ["Colorful Magazine Pages", "Scissors", "Tape"],
+    "description": "Cut glossy pages into strips, loop them into figures-of-eight, and stack them to build a gift bow."
+  },
+  {
+    "name": "Shredded Paper Packing Material",
+    "difficulty": "Easy",
+    "materials": ["Junk Mail", "Paper Shredder"],
+    "description": "Run non-glossy mail envelopes through a shredder to make packaging filler for shipping fragile items."
+  },
+  {
+    "name": "Newspaper Window Cleaner",
+    "difficulty": "Easy",
+    "materials": ["Old Newspaper", "Vinegar", "Water Spray"],
+    "description": "Crumple up sheets of black-and-white print media to wipe down glass windows without leaving lint behind."
+  },
+  {
+    "name": "Magazine Paper Beads",
+    "difficulty": "Medium",
+    "materials": ["Magazine Sheets", "Toothpick", "Glue", "Scissors"],
+    "description": "Cut long, skinny triangles of colorful paper and roll them around a toothpick to form jewelry beads."
+  },
+  {
+    "name": "Cardboard Box Gift Wrap",
+    "difficulty": "Easy",
+    "materials": ["Brown Grocery Bags", "Stamps or Markers"],
+    "description": "Cut open thick brown shopping sacks, flip them inside out, and draw designs to make rustic wrapping paper."
+  },
+  {
+    "name": "Newspaper Weed Barrier",
+    "difficulty": "Easy",
+    "materials": ["Plain Newspapers", "Water", "Garden Mulch"],
+    "description": "Lay dark print sheets 4 layers deep over garden beds before mulching to block weeds naturally."
+  },
+  {
+    "name": "Comic Book Wall Art",
+    "difficulty": "Easy",
+    "materials": ["Damaged Comic Books", "Mod Podge", "Wood Panel"],
+    "description": "Collage actions panels onto canvas or old furniture using decoupage finish for a cool vintage look."
+  },
+  {
+    "name": "Egg Carton Fire Starters",
+    "difficulty": "Medium",
+    "materials": ["Cardboard Egg Carton", "Dryer Lint", "Old Candle Wax"],
+    "description": "Fill carton cups with laundry lint, pour melted leftover wax over top, and cut them apart to make fire starters."
+  },
+  {
+    "name": "Paper Towel Roll Cat Toy",
+    "difficulty": "Easy",
+    "materials": ["Cardboard Tube", "Scissors"],
+    "description": "Fringe the ends of an empty roll into thin strips and fold them outward to create a rolling toy for cats."
+  },
+  {
+    "name": "Citrus Peel Kitchen Cleaner",
+    "difficulty": "Easy",
+    "materials": ["Orange or Lemon Peels", "White Vinegar", "Glass Jar"],
+    "description": "Infuse leftover citrus peels in vinegar for two weeks, strain, and dilute with water for a degreasing spray."
+  },
+  {
+    "name": "Coffee Grounds Exfoliant",
+    "difficulty": "Easy",
+    "materials": ["Used Coffee Grounds", "Coconut Oil"],
+    "description": "Mix spent coffee grounds with coconut oil to make a rejuvenating and aromatic body scrub."
+  },
+  {
+    "name": "Banana Peel Plant Fertilizer",
+    "difficulty": "Easy",
+    "materials": ["Banana Peels", "Water", "Jar"],
+    "description": "Soak banana skins in water for a few days to create a potassium-rich liquid feed for houseplants."
+  },
+  {
+    "name": "Eggshell Pest Barrier",
+    "difficulty": "Easy",
+    "materials": ["Clean Eggshells", "Rolling Pin"],
+    "description": "Crush dry eggshells into sharp shards and sprinkle them around garden plants to deter slugs and snails."
+  },
+  {
+    "name": "Stale Bread Croutons",
+    "difficulty": "Easy",
+    "materials": ["Stale Bread", "Olive Oil", "Herbs", "Oven"],
+    "description": "Toss dry bread cubes in oil and seasonings, then bake until crunchy to make homemade salad croutons."
+  },
+  {
+    "name": "Apple Scrap Vinegar",
+    "difficulty": "Hard",
+    "materials": ["Apple Cores and Peels", "Water", "Sugar", "Jar"],
+    "description": "Ferment apple pieces in sugar water over several weeks to create a homemade fruit vinegar."
+  },
+  {
+    "name": "Vegetable Scrap Soup Stock",
+    "difficulty": "Easy",
+    "materials": ["Frozen Veggie Scraps", "Water", "Large Pot"],
+    "description": "Boil frozen onion skins, carrot ends, and celery tops together to yield a rich soup base."
+  },
+  {
+    "name": "Avocado Pit Fabric Dye",
+    "difficulty": "Medium",
+    "materials": ["Clean Avocado Pits", "Water", "Cotton T-Shirt"],
+    "description": "Boil avocado seeds in water to release a surprising dust-pink natural dye for clothing."
+  },
+  {
+    "name": "Coffee Grounds Deodorizer",
+    "difficulty": "Easy",
+    "materials": ["Dried Used Coffee Grounds", "Small Open Bowl"],
+    "description": "Place dried, spent coffee grounds in the back of your refrigerator to neutralize stubborn food odors."
+  },
+  {
+    "name": "Nut Shell Garden Mulch",
+    "difficulty": "Easy",
+    "materials": ["Pistachio or Walnut Shells"],
+    "description": "Crush dry nutshells and spread them across houseplant soil to retain moisture and stop pests."
+  },
+  {
+    "name": "Baking Soda Shoe Freshener",
+    "difficulty": "Easy",
+    "materials": ["Expired Baking Soda", "Old Coffee Filter", "Rubber Band"],
+    "description": "Tie baking soda inside a coffee filter pouch and drop it inside sneakers to absorb bad odors."
+  },
+  {
+    "name": "Rubber Band Cord Grip",
+    "difficulty": "Easy",
+    "materials": ["Stray Rubber Bands"],
+    "description": "Wrap thick office rubber bands around the ends of smooth slick cords to add a protective, non-slip grip."
+  },
+  {
+    "name": "Toothbrush Detail Washer",
+    "difficulty": "Easy",
+    "materials": ["Old Frayed Toothbrush"],
+    "description": "Sanitize a worn toothbrush in boiling water to use for scrubbing grout tile lines or bike chains."
+  },
+  {
+    "name": "Wine Bottle Cork Trivet",
+    "difficulty": "Medium",
+    "materials": ["30 Wine Corks", "Hot Glue", "Sandpaper"],
+    "description": "Glue wine corks together vertically in a dense hexagon shape to place hot pots and pans on."
+  },
+  {
+    "name": "Old Candle Wax Melt Melts",
+    "difficulty": "Medium",
+    "materials": ["Candle Remnants", "Silicone Mold", "Stove"],
+    "description": "Melt down the unused wax left at the bottom of jars and pour into molds to use in a wax warmer."
+  },
+  {
+    "name": "Broken Ceramic Plant Shards",
+    "difficulty": "Easy",
+    "materials": ["Broken Terracotta Pots"],
+    "description": "Place jagged curved ceramic pieces over the drainage hole of a planter to stop soil from washing out."
+  },
+  {
+    "name": "Ice Cream Container Toy Box",
+    "difficulty": "Easy",
+    "materials": ["Plastic Ice Cream Tub", "Contact Paper"],
+    "description": "Wash large plastic ice cream buckets out and wrap them in patterned vinyl to hold toy building blocks."
+  },
+  {
+    "name": "Silica Gel Packet Dry Packs",
+    "difficulty": "Easy",
+    "materials": ["Recycled Silica Packets"],
+    "description": "Toss collected shoebox desiccant packets into your camera bag or toolbox to prevent rust and fog."
+  },
+  {
+    "name": "Old Calendar Greeting Cards",
+    "difficulty": "Easy",
+    "materials": ["Expired Wall Calendar", "Scissors", "Glue"],
+    "description": "Cut out the glossy photos from old calendars and fold them into custom postcards or greeting cards."
+  },
+  {
+    "name": "Popsicle Stick Plant Labels",
+    "difficulty": "Easy",
+    "materials": ["Used Wooden Popsicle Sticks", "Waterproof Marker"],
+    "description": "Wash and dry ice cream sticks, then write your garden seed types on them to mark rows."
+  },
+  {
+    "name": "Pallet Wood Garden Bed",
+    "difficulty": "Hard",
+    "materials": ["Untreated Shipping Pallet", "Nails", "Crowbar"],
+    "description": "Dismantle clean shipping crates and rebuild the planks into raised planter boxes for vegetables."
+  },
+  {
+    "name": "Old Ladder Towel Rack",
+    "difficulty": "Medium",
+    "materials": ["Wooden Stepladder", "Sandpaper", "Paint"],
+    "description": "Clean and lean a vintage wooden ladder against your bathroom wall to hang bath towels on the rungs."
+  },
+  {
+    "name": "Skateboard Wall Shelf",
+    "difficulty": "Medium",
+    "materials": ["Old Skateboard Deck", "L-Brackets", "Screws"],
+    "description": "Remove the wheels from a worn skateboard and mount the deck flat against the wall as a floating shelf."
+  },
+  {
+    "name": "Wooden Crate Toy Storage",
+    "difficulty": "Easy",
+    "materials": ["Old Fruit Crates", "Sandpaper", "Casters"],
+    "description": "Sand down a rough wooden shipping crate and add wheels to the bottom for an easy rolling toy box."
+  },
+  {
+    "name": "Bicycle Wheel Photo Display",
+    "difficulty": "Medium",
+    "materials": ["Old Bicycle Rim", "Clothespins", "Twine"],
+    "description": "Clean a metal bike wheel and clip photos or notes between the wire spokes using wooden pins."
+  },
+  {
+    "name": "Wine Barrel Planter",
+    "difficulty": "Medium",
+    "materials": ["Old Wine Barrel", "Handsaw", "Drill"],
+    "description": "Saw a large wooden barrel completely in half horizontally to build two rustic outdoor planters."
+  },
+  {
+    "name": "Broken Chair Plant Stand",
+    "difficulty": "Easy",
+    "materials": ["Old Chair with Broken Back", "Outdoor Paint"],
+    "description": "Remove the back of a broken kitchen chair, paint it, and use the flat seat base to elevate a potted plant."
+  },
+  {
+    "name": "Wooden Clothespin Headband Holder",
+    "difficulty": "Easy",
+    "materials": ["Wooden Clothespins", "Wood Strip", "Glue"],
+    "description": "Glue clothespins in a row onto a wooden strip to clip up and organize accessories."
+  },
+  {
+    "name": "Tree Branch Jewelry Hanger",
+    "difficulty": "Easy",
+    "materials": ["Fallen Tree Branch", "Screw Eyes", "String"],
+    "description": "Clean a nice fallen branch, add small screw hooks along the bottom, and hang it up to hold necklaces."
+  },
+  {
+    "name": "Driftwood Key Rack",
+    "difficulty": "Medium",
+    "materials": ["Piece of Driftwood", "Old Keys", "Pliers", "Screws"],
+    "description": "Bend old keys into hooks using pliers, then screw them onto a piece of driftwood to hold your keyrings."
+  },
+  {
+    "name": "Old Book Secret Safe",
+    "difficulty": "Hard",
+    "materials": ["Thick Hardcover Book", "Utility Knife", "Glue"],
+    "description": "Glue the pages of a book together, then carve out the center inside to make a hidden storage space."
+  },
+  {
+    "name": "Greeting Card Gift Tags",
+    "difficulty": "Easy",
+    "materials": ["Used Birthday Cards", "Hole Punch", "Ribbon"],
+    "description": "Cut out festive images from old holiday cards, punch a hole in the corner, and use them as gift tags."
+  },
+  {
+    "name": "Old Map Wall Art",
+    "difficulty": "Easy",
+    "materials": ["Outdated Paper Maps", "Old Frame"],
+    "description": "Frame old paper travel maps or coordinate charts to make interesting geographic wall decorations."
+  },
+  {
+    "name": "Sheet Music Origami",
+    "difficulty": "Medium",
+    "materials": ["Torn Sheet Music Paper"],
+    "description": "Fold old, unusable pages of sheet music into decorative paper cranes or geometric stars."
+  },
+  {
+    "name": "Cardboard Playing Card Labels",
+    "difficulty": "Easy",
+    "materials": ["Incomplete Deck of Cards", "Marker"],
+    "description": "Flip useless cards over to write storage names on the white border sides for bins."
   }
 ]

@@ -4,3 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.history.back();
   });
 });
+
+function goBack() {
+  window.history.back();
+}

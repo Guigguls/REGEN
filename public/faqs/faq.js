@@ -21,3 +21,7 @@ searchInput.addEventListener('input', () => {
     item.style.display = question.includes(query) ? 'block' : 'none';
   });
 });
+
+function goBack() {
+  window.history.back();
+}

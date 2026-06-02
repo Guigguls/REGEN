@@ -131,3 +131,85 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(22px);
 }
+
+/* Keep all your original CSS rules exactly as they were, just append these classes at the bottom */
+
+/* --- Accordion Dropdown Sub Panels --- */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #fafdfa;
+  transition: max-height 0.25s ease-out;
+  border-bottom: 1px solid #eee;
+}
+
+/* Base style overrides for non-accordion static row elements */
+.location-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+  color: #063b31;
+}
+
+.sub-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.5rem 0.85rem 3rem; /* Indented look inside card items */
+  border-bottom: 1px dashed #e2ede0;
+}
+
+.sub-item:last-child {
+  border-bottom: none;
+}
+
+.sub-text {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Action items like wiping local logs cache */
+.action-sub-item {
+  cursor: pointer;
+}
+.action-sub-item:hover {
+  background-color: #f3fdf2;
+}
+
+.delete-text {
+  color: #b93c3c;
+  font-weight: 500;
+}
+
+.style-trash {
+  color: #b93c3c;
+  font-size: 0.95rem;
+  padding-right: 4px;
+}
+
+/* Rotates the arrow indicators nicely when expanded */
+.accordion-trigger.active .arrow {
+  display: inline-block;
+  transform: rotate(90deg);
+  color: #4CA771;
+}
+
+/* Slightly tighter toggle switches for the sub-settings items */
+.switch.small-switch {
+  width: 40px;
+  height: 20px;
+}
+
+.switch.small-switch .slider:before {
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+}
+
+.switch.small-switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
