@@ -23,7 +23,7 @@
       </div>
       <div class="nav-right">
         <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
-          <img src="template/assets/profile.png" alt="Profile" class="profile-icon">
+          <img id="navAvatar" src="template/assets/profile.png" alt="Profile" class="profile-icon">
         </button>
       </div>
     </header>
@@ -78,28 +78,10 @@
                   <div class="center-item-card">
                       <div class="center-icon-circle"><div class="inner-dot"></div></div>
                       <div class="center-details">
-                          <h3>Olaso Junk Shop</h3>
-                          <p>Junkyard</p>
+                          <h3>Location</h3>
+                          <p>facility</p>
                       </div>
-                      <div class="center-distance">3km</div>
-                  </div>
-
-                  <div class="center-item-card">
-                      <div class="center-icon-circle"><div class="inner-dot"></div></div>
-                      <div class="center-details">
-                          <h3>Carpel Makati</h3>
-                          <p>Industrial Recycling Center</p>
-                      </div>
-                      <div class="center-distance">4km</div>
-                  </div>
-
-                  <div class="center-item-card">
-                      <div class="center-icon-circle"><div class="inner-dot"></div></div>
-                      <div class="center-details">
-                          <h3>Pio Del Pilar Materials Recovery</h3>
-                          <p>Materials Recovery Facility (MRF)</p>
-                      </div>
-                      <div class="center-distance">4km</div>
+                      <div class="center-distance">--km</div>
                   </div>
               </div>
           </section>
@@ -134,7 +116,8 @@
       </nav>
     </footer>
   </div>
- 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js"></script>
   <script src="map.js"></script>
   <script src="template/js/nav.js"></script>
 </body>

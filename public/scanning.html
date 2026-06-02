@@ -13,9 +13,9 @@
 <body>
     <div class="mobile-container">
     <header class="topbar">
-      <div class="nav-left">
-        <button class="nav-btn menu-btn">
-          <img src="template/assets/menu.png" alt="Menu" class="menu-icon">
+      <div class="nav-back">
+        <button class="nav-btn back-btn" onclick="history.back()">
+          <i class="fa-solid fa-arrow-left"></i>
         </button>
       </div>
       <div class="nav-center">
@@ -23,7 +23,7 @@
       </div>
       <div class="nav-right">
         <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
-          <img src="template/assets/profile.png" alt="Profile" class="profile-icon">
+          <img id="navAvatar" src="template/assets/profile.png" alt="Profile" class="profile-icon">
         </button>
       </div>
     </header>

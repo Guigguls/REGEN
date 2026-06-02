@@ -21,7 +21,7 @@
       </div>
       <div class="nav-right">
         <button class="nav-btn profile-btn" onclick="setActive(this, '../profile.html')">
-          <img src="assets/profile.png" alt="Profile" class="profile-icon">
+          <img id="navAvatar" src="assets/profile.png" alt="Profile" class="profile-icon">
         </button>
       </div>
     </header>
@@ -59,15 +59,15 @@
     <main class="home-body">
       
       <section class="greeting">
-        <h1 class="greeting-title">Hello, <span id="greetingName">Eka</span></h1>
-        <p class="greeting-subtitle">You’re Making a Real Difference.</p>
+        <h1 class="greeting-title">Hello, <span id="greetingName">...</span></h1>
+        <p class="greeting-subtitle">You’re Making a Real Difference!</p>
       </section>
 
       <section class="progress-section">
         <div class="progress-box">
           <div class="progress-item">
             <i class="fa-solid fa-fire"></i>
-            <div class="progress-number">5</div>
+            <div class="progress-number">--</div>
             <div class="progress-label">Day Streak</div>
           </div>
 
@@ -83,7 +83,7 @@
 
           <div class="progress-item">
             <i class="fa-solid fa-star"></i>
-            <div class="progress-number">100</div>
+            <div class="progress-number">--</div>
             <div class="progress-label">Points</div>
           </div>
 
@@ -166,6 +166,8 @@
       </nav>
     </footer>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../auth.js"></script>
   <script src="js/nav.js"></script>
 </body>
 </html>
