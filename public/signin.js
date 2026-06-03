@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem("refresh_token", data.session.refresh_token);  // ← confirm this is there
                 localStorage.setItem("user_id", data.user.id);
 
-                window.location.href = "goals.html";
+                window.location.href = "template/home.html";
             } else {
                 alert(data.error || "Invalid login");
             }

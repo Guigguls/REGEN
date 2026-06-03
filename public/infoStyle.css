@@ -219,7 +219,7 @@ body {
 
 .step-item {
   width: 100%;
-  min-height: 50px; /* Allows the pill to grow if text is long */
+  min-height: 60px; /* Allows the pill to grow if text is long */
   background: white;
   border: 2px solid #4CA771;
   border-radius: 20px; /* Slightly less than 999px to accommodate 2 lines better */
@@ -232,10 +232,10 @@ body {
 
 .step-item span {
   flex: 1;
-  white-space: normal; /* Fix: allow text to wrap */
+  white-space: normal;
   word-wrap: break-word;
   line-height: 1.2;
-  font-size: 0.62rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: #052e2b;
 }

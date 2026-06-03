@@ -64,9 +64,7 @@ async function getValidToken() {
 
 async function signOut() {
   await supabaseClient.auth.signOut();
-  localStorage.removeItem('access_token');
-  localStorage.removeItem('refresh_token');
-  localStorage.removeItem('user_id');
+  localStorage.clear();
   window.location.href = 'signin.html';
 }
 
@@ -77,35 +75,38 @@ async function getSession() {
 
 // ✅ FIX: try to refresh before redirecting, show message if it fails
 async function requireAuth() {
+  const accessToken = localStorage.getItem('access_token');
+  const storedRefresh = localStorage.getItem('refresh_token');
+
+  if (!accessToken || !storedRefresh) {
+    window.location.href = 'signin.html';
+    return null;
+  }
+
   const session = await getSession();
   if (session) return session;
 
-  // Session expired — try refreshing via Flask
-  const refreshToken = localStorage.getItem('refresh_token');
-  if (refreshToken) {
-    try {
-      const BASE_URL = window.location.hostname === 'localhost'
-        ? 'https://localhost:5000'
-        : `https://${window.location.hostname}:5000`;
+  try {
+    const BASE_URL = window.location.hostname === 'localhost'
+      ? 'https://localhost:5000'
+      : `https://${window.location.hostname}:5000`;
 
-      const response = await fetch(`${BASE_URL}/refresh`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ refresh_token: refreshToken })
-      });
+    const response = await fetch(`${BASE_URL}/refresh`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ refresh_token: storedRefresh })
+    });
 
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('refresh_token', data.refresh_token);
-        return data;
-      }
-    } catch (err) {
-      console.error('Auth refresh error:', err);
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem('access_token', data.access_token);
+      localStorage.setItem('refresh_token', data.refresh_token);
+      return data;
     }
+  } catch (err) {
+    console.error('Auth refresh error:', err);
   }
 
-  // ✅ Show message before redirecting
   alert('Your session has expired. Please sign in again.');
   window.location.href = 'signin.html';
   return null;

@@ -17,6 +17,7 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
 SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+MAPS_API_KEY = os.getenv("GOOGLE_MAPS_KEY")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 client = genai.Client(api_key=GEMINI_API_KEY)
@@ -874,6 +875,53 @@ def update_profile():
 
     print(f"✅ Profile updated for user {user_id}: {list(update_payload.keys())}")
     return jsonify({"success": True})   
+
+MAPS_API_KEY = os.getenv("MAPS_API_KEY")
+
+@app.route("/api/maps/key", methods=["GET"])
+def maps_key():
+    return jsonify({"key": MAPS_API_KEY})
+
+@app.route("/api/maps/places", methods=["GET"])
+def maps_places():
+    lat = request.args.get("lat")
+    lon = request.args.get("lon")
+    radius = request.args.get("radius", 2000)
+    keyword = request.args.get("keyword", "recycling")
+
+    if not lat or not lon:
+        return jsonify({"error": "Missing lat/lon"}), 400
+
+    try:
+        response = req.post(
+            "https://places.googleapis.com/v1/places:searchNearby",
+            headers={
+                "Content-Type": "application/json",
+                "X-Goog-Api-Key": MAPS_API_KEY,
+                "X-Goog-FieldMask": "places.displayName,places.location,places.formattedAddress,places.types,places.name"
+            },
+            json={
+                "locationRestriction": {
+                    "circle": {
+                        "center": {"latitude": float(lat), "longitude": float(lon)},
+                        "radius": float(radius)
+                    }
+                },
+                "textQuery": keyword,
+                "maxResultCount": 20
+            }
+        )
+
+        if response.status_code != 200:
+            print(f"❌ Places API error: {response.status_code} {response.text}")
+            return jsonify({"error": "Places API failed", "results": []}), 500
+
+        data = response.json()
+        return jsonify({"results": data.get("places", [])})
+
+    except Exception as e:
+        print(f"❌ maps_places error: {e}")
+        return jsonify({"error": str(e), "results": []}), 500
 
 if __name__ == "__main__":
     app.run(

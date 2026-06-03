@@ -1,5 +1,7 @@
 /* --- Homepage: greeting name, streak, points, carbon budget --- */
 document.addEventListener("DOMContentLoaded", async () => {
+  await requireAuth();
+  
   const nameEl   = document.getElementById("greetingName");
   const carbonEl = document.getElementById("home-display-pct");
 
@@ -61,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
       const stats = await res.json();
 
-      const BUDGET = 40.0;
+      const BUDGET = 126.0;
       const generated = stats.total_carbon_generated || 0;
       const saved = stats.total_carbon_saved || 0;
       const netEmissions = Math.max(generated - saved, 0);
@@ -91,10 +93,13 @@ function setActive(button, targetPage) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  const currentPage = window.location.pathname.split('/').pop();
+  const currentPath = window.location.pathname;
   document.querySelectorAll('.nav-btn, .scan-btn').forEach(btn => {
     const targetPage = btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
-    if (targetPage === currentPage) {
+    if (!targetPage) return;
+    const targetFile = targetPage.split('/').pop();
+    const currentFile = currentPath.split('/').pop();
+    if (targetFile === currentFile) {
       btn.classList.add('active');
     } else {
       btn.classList.remove('active');
@@ -160,14 +165,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!nameEl && !carbonEl) return;
 
   // ── 1. Get the current session ──────────────────────────────────
-  const { data: { session } } = await supabaseClient.auth.getSession();
+  const token = localStorage.getItem('access_token');
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (!token || !user) return;
 
-  if (!session) {
-    window.location.href = '../login.html';
-    return;
-  }
-
-  const userId = session.user.id;
+  const userId = user.id;
 
   // ── 2. Fetch username, total_points, streak_count from `users` ──
   //       Column names match exactly what app.py reads/writes

@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="dashStyle.css">
   <link rel="stylesheet" href="template/css/layout.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js"></script>
+</head>
 </head>
 <body>
  
@@ -20,11 +22,11 @@
         </button>
       </div>
       <div class="nav-center">
-        <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo">
+        <img src="template/assets/regen-logo.png" alt="REGEN Logo" class="regen-logo" style="margin:0 0 0 7px;">
       </div>
       <div class="nav-right">
-        <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')">
-          <img id="navAvatar" src="template/assets/profile.png" alt="Profile" class="profile-icon">
+        <button class="nav-btn profile-btn" onclick="setActive(this, 'profile.html')" style="width: 56px; height: 56px;">
+          <img id="navAvatar" src="template/assets/profile.png" alt="Profile" class="profile-icon" style="width: 36px; height: 36px;">
         </button>
       </div>
     </header>
@@ -168,8 +170,6 @@
       </nav>
     </footer>
   </div>
- 
-  <script src="auth.js"></script>
   <script src="dashboard.js"></script>
   <script src="template/js/nav.js"></script>
 </body>

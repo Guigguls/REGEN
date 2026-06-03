@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
+    await requireAuth();
 
     console.log("User from localStorage:", JSON.parse(localStorage.getItem("user")));
     const user = JSON.parse(localStorage.getItem("user"));
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             const stats = await response.json();
 
-            const BUDGET = 40.0;
+            const BUDGET = 126.0;
             const generated = stats.total_carbon_generated || 0;
             const saved = stats.total_carbon_saved || 0;
             const netEmissions = Math.max(generated - saved, 0);

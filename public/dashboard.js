@@ -1,8 +1,8 @@
 // Global Configuration
 const BUDGETS = {
-  weekly: 10.0,   // 40 kg CO2e per week
-  monthly: 40.0  // 160 kg CO2e per month
-};
+  weekly: 29.0,
+  monthly: 126.0
+}; 
 
 let currentRange = 'weekly';
 
